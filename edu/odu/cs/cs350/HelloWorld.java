@@ -1,4 +1,5 @@
-// Test for CS 350 Phase 3
+package edu.odu.cs.cs350;
+
 
 public class HelloWorld {
 
