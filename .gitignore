@@ -4,4 +4,5 @@
 /bin/
 /.gradle/
 /build/
-/gradleWrapper.zip/.settings
+/gradleWrapper.zip
+/.settings
