@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * 
  * @author cs_cdiaz014
+ * @author cs_cjack
  * 
  */
 public class CommandLineProcessor {
@@ -68,7 +69,7 @@ public class CommandLineProcessor {
 		}
 
 		CommandLineProcessor clp = new CommandLineProcessor(numRefactors, fileList);
-		
+
 	}
 	
 }
