@@ -68,7 +68,7 @@ public class CommandLineProcessor {
 		}
 
 		CommandLineProcessor clp = new CommandLineProcessor(numRefactors, fileList);
-
+		
 	}
 	
 }
