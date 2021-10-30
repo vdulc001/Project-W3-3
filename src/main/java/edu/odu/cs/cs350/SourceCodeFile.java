@@ -18,6 +18,7 @@ public class SourceCodeFile {
 	public SourceCodeFile(String path)
 	{
 		scf = new File(path);
+		isCppFile();
 	}
 	
 	/**
@@ -36,6 +37,16 @@ public class SourceCodeFile {
 	public String getPath()
 	{
 		return scf.getAbsolutePath();
+	}
+	
+	public Boolean isCppFile()
+	{
+		// needs to handle directory
+		String str = scf.getPath().substring(scf.getPath().length()-3, scf.getPath().length());
+		if(str.equals("cpp"))
+			return true;
+		else 
+			return false;
 	}
 	
 	/**
