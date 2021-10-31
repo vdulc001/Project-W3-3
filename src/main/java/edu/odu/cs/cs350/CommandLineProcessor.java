@@ -53,7 +53,7 @@ public class CommandLineProcessor {
      *
      */
     public void CheckFileExists() {
-    	
+    	//Source: https://chortle.ccsu.edu/java5/Notes/chap87/ch87_4.html//
     	   boolean fileexists;
     	    String temp;
     	    ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
@@ -114,7 +114,7 @@ public class CommandLineProcessor {
 	    	   Directories.remove(i);
 	       }
 	       
-	      if ( tobechecked.isDirectory() == true )
+	       else  if ( tobechecked.isDirectory() == true )
 	        
 	        { 
                 //remove from file ArrayList
@@ -122,7 +122,9 @@ public class CommandLineProcessor {
 	        }
 	       
 	      
-	      }
+	   
+	      
+	  }
         
     
    
