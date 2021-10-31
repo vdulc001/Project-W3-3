@@ -26,6 +26,7 @@ public class CommandLineProcessor {
 		numRefactors = num;
 		fileList = list;
 	}
+	
 
 	/**
 	 * @return number of refactors the user desires
@@ -48,7 +49,12 @@ public class CommandLineProcessor {
 	 * to be implemented later
 	 */
     public void findCppFiles(){
-    	 for (int i = 0; i < fileList.size(); i++)
+    	//Which File Names to look for, for now until we properties set up//
+    	
+    	
+    	
+    	
+    	for (int i = 0; i < fileList.size(); i++)
     	 {
     		//needs ini file to know which c++ types to look for and get// 
     	 }
