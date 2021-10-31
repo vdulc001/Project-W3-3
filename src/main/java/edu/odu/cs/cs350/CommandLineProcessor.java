@@ -52,6 +52,20 @@ public class CommandLineProcessor {
 	 * story card 5
 	 */
     public void findInputFiles(){
+    boolean fileexists;
+   	 ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
+   	 
+   	 TempArray = (ArrayList)fileList.clone();
+        
+   	 int numoffiles =  fileList.size();
+    
+    for (int i = 0; i < fileList.size(); i++)
+      {
+      SourceCodeFile a = TempArray.get(i);
+      
+    
+     }
+    	
 
     }
 
