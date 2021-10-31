@@ -2,6 +2,7 @@ package edu.odu.cs.cs350;
 
 
 import java.io.File;
+import src.main.java.edu.odu.cs.cs350.SourceCodeFile;
 import java.util.ArrayList;
 import java.io.*;
 
@@ -57,7 +58,7 @@ public class CommandLineProcessor {
     public void CheckFileExists() {
     	//Source: https://chortle.ccsu.edu/java5/Notes/chap87/ch87_4.html//
     	   boolean fileexists;
-    	    String temp;
+    	    String tempFilePath;
     	    ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
     	   	
     	    //Create Temp Array clone of fileList//
@@ -68,10 +69,10 @@ public class CommandLineProcessor {
     	    for (int i = 0; i < fileList.size(); i++)
     	      {
     	    	//Change Object into String//
-    	        temp = TempArray.get(i).toString();
+    	        tempFilePath = TempArray.get(i).toString();
     	       
     	       //Check if file exists//
-    	       File tobechecked = new File(temp);
+    	       File tobechecked = new File(tempFilePath);
     	     if ( tobechecked.exists() == true )
     	     {
     	    	  //File Exists Continue//
@@ -82,7 +83,7 @@ public class CommandLineProcessor {
     	    	  fileList.remove(i);
     	         } 
     	     
-    	      }    	
+    	       }    	
     	
     }
 
@@ -91,16 +92,18 @@ public class CommandLineProcessor {
 	 * story card 5
 	 */
     public void findInputFiles(){
-    	//CheckFileExists();
+    	//Check if files even exists//
+    	CheckFileExists();
     	String TempName;
+    	
     	//Clone ArrayList to keep track of Files vs Directories//
     	ArrayList<SourceCodeFile> File = (ArrayList)fileList.clone();
     	ArrayList<SourceCodeFile> Directories = (ArrayList)fileList.clone();
-        
-    	int numoffiles = fileList.size();
+    	ArrayList<File> Temp = new ArrayList<File>();
+    	
         boolean isdirectory;
         boolean isfolder;
-        
+        //paths to files containing C++ source code or directories containing C++ source code//
         //Is file a directory or a folder 
         for (int i = 0; i < fileList.size(); i++)
 	      {
@@ -116,20 +119,29 @@ public class CommandLineProcessor {
 	    	   Directories.remove(i);
 	       }
 	       
-	       else  if ( tobechecked.isDirectory() == true )
+	       else if ( tobechecked.isDirectory() == true )
 	        
 	        { 
                 //remove from file ArrayList
-	    	    File.remove(i);
-	    	    
-	    	    
+	    	    File.remove(i);   
 	        }
 	       
 	      
-	   
-	      
-	  }
-        
+	      }//Loop End//
+          
+        //Find Files in File Array and change Paths to files//
+        String pathname;
+        File tobeadded;
+         for (int i = 0; i < File.size(); i++) 
+         {
+        	pathname = File.get(i).toString();
+        	
+        	//Create file using scf//
+        	 
+         }
+        	         
+      
+        	  
     
    
 
