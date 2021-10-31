@@ -53,24 +53,30 @@ public class CommandLineProcessor {
      *
      */
     public void CheckFileExists() {
-    	 boolean fileexists;
+    	
+    	   boolean fileexists;
     	    String temp;
     	    ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
-    	   	 
+    	   	
+    	    //Create Temp Array clone of fileList//
     	   	TempArray = (ArrayList)fileList.clone();
     	        
     	   	int numoffiles =  fileList.size();
     	    
     	    for (int i = 0; i < fileList.size(); i++)
     	      {
-    	       temp = TempArray.get(i).toString();
+    	    	//Change Object into String//
+    	        temp = TempArray.get(i).toString();
     	       
+    	       //Check if file exists//
     	       File tobechecked = new File(temp);
     	     if ( tobechecked.exists() == true )
     	     {
+    	    	  //File Exists Continue//
     	    	 continue;
     	     }
     	    else {
+    	    	   //if file does not exists - remove file//
     	    	  fileList.remove(i);
     	         } 
     	     
@@ -85,28 +91,37 @@ public class CommandLineProcessor {
     public void findInputFiles(){
     	//CheckFileExists();
     	String TempName;
-    	ArrayList<SourceCodeFile> File = new ArrayList<SourceCodeFile>();
-    	ArrayList<SourceCodeFile> Directories = new ArrayList<SourceCodeFile>();
+    	//Clone ArrayList to keep track of Files vs Directories//
+    	ArrayList<SourceCodeFile> File = (ArrayList)fileList.clone();
+    	ArrayList<SourceCodeFile> Directories = (ArrayList)fileList.clone();
         
     	int numoffiles = fileList.size();
         boolean isdirectory;
         boolean isfolder;
         
-        //is file a directory or a folder 
+        //Is file a directory or a folder 
         for (int i = 0; i < fileList.size(); i++)
 	      {
+        	//get fileList Object and turn into string// 
 	       TempName = fileList.get(i).toString();
 	       
+	       //turn into file//
 	       File tobechecked = new File(TempName);
 	     
 	       if ( tobechecked.isFile() == true )
-	     {
-	    	 continue;
-	     }
-	    else {
-	    	  
-	         } 
-	     
+	      {
+	    	  //remove from directory ArrayList
+	    	   Directories.remove(i);
+	       }
+	       
+	      if ( tobechecked.isDirectory() == true )
+	        
+	        { 
+                //remove from file ArrayList
+	    	    File.remove(i);
+	        }
+	       
+	      
 	      }
         
     
