@@ -2,27 +2,28 @@ package edu.odu.cs.cs350;
 
 public class Token {
 	private String lexeme;
-	private String tokenType; //might need to add a tokenType file and change this line to 'private tokeType type;' instead of string
+	public enum TokenTypes {KEYWORD, INTEGER_LITERAL, IDENTIFIER, EOF};
+	private TokenTypes tokenType;
 	private int line;
 	private int column;
 	//possibly length?
 	//setTokenType?
 	
 	
-	//create a token with no explicit lexeme
-	public Token(String tokenType, int line, int column) {
+	//create a token with no lexeme
+	public Token(final TokenTypes theTokenType, final int lineNum, final int columnNum) {
 		this.lexeme = "";
-		this.tokenType = tokenType;
-		this.line = line;
-		this.column = column;
+		this.tokenType = theTokenType;
+		this.line = lineNum;
+		this.column = columnNum;
 	}
 	
 	//create a token
-	public Token(String lexeme, String tokenType, int line, int column) {
-		this.lexeme = lexeme;
-		this.tokenType = tokenType;
-		this.line = line;
-		this.column = column;
+	public Token(final String theLexeme, final TokenTypes theTokenType, int lineNum, int columnNum) {
+		this.lexeme = theLexeme;
+		this.tokenType = theTokenType;
+		this.line = lineNum;
+		this.column = columnNum;
 	}
 	
 	/**
@@ -40,7 +41,7 @@ public class Token {
 	/**
 	 * @return the type of token
 	 */
-	public String getTokenType() {
+	public final TokenTypes getTokenType() {
 		return this.tokenType;
 	}
 	
@@ -56,10 +57,6 @@ public class Token {
 		
 	}
 	
-/*	public final tokenType getType() {
-		return this.type;
-	}
-*/
 	
 	/**
 	 * @return the line number
