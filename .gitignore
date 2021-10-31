@@ -1,10 +1,10 @@
-<<<<<<< HEAD
-/HelloWorld.class
 /.classpath
 /.project
 /bin/
 /.gradle/
 /build/
+/gradleWrapper.zip
+
 =======
 # Compiled class file
 *.class
