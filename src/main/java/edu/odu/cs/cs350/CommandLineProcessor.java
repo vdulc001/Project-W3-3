@@ -122,6 +122,7 @@ public class CommandLineProcessor {
                 //remove from file ArrayList
 	    	    File.remove(i);
 	    	    
+	    	    
 	        }
 	       
 	      

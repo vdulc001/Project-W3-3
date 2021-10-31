@@ -35,7 +35,7 @@ public class TestCommandLineProcessor {
 	  assertThat(testFolder.exists(),is(true));
 	  assertThat(testFolder.isDirectory(),is(true));
 	  assertThat(testFolder.isFile(),is(false));
-	  
+	   
 	 	  
   }
     
