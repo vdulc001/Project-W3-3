@@ -2,7 +2,6 @@ package edu.odu.cs.cs350;
 
 
 import java.io.File;
-import src.main.java.edu.odu.cs.cs350.SourceCodeFile;
 import java.util.ArrayList;
 import java.io.*;
 
@@ -99,7 +98,7 @@ public class CommandLineProcessor {
     	//Clone ArrayList to keep track of Files vs Directories//
     	ArrayList<SourceCodeFile> File = (ArrayList)fileList.clone();
     	ArrayList<SourceCodeFile> Directories = (ArrayList)fileList.clone();
-    	ArrayList<File> Temp = new ArrayList<File>();
+    	ArrayList<SourceCodeFile> Temp = new ArrayList<SourceCodeFile>();
     	
         boolean isdirectory;
         boolean isfolder;
@@ -130,13 +129,17 @@ public class CommandLineProcessor {
 	      }//Loop End//
           
         //Find Files in File Array and change Paths to files//
-        String pathname;
-        File tobeadded;
+       String pathname;
+    
          for (int i = 0; i < File.size(); i++) 
          {
         	pathname = File.get(i).toString();
         	
-        	//Create file using scf//
+        	//Create file using SourceCode//
+        	 SourceCodeFile tobeadded = new SourceCodeFile(pathname);
+        	 
+        	 //to SourceFile to Temp Array of Source Files//
+        	 Temp.add(tobeadded);
         	 
          }
         	         
@@ -165,6 +168,7 @@ public class CommandLineProcessor {
 
 		//To be implemented
 		for(int i = startFileParameters; i < args.length; i++){
+			
 
 		}
 
