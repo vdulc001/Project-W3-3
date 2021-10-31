@@ -15,6 +15,7 @@ public class CommandLineProcessor {
 
     private static int numRefactors;
     private static ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
+	private static ArrayList<SourceCodeFile> Directories = (ArrayList)fileList.clone();
 
 	/**
 	 * Construct a CLP object with number of refactors and list of source code files
@@ -47,6 +48,13 @@ public class CommandLineProcessor {
 	 * to be implemented later
 	 */
     public void findCppFiles(){
+    	 for (int i = 0; i < fileList.size(); i++)
+    	 {
+    		//needs ini file to know which c++ types to look for and get// 
+    	 }
+    	
+    	
+    	
 
     }
     
@@ -97,7 +105,6 @@ public class CommandLineProcessor {
     	
     	//Clone ArrayList to keep track of Files vs Directories//
     	ArrayList<SourceCodeFile> File = (ArrayList)fileList.clone();
-    	ArrayList<SourceCodeFile> Directories = (ArrayList)fileList.clone();
     	ArrayList<SourceCodeFile> Temp = new ArrayList<SourceCodeFile>();
     	
         boolean isdirectory;
@@ -143,8 +150,8 @@ public class CommandLineProcessor {
         	 
          }
         	         
-      
-        	  
+       //Find Files in Directories Array and change Search Recursively to find to files//
+       //Find Cpp file must be implemented to properly search directories//	  
     
    
 
