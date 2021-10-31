@@ -1,5 +1,7 @@
 package edu.odu.cs.cs350;
 
+
+import java.io.File;
 import java.util.ArrayList;
 import java.io.*;
 
@@ -132,6 +134,8 @@ public class CommandLineProcessor {
     }
 
 	public static void main(String[] args) {
+		String firstFile = args[1];
+		int startFileParameters = 1;
 
 		try{
 			numRefactors = Integer.parseInt(args[0]);
@@ -139,9 +143,15 @@ public class CommandLineProcessor {
 		catch(NumberFormatException e){
 			System.out.println("First parameter must be an integer representing the number of refactors.");
 		}
+		
+		//Find if there is a .ini file or not
+		if(firstFile.substring(firstFile.length() - 4) == ".ini"){
+			startFileParameters = 2;
+		}
 
-		for(int i = 1; i < args.length; i++){
-			//Finds the source code files 
+		//To be implemented
+		for(int i = startFileParameters; i < args.length; i++){
+
 		}
 
 		CommandLineProcessor clp = new CommandLineProcessor(numRefactors, fileList);
