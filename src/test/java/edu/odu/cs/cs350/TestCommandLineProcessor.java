@@ -3,10 +3,13 @@ package edu.odu.cs.cs350;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.xml.transform.Source;
 
 import org.junit.jupiter.api.Test;
+
+import src.main.java.edu.odu.cs.cs350.SourceCodeFile;
 
 public class TestCommandLineProcessor {
 
@@ -23,12 +26,25 @@ public class TestCommandLineProcessor {
         */
     }
   void testFileExists()
-  {
+  {   //Test Set-up//
+	  ArrayList<SourceCodeFile> testfileList = new ArrayList<SourceCodeFile>();
+	  
 	  //Edit to your Directory//
 	  File testFolder = new File("C:\Users\sTRICTLY VS\Documents\Testfolder");
 	  File testFile = new File("C:\\Users\\sTRICTLY VS\\Documents\\Testfolder\testfile.txt");
 	  //---------------------------------------------------------------------------------------//
-	  boolean Exists = testFile.exists();
+	  //Testing Adding and Cloning
+	 testfileList.add(testFile);
+	 testfileList.add(testFolder);
+	 ArrayList<SourceCodeFile> TestTempArray = new ArrayList<SourceCodeFile>();
+	 TestTempArray = (ArrayList)testfileList.clone();
+	 //-----------------------------------------------------------------------------------------//
+	  
+	 boolean ArrayEqual = TestFile.equals(testFolder);
+	 assertThat(ArrayEqual,is(true));
+	 
+	 //Test Function//
+	 boolean Exists = testFile.exists();
 	  assertThat(testFile.exists(),is(true));
 	  assertThat(testfile.isDirectory(),is(true));
 	  assertThat(testFile.isFile(),is(false))
