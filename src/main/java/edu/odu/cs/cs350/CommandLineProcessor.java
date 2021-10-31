@@ -1,6 +1,7 @@
 package edu.odu.cs.cs350;
 
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  * 
@@ -46,26 +47,46 @@ public class CommandLineProcessor {
     public void findCppFiles(){
 
     }
+    
+    /**
+     * Checks to Ensure All Inputted Files and Directories Exist
+     *
+     */
+    public void CheckFileExists() {
+    	 boolean fileexists;
+    	    String temp;
+    	    ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
+    	   	 
+    	   	TempArray = (ArrayList)fileList.clone();
+    	        
+    	   	int numoffiles =  fileList.size();
+    	    
+    	    for (int i = 0; i < fileList.size(); i++)
+    	      {
+    	       temp = TempArray.get(i).toString();
+    	       
+    	       File tobechecked = new File(temp);
+    	     if ( tobechecked.exists() == true )
+    	     {
+    	    	 continue;
+    	     }
+    	    else {
+    	    	  fileList.remove(i);
+    	         } 
+    	     
+    	      }
+    	    	
+    	    
+    	
+    }
 
     /**
 	 * Finds input files provided by the user in the CLI
 	 * story card 5
 	 */
     public void findInputFiles(){
-    boolean fileexists;
-   	 ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
-   	 
-   	 TempArray = (ArrayList)fileList.clone();
-        
-   	 int numoffiles =  fileList.size();
-    
-    for (int i = 0; i < fileList.size(); i++)
-      {
-      SourceCodeFile a = TempArray.get(i);
-      
-    
-     }
     	
+   
 
     }
 
