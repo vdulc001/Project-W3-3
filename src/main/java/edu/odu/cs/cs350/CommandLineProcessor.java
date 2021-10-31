@@ -74,9 +74,7 @@ public class CommandLineProcessor {
     	    	  fileList.remove(i);
     	         } 
     	     
-    	      }
-    	    	
-    	    
+    	      }    	
     	
     }
 
@@ -85,7 +83,33 @@ public class CommandLineProcessor {
 	 * story card 5
 	 */
     public void findInputFiles(){
-    	
+    	//CheckFileExists();
+    	String TempName;
+    	ArrayList<SourceCodeFile> File = new ArrayList<SourceCodeFile>();
+    	ArrayList<SourceCodeFile> Directories = new ArrayList<SourceCodeFile>();
+        
+    	int numoffiles = fileList.size();
+        boolean isdirectory;
+        boolean isfolder;
+        
+        //is file a directory or a folder 
+        for (int i = 0; i < fileList.size(); i++)
+	      {
+	       TempName = fileList.get(i).toString();
+	       
+	       File tobechecked = new File(TempName);
+	     
+	       if ( tobechecked.isFile() == true )
+	     {
+	    	 continue;
+	     }
+	    else {
+	    	  
+	         } 
+	     
+	      }
+        
+    
    
 
     }
