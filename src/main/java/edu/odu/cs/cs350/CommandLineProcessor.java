@@ -27,6 +27,9 @@ public class CommandLineProcessor {
 		fileList = list;
 	}
 	
+	public void setNumRefactors(int num){
+		numRefactors = num;
+	}
 
 	/**
 	 * @return number of refactors the user desires

@@ -9,7 +9,6 @@ import javax.xml.transform.Source;
 
 import org.junit.jupiter.api.Test;
 
-import src.main.java.edu.odu.cs.cs350.SourceCodeFile;
 
 public class TestCommandLineProcessor {
 
@@ -25,6 +24,22 @@ public class TestCommandLineProcessor {
             TestCommandLineProcessor.main(new String[]{4, file1, file2, file3, file4});
         */
     }
+
+	@Test
+	void testNumRefactors(){
+		SourceCodeFile file1 = new SourceCodeFile("foo.cpp");
+		ArrayList<SourceCodeFile> testList = new ArrayList<SourceCodeFile>();
+		testList.add(file1);
+
+		CommandLineProcessor clp = new CommandLineProcessor(3, testList);
+
+		assertEquals(clp.getNumRefactors(), 3);
+
+		clp.setNumRefactors(6);
+		assertEquals(clp.getNumRefactors(), 6);
+	}
+
+	@Test
   void testFileExists()
   {   //Test Set-up//
 	  ArrayList<SourceCodeFile> testfileList = new ArrayList<SourceCodeFile>();
