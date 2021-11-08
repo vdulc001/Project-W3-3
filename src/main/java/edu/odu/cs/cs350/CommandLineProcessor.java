@@ -3,6 +3,7 @@ package edu.odu.cs.cs350;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  * 
@@ -14,6 +15,7 @@ public class CommandLineProcessor {
 
     private static int numRefactors;
     private static ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
+	private static ArrayList<SourceCodeFile> Directories = (ArrayList)fileList.clone();
 
 	/**
 	 * Construct a CLP object with number of refactors and list of source code files
@@ -23,6 +25,10 @@ public class CommandLineProcessor {
 	public CommandLineProcessor(int num, ArrayList<SourceCodeFile> list){
 		numRefactors = num;
 		fileList = list;
+	}
+	
+	public void setNumRefactors(int num){
+		numRefactors = num;
 	}
 
 	public void setNumRefactors(int num){
@@ -50,7 +56,55 @@ public class CommandLineProcessor {
 	 * to be implemented later
 	 */
     public void findCppFiles(){
+    	//Which File Names to look for, for now until we properties set up//
+    	
+    	
+    	
+    	
+    	for (int i = 0; i < fileList.size(); i++)
+    	 {
+    		//needs ini file to know which c++ types to look for and get// 
+    	 }
+    	
+    	
+    	
 
+    }
+    
+    /**
+     * Checks to Ensure All Inputted Files and Directories Exist
+     *
+     */
+    public void CheckFileExists() {
+    	//Source: https://chortle.ccsu.edu/java5/Notes/chap87/ch87_4.html//
+    	   boolean fileexists;
+    	    String tempFilePath;
+    	    ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
+    	   	
+    	    //Create Temp Array clone of fileList//
+    	   	TempArray = (ArrayList)fileList.clone();
+    	        
+    	   	int numoffiles =  fileList.size();
+    	    
+    	    for (int i = 0; i < fileList.size(); i++)
+    	      {
+    	    	//Change Object into String//
+    	        tempFilePath = TempArray.get(i).toString();
+    	       
+    	       //Check if file exists//
+    	       File tobechecked = new File(tempFilePath);
+    	     if ( tobechecked.exists() == true )
+    	     {
+    	    	  //File Exists Continue//
+    	    	 continue;
+    	     }
+    	    else {
+    	    	   //if file does not exists - remove file//
+    	    	  fileList.remove(i);
+    	         } 
+    	     
+    	       }    	
+    	
     }
 
     /**
@@ -58,6 +112,62 @@ public class CommandLineProcessor {
 	 * story card 5
 	 */
     public void findInputFiles(){
+    	//Check if files even exists//
+    	CheckFileExists();
+    	String TempName;
+    	
+    	//Clone ArrayList to keep track of Files vs Directories//
+    	ArrayList<SourceCodeFile> File = (ArrayList)fileList.clone();
+    	ArrayList<SourceCodeFile> Temp = new ArrayList<SourceCodeFile>();
+    	
+        boolean isdirectory;
+        boolean isfolder;
+        //paths to files containing C++ source code or directories containing C++ source code//
+        //Is file a directory or a folder 
+        for (int i = 0; i < fileList.size(); i++)
+	      {
+        	//get fileList Object and turn into string// 
+	       TempName = fileList.get(i).toString();
+	       
+	       //turn into file//
+	       File tobechecked = new File(TempName);
+	     
+	       if ( tobechecked.isFile() == true )
+	      {
+	    	  //remove from directory ArrayList
+	    	   Directories.remove(i);
+	       }
+	       
+	       else if ( tobechecked.isDirectory() == true )
+	        
+	        { 
+                //remove from file ArrayList
+	    	    File.remove(i);   
+	        }
+	       
+	      
+	      }//Loop End//
+          
+        //Find Files in File Array and change Paths to files//
+       String pathname;
+    
+         for (int i = 0; i < File.size(); i++) 
+         {
+        	pathname = File.get(i).toString();
+        	
+        	//Create file using SourceCode//
+        	 SourceCodeFile tobeadded = new SourceCodeFile(pathname);
+        	 
+        	 //to SourceFile to Temp Array of Source Files//
+        	 Temp.add(tobeadded);
+        	 
+        	 
+         }
+        	         
+       //Find Files in Directories Array and change Search Recursively to find to files//
+       //Find Cpp file must be implemented to properly search directories//	  
+    
+   
 
     }
 
@@ -79,6 +189,7 @@ public class CommandLineProcessor {
 
 		//To be implemented
 		for(int i = startFileParameters; i < args.length; i++){
+			
 
 		}
 
