@@ -1,5 +1,11 @@
 package edu.odu.cs.cs350;
 
+/**
+ * All possible C++ token types.
+ * 
+ * @author cs_jrosa005
+ *
+ */
 public enum TokenKinds {
 	ALIGNAS, ALIGNOF, AND, AND_EQ, ASM, ATOMIC_CANCEL, ATOMIC_COMMIT, 
 	ATOMIC_NOEXCEPT,  AUTO, BITAND, BITOR, BOOL, BREAK, CASE, CATCH,

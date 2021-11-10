@@ -11,9 +11,6 @@ public class Token {
 	private TokenKinds tokenType;
 	private int line;
 	private int column;
-	//possibly length?
-	//setTokenType?
-	
 	
 	//create a token with no lexeme
 	public Token(final TokenKinds theTokenType, final int lineNum, final int columnNum) {
@@ -57,11 +54,6 @@ public class Token {
 	public String getLexeme() {
 		return this.lexeme;
 	}
-	
-	public void detectTokenType() {
-		
-	}
-	
 	
 	/**
 	 * @return the line number
