@@ -3,6 +3,7 @@ package edu.odu.cs.cs350;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,8 +17,7 @@ import java.util.List;
 public class SourceCodeFile {
 	
 	private File scf;
-	private List<Token> tokens;
-	int numberOfTokens;
+	private ArrayList<Token> tokens;
 	
 	/**
 	 * Initializes source code file using its absolute path
@@ -26,7 +26,7 @@ public class SourceCodeFile {
 	public SourceCodeFile(String path)
 	{
 		scf = new File(path);
-		numberOfTokens = 0;
+		tokens = new ArrayList<Token>();
 	}
 	
 	/**
@@ -46,23 +46,13 @@ public class SourceCodeFile {
 	{
 		return scf.getAbsolutePath();
 	}
-	
-	/**
-	 * Returns number of tokens in a source code file
-	 * @return number of tokens
-	 */
-	public int getNumberOfTokens()
-	{
-		calculateTotalTokens(tokens, numberOfTokens);
-		return numberOfTokens; 
-	}
 
 	/**
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
 	 */
-	public void calculateTotalTokens(final List<Token> listTok, int size) { 
-		size = listTok.size();
+	public int calculateTotalTokens() { 
+		return tokens.size();
 	}
 	
 	/**
@@ -80,27 +70,5 @@ public class SourceCodeFile {
         } catch (IOException ex) {
             // Not necessarily a problem, depending on the input source
         }
-	}
-	
-	/**
-	 * Compares 2 files for equality
-	 * @param other source code file
-	 * @return true if paths are equal
-	 */
-	public Boolean equals(SourceCodeFile other)
-	{
-		if(getPath().equals(other.getPath()))
-			return true;
-		else
-			return false;
-	}
-	
-	/**
-	 * Format and return the absolute path of a file and its number of tokens
-	 */
-	public String toString()
-	{
-		String output = getPath() + ", " + numberOfTokens;
-		return output;
 	}
 }
