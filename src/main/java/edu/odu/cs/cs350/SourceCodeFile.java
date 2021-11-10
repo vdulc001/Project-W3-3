@@ -59,7 +59,7 @@ public class SourceCodeFile {
 	 * Create a list of tokens from the scanner **we need to make this read in scf
 	 */
 	public void tokenize(final Reader input) {
-		tokens = new LinkedList<Token>();
+		tokens = new ArrayList<Token>();
 		GeneratedScanner scanner = new GeneratedScanner (input);
 		try {
             Token token = scanner.yylex();
