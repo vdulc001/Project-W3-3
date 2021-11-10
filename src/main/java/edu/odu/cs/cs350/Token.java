@@ -2,8 +2,7 @@ package edu.odu.cs.cs350;
 
 public class Token {
 	private String lexeme;
-	public enum TokenTypes {KEYWORD, INTEGER_LITERAL, IDENTIFIER, EOF};
-	private TokenTypes tokenType;
+	private TokenKinds tokenType;
 	private int line;
 	private int column;
 	//possibly length?
@@ -11,7 +10,7 @@ public class Token {
 	
 	
 	//create a token with no lexeme
-	public Token(final TokenTypes theTokenType, final int lineNum, final int columnNum) {
+	public Token(final TokenKinds theTokenType, final int lineNum, final int columnNum) {
 		this.lexeme = "";
 		this.tokenType = theTokenType;
 		this.line = lineNum;
@@ -19,7 +18,7 @@ public class Token {
 	}
 	
 	//create a token
-	public Token(final String theLexeme, final TokenTypes theTokenType, int lineNum, int columnNum) {
+	public Token(final String theLexeme, final TokenKinds theTokenType, int lineNum, int columnNum) {
 		this.lexeme = theLexeme;
 		this.tokenType = theTokenType;
 		this.line = lineNum;
@@ -41,7 +40,7 @@ public class Token {
 	/**
 	 * @return the type of token
 	 */
-	public final TokenTypes getTokenType() {
+	public final TokenKinds getTokenType() {
 		return this.tokenType;
 	}
 	
