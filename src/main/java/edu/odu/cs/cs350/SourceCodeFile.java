@@ -26,7 +26,11 @@ public class SourceCodeFile {
 	public SourceCodeFile(String path)
 	{
 		scf = new File(path);
+<<<<<<< HEAD
 		tokens = new ArrayList<Token>();
+=======
+		isCppFile();
+>>>>>>> refs/remotes/origin/story1_vdulc001
 	}
 	
 	/**
@@ -46,7 +50,21 @@ public class SourceCodeFile {
 	{
 		return scf.getAbsolutePath();
 	}
+<<<<<<< HEAD
 
+=======
+	
+	public Boolean isCppFile()
+	{
+		// needs to handle directory
+		String str = scf.getPath().substring(scf.getPath().length()-3, scf.getPath().length());
+		if(str.equals("cpp"))
+			return true;
+		else 
+			return false;
+	}
+	
+>>>>>>> refs/remotes/origin/story1_vdulc001
 	/**
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
