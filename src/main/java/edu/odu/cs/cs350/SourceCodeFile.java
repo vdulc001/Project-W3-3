@@ -1,12 +1,12 @@
 package edu.odu.cs.cs350;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
+//import java.io.IOException;
+//import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+//import java.util.Iterator;
+//import java.util.LinkedList;
+//import java.util.List;
 
 /**
  * 
@@ -26,11 +26,7 @@ public class SourceCodeFile {
 	public SourceCodeFile(String path)
 	{
 		scf = new File(path);
-<<<<<<< HEAD
 		tokens = new ArrayList<Token>();
-=======
-		isCppFile();
->>>>>>> refs/remotes/origin/story1_vdulc001
 	}
 	
 	/**
@@ -50,11 +46,9 @@ public class SourceCodeFile {
 	{
 		return scf.getAbsolutePath();
 	}
-<<<<<<< HEAD
 
-=======
 	
-	public Boolean isCppFile()
+	/*public Boolean isCppFile()
 	{
 		// needs to handle directory
 		String str = scf.getPath().substring(scf.getPath().length()-3, scf.getPath().length());
@@ -62,9 +56,8 @@ public class SourceCodeFile {
 			return true;
 		else 
 			return false;
-	}
+	}*/
 	
->>>>>>> refs/remotes/origin/story1_vdulc001
 	/**
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
