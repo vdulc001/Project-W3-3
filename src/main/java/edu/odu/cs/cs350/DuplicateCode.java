@@ -1,3 +1,4 @@
+/*
 package edu.odu.cs.cs350;
 import java.io.File;
 
@@ -27,3 +28,4 @@ public void setFilename(String name2output) { fileoutput = name2output;}
 	
 	
 }
+*/
