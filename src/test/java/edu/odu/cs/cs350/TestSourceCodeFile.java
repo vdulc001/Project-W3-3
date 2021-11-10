@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 class TestSourceCodeFile {
 
-	/*
 	@Test
 	void testSourceCodeFile() {
 		SourceCodeFile s = new SourceCodeFile("/home/cs_vdulc001/homeDir");
@@ -19,8 +18,5 @@ class TestSourceCodeFile {
 		assertNotNull(s.toString());
 		
 	}
-	*/
-	
-	
 
 }
