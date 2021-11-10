@@ -58,7 +58,7 @@ public class SourceCodeFile {
 	/**
 	 * Create a list of tokens from the scanner **we need to make this read in scf
 	 */
-	public void tokenize(final Reader input) {
+	/*public void tokenize(final Reader input) {
 		tokens = new LinkedList<Token>();
 		GeneratedScanner scanner = new GeneratedScanner (input);
 		try {
@@ -70,5 +70,5 @@ public class SourceCodeFile {
         } catch (IOException ex) {
             // Not necessarily a problem, depending on the input source
         }
-	}
+	}*/
 }

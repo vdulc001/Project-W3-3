@@ -11,7 +11,7 @@ private int line = 0;
 private int column = 0;
 
 public int getLine() { return line; }
-public int setLine(int L) { line = L; }
+//public int setLine(int L) { line = L; }
 
 
 public int getColumn() {return column;}

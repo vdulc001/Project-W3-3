@@ -170,7 +170,7 @@ public class CommandLineProcessor {
     }
 
 	public static void main(String[] args) {
-		
+		// for visible output
 		ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
 		for(String filePath : args)
 		{
