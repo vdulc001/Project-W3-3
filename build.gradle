@@ -18,7 +18,13 @@ repositories {
 dependencies {
 	     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
 	     testImplementation 'org.hamcrest:hamcrest-library:2.2'
-     	 compile 'edu.odo.cs.cs350:sourceSuffixTrees:1.4+'
+     	 //compile 'edu.odo.cs.cs350:sourceSuffixTrees:1.4+'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'src.main.java.edu.odu.cs.cs350.CommandLineProcessor'
+    }
 }
 
 test {
