@@ -163,19 +163,19 @@ SingleCharacter = [^\r\n\'\\]
   "null"                         { return symbol(TokenKinds.NULL_LITERAL); }
 
 /* Punctuators and operators*/
-  "("                            { return symbol(LPAREN); }
-  ")"                            { return symbol(RPAREN); }
-  "{"                            { return symbol(LBRACE); }
-  "}"                            { return symbol(RBRACE); }
-  "["                            { return symbol(LBRACK); }
-  "]"                            { return symbol(RBRACK); }
+  "("                            { return symbol(TokenKinds.LPAREN); }
+  ")"                            { return symbol(TokenKinds.RPAREN); }
+  "{"                            { return symbol(TokenKinds.LBRACE); }
+  "}"                            { return symbol(TokenKinds.RBRACE); }
+  "["                            { return symbol(TokenKinds.LBRACK); }
+  "]"                            { return symbol(TokenKinds.RBRACK); }
   ";"                            { return symbol(TokenKinds.SEMICOLON); }
   ","                            { return symbol(TokenKinds.COMMA); }
   "."                            { return symbol(TokenKinds.DOT); }
   "="                            { return symbol(TokenKinds.EQ); }
-  ">"                            { return symbol(GT); }
-  "<"                            { return symbol(LT); }
-  "!"                            { return symbol(TokenKinds.NOT); }
+  ">"                            { return symbol(TokenKinds.GT); }
+  "<"                            { return symbol(TokenKinds.LT); }
+  "!"                            { return symbol(TokenKinds.NOT_OP); }
   "~"                            { return symbol(TokenKinds.COMP); }
   "?"                            { return symbol(TokenKinds.QUESTION); }
   "=="                           { return symbol(TokenKinds.EQEQ); }
@@ -190,9 +190,9 @@ SingleCharacter = [^\r\n\'\\]
   "-"                            { return symbol(TokenKinds.MINUS); }
   "*"                            { return symbol(TokenKinds.MULT); }
   "/"                            { return symbol(TokenKinds.DIV); }
-  "&"                            { return symbol(TokenKinds.AND); }
+  "&"                            { return symbol(TokenKinds.AND_OP); }
   "|"                            { return symbol(TokenKinds.OR); }
-  "^"                            { return symbol(TokenKinds.XOR); }
+  "^"                            { return symbol(TokenKinds.XOR_OP); }
   "%"                            { return symbol(TokenKinds.MOD); }
   "<<"                           { return symbol(TokenKinds.LSHIFT); }
   ">>"                           { return symbol(TokenKinds.RSHIFT); }
@@ -206,7 +206,6 @@ SingleCharacter = [^\r\n\'\\]
   "%="                           { return symbol(TokenKinds.MODEQ); }
   "<<="                          { return symbol(TokenKinds.LSHIFTEQ); }
   ">>="                          { return symbol(TokenKinds.RSHIFTEQ); }
-  "sizeof"						 { return symbol(TokenKinds.SIZEOF); }
   "::"							 { return symbol(TokenKinds.SCOPE); }
   "->"							 { return symbol(TokenKinds.MEMBERACESS); }
   "->*"							 { return symbol(TokenKinds.ACCESSPTR); }
