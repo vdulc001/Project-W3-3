@@ -8,6 +8,11 @@ import java.io.File;
  * 
  */
 
+ //Code References -
+ // https://stackoverflow.com/questions/15624226/java-search-for-files-in-a-directory
+ // https://www.geeksforgeeks.org/recursive-c-program-linearly-search-element-given-array/
+ // https://stackoverflow.com/questions/10780747/recursively-search-for-a-directory-in-java
+
 public class fileRecursiveSearch {
 
     static void fileSearch(File[] array, int index, int list) {
@@ -36,10 +41,9 @@ public class fileRecursiveSearch {
     }
 
     // Setup Listing
-    public static void printFiles(String[] args) {
+    public static void main(String[] args) {
 
-        // Starting Directory Path
-        // Temp File Path (Change accordingly)
+        // Starting Directory Path & Temp File Path (Change Accordingly)
         String headDirectory = "/home/cs_sdean008/projectDir";
 
         // Construct new file to hold headDirectory
@@ -49,13 +53,13 @@ public class fileRecursiveSearch {
 
             // Array to hold listed directories/subdirectories
             File array[] = headDir.listFiles();
-            
-            //Listing format
+
+            // Listing format
             System.out.println("-----+-----");
             System.out.println("Files under the Head Directory " + headDir);
             System.out.println("-----+-----");
 
-            // Recursion Method Call
+            // Recursion Call
             fileSearch(array, 0, 0);
         }
     }

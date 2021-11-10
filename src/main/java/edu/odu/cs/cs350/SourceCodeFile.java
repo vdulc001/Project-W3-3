@@ -10,6 +10,7 @@ import java.io.File;
 public class SourceCodeFile {
 	
 	private File scf;
+	int numberOfTokens;
 	
 	/**
 	 * Initializes source code file using its absolute path
@@ -18,6 +19,7 @@ public class SourceCodeFile {
 	public SourceCodeFile(String path)
 	{
 		scf = new File(path);
+		numberOfTokens = 0;
 	}
 	
 	/**
@@ -31,7 +33,7 @@ public class SourceCodeFile {
 	
 	/**
 	 * Returns the absolute path of the source code file
-	 * @return absolute path of source code file
+	 * @return absolute path
 	 */
 	public String getPath()
 	{
@@ -39,10 +41,27 @@ public class SourceCodeFile {
 	}
 	
 	/**
-	 * Returns the total number of tokens in a file
-	 * @return total number of tokens in a file
+	 * Returns number of tokens in a source code file
+	 * @return number of tokens
 	 */
-	public int tokenize() {return 0;}
+	public int getNumberOfTokens()
+	{
+		return numberOfTokens; 
+	}
+	
+	
+	/**
+	 * Calulates total number of tokens in a source code file
+	 * @return total number of tokens
+	 */
+	public int calculateTotalTokens() { return 0; };
+	
+	/**
+	 * Converts code into sequence of tokens?
+	 */
+	public void tokenize() {}
+	
+	
 	
 	/**
 	 * Compares 2 files for equality
@@ -62,15 +81,7 @@ public class SourceCodeFile {
 	 */
 	public String toString()
 	{
-		String output = "";
-		if(scf.isDirectory())
-		{
-			File[] files = scf.listFiles();
-			for(File file : files)
-				output += file.getAbsolutePath() + ", " + tokenize() + "\n";
-		}
-		else
-			output += getPath() + ", " + tokenize();
+		String output = getPath() + ", " + numberOfTokens;
 		return output;
 	}
 }
