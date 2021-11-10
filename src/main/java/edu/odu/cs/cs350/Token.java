@@ -1,8 +1,8 @@
 package edu.odu.cs.cs350;
 
 public class Token {
-	private String lexeme;
 	public enum TokenTypes {KEYWORD, INTEGER_LITERAL, IDENTIFIER, EOF};
+	private String lexeme;
 	private TokenTypes tokenType;
 	private int line;
 	private int column;
