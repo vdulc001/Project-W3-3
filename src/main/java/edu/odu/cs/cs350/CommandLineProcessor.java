@@ -3,7 +3,6 @@ package edu.odu.cs.cs350;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.io.*;
 
 /**
  * 
@@ -15,7 +14,7 @@ public class CommandLineProcessor {
 
     private static int numRefactors;
     private static ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
-	private static ArrayList<SourceCodeFile> Directories = (ArrayList)fileList.clone();
+	private static ArrayList<SourceCodeFile> Directories = new ArrayList<SourceCodeFile>();
 
 	/**
 	 * Construct a CLP object with number of refactors and list of source code files
@@ -27,10 +26,6 @@ public class CommandLineProcessor {
 		fileList = list;
 	}
 	
-	public void setNumRefactors(int num){
-		numRefactors = num;
-	}
-
 	public void setNumRefactors(int num){
 		numRefactors = num;
 	}
@@ -56,19 +51,6 @@ public class CommandLineProcessor {
 	 * to be implemented later
 	 */
     public void findCppFiles(){
-    	//Which File Names to look for, for now until we properties set up//
-    	
-    	
-    	
-    	
-    	for (int i = 0; i < fileList.size(); i++)
-    	 {
-    		//needs ini file to know which c++ types to look for and get// 
-    	 }
-    	
-    	
-    	
-
     }
     
     /**
@@ -82,7 +64,7 @@ public class CommandLineProcessor {
     	    ArrayList<SourceCodeFile> TempArray = new ArrayList<SourceCodeFile>();
     	   	
     	    //Create Temp Array clone of fileList//
-    	   	TempArray = (ArrayList)fileList.clone();
+    	   	TempArray = fileList;
     	        
     	   	int numoffiles =  fileList.size();
     	    
@@ -117,7 +99,7 @@ public class CommandLineProcessor {
     	String TempName;
     	
     	//Clone ArrayList to keep track of Files vs Directories//
-    	ArrayList<SourceCodeFile> File = (ArrayList)fileList.clone();
+    	ArrayList<SourceCodeFile> File = fileList;
     	ArrayList<SourceCodeFile> Temp = new ArrayList<SourceCodeFile>();
     	
         boolean isdirectory;
@@ -186,15 +168,7 @@ public class CommandLineProcessor {
 		if(firstFile.substring(firstFile.length() - 4) == ".ini"){
 			startFileParameters = 2;
 		}
-
-		//To be implemented
-		for(int i = startFileParameters; i < args.length; i++){
-			
-
-		}
-
-		CommandLineProcessor clp = new CommandLineProcessor(numRefactors, fileList);
-
+		
 	}
 	
 }
