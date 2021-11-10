@@ -46,6 +46,6 @@ public class TestRefactoring {
 
         Refactoring refactor = new Refactoring(numRefactors, list);
 
-        assertEquals(refactor.printRefactoredtoString(), "Files scanned: " + s1.toString() + "5\n" + s2.toString() + "5\n");
+        assertEquals(refactor.printRefactoredtoString(), "Files scanned: " + s1.getPath() + ", 5\n" + s2.getPath() + ", 5\n");
     }
 }
