@@ -3,6 +3,8 @@ package edu.odu.cs.cs350;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.io.*;
 
 /**
@@ -168,7 +170,29 @@ public class CommandLineProcessor {
     }
 
 	public static void main(String[] args) {
-		String firstFile = args[1];
+		
+		ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
+		for(String filePath : args)
+		{
+			File file = new File(filePath);
+			if(file.exists())
+				if(file.isDirectory())
+				{
+					ArrayList<String> pathsToDirectories = new ArrayList<String>();
+					searchForDirectories(file.listFiles(), 0, pathsToDirectories);
+					for(String name : pathsToDirectories)
+						fileList.add(new SourceCodeFile(name));
+				}
+				else
+					fileList.add(new SourceCodeFile(file.getAbsolutePath()));
+		}
+		
+		System.out.println("Files Scanned: ");
+		Collections.sort(fileList, Comparator.comparing(SourceCodeFile::getPath));
+		for(SourceCodeFile scf : fileList)
+			System.out.println(scf.getPath() + ", " + scf.calculateTotalTokens());
+
+		/*String firstFile = args[1];
 		int startFileParameters = 1;
 
 		try{
@@ -185,12 +209,21 @@ public class CommandLineProcessor {
 
 		//To be implemented
 		for(int i = startFileParameters; i < args.length; i++){
-			
-
 		}
 
-		CommandLineProcessor clp = new CommandLineProcessor(numRefactors, fileList);
-
+		CommandLineProcessor clp = new CommandLineProcessor(numRefactors, fileList);*/
 	}
 	
+	public static void searchForDirectories(File[] files, int index, ArrayList<String> pathsToDirectories)
+	{
+		if(index == files.length)
+			return ;
+		
+		if(files[index].isFile())
+			pathsToDirectories.add(files[index].getAbsolutePath());
+		else if(files[index].isDirectory())
+			searchForDirectories(files[index].listFiles(), 0, pathsToDirectories);
+		
+		searchForDirectories(files,++index, pathsToDirectories);
+	}
 }
