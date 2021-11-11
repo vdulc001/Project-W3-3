@@ -29,6 +29,7 @@ package edu.odu.cs.cs350;
 /* main character classes */
 LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n]
+OctDigit = [0-7]
 
 WhiteSpace = {LineTerminator} | [ \t\f]
 
@@ -154,10 +155,6 @@ SingleCharacter = [^\r\n\'\\]
   "while"						{ return symbol(TokenKinds.WHILE); }
   "xor"							{ return symbol(TokenKinds.XOR); }
   "xor_eq"						{ return symbol(TokenKinds.XOR_EQ); }
-
-/* boolean literals */
-  "true"                         { return symbol(TokenKinds.BOOLEAN_LITERAL, true); }
-  "false"                        { return symbol(TokenKinds.BOOLEAN_LITERAL, false); }
   
  /* null literal */
   "null"                         { return symbol(TokenKinds.NULL_LITERAL); }
@@ -207,15 +204,15 @@ SingleCharacter = [^\r\n\'\\]
   "<<="                          { return symbol(TokenKinds.LSHIFTEQ); }
   ">>="                          { return symbol(TokenKinds.RSHIFTEQ); }
   "::"							 { return symbol(TokenKinds.SCOPE); }
-  "->"							 { return symbol(TokenKinds.MEMBERACESS); }
+  "->"							 { return symbol(TokenKinds.MEMBERACCESS); }
   "->*"							 { return symbol(TokenKinds.ACCESSPTR); }
   ".*"							 { return symbol(TokenKinds.ACCESSPTRDOT); }
   
 /* string literal */
-  \"                             { yybegin(TokenKinds.STRING); string.setLength(0); }
+  \"                             { yybegin(STRING); string.setLength(0); }
 
 /* character literal */
-  \'                             { yybegin(TokenKinds.CHARLITERAL); }
+  \'                             { yybegin(CHARLITERAL); }
   
   {IntegerLiteral}            	 { return symbol(TokenKinds.INTEGER_LITERAL, yytext()); }
 
@@ -232,7 +229,7 @@ SingleCharacter = [^\r\n\'\\]
   
   {StringCharacter}+             { string.append( yytext() ); }
   
-/* escape sequences */
+  /* escape sequences */
   "\\b"                          { string.append( '\b' ); }
   "\\t"                          { string.append( '\t' ); }
   "\\n"                          { string.append( '\n' ); }
@@ -264,7 +261,8 @@ SingleCharacter = [^\r\n\'\\]
   \\[0-3]?{OctDigit}?{OctDigit}\' { yybegin(YYINITIAL); 
 			                              int val = Integer.parseInt(yytext().substring(1,yylength()-1),8);
 			                            return symbol(TokenKinds.CHARACTER_LITERAL, (char)val); }
- /* error cases */
+  
+  /* error cases */
   \\.                            { throw new RuntimeException("Illegal escape sequence \""+yytext()+"\""); }
   {LineTerminator}               { throw new RuntimeException("Unterminated character literal at end of line"); }
 }
