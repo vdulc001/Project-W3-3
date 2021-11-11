@@ -47,6 +47,17 @@ public class SourceCodeFile {
 		return scf.getAbsolutePath();
 	}
 
+	
+	/*public Boolean isCppFile()
+	{
+		// needs to handle directory
+		String str = scf.getPath().substring(scf.getPath().length()-3, scf.getPath().length());
+		if(str.equals("cpp"))
+			return true;
+		else 
+			return false;
+	}*/
+	
 	/**
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
@@ -59,7 +70,7 @@ public class SourceCodeFile {
 	 * Create a list of tokens from the scanner **we need to make this read in scf
 	 */
 	public void tokenize(final Reader input) {
-		tokens = new ArrayList<Token>();
+		tokens = new LinkedList<Token>();
 		GeneratedScanner scanner = new GeneratedScanner (input);
 		try {
             Token token = scanner.yylex();
