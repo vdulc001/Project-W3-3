@@ -34,7 +34,6 @@ public void findneardups() {
 	
 }
 
-
 public void outputND(String[] args) {
 	System.out.print(fileoutput +":" + line +":" + column);
 }
