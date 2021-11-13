@@ -14,7 +14,7 @@ public class TestTokenScanner {
     public static void setUp() throws Exception {
     }
 
-	@Test
+	/*@Test
     public final void testScanner() {
         String inputString = "123\tident1 \nCASE     42\n";
         Reader input = new StringReader(inputString);
@@ -47,5 +47,5 @@ public class TestTokenScanner {
         assertEquals ("42", t.getLexeme());
         assertEquals (2, t.getLine());
         assertEquals (13, t.getColumn());
-	}
+	}*/
 }

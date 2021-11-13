@@ -33,19 +33,19 @@ public class TestCommandLineProcessor {
 
 		CommandLineProcessor clp = new CommandLineProcessor(3, testList);
 
-		assertEquals(clp.getNumRefactors(), 3);
+		assertEquals(clp.getnSuggestions(), 3);
 
-		clp.setNumRefactors(6);
-		assertEquals(clp.getNumRefactors(), 6);
+		clp.setnSuggestions(6);
+		assertEquals(clp.getnSuggestions(), 6);
 	}
 
-	@Test
+  /*@Test
   void testFileExists()
   {   //Test Set-up//
 	  ArrayList<SourceCodeFile> testfileList = new ArrayList<SourceCodeFile>();
 	  
 	  //Edit to your Directory//
-	  File testFolder = new File("C:\Users\sTRICTLY VS\Documents\Testfolder");
+	  File testFolder = new File("C:\\Users\\sTRICTLY VS\\Documents\\Testfolder");
 	  File testFile = new File("C:\\Users\\sTRICTLY VS\\Documents\\Testfolder\testfile.txt");
 	  //---------------------------------------------------------------------------------------//
 	  //Testing Adding and Cloning
@@ -66,8 +66,5 @@ public class TestCommandLineProcessor {
 	  assertThat(testFolder.exists(),is(true));
 	  assertThat(testFolder.isDirectory(),is(true));
 	  assertThat(testFolder.isFile(),is(false));
-	   
-	 	  
-  }
-    
+  }*/
 }

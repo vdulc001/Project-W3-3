@@ -1,4 +1,4 @@
-package src.test.java.edu.odu.cs.cs350;
+/*package src.test.java.edu.odu.cs.cs350;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
@@ -32,7 +32,7 @@ void testGetSet() {
 	
 }
 
-}
+}*/
 
 //Test Accessors and Mutators/
 

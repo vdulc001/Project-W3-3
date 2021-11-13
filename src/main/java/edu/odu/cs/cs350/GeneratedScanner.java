@@ -1146,9 +1146,9 @@ public class GeneratedScanner {
     return new Token(type, yyline+1, yycolumn+1);
   }
 
-  private Token symbol(TokenKinds type, String value) {
+  /*private Token symbol(TokenKinds type, String value) {
     return new Token(type, yyline+1, yycolumn+1, value);
-  }
+  }*/
 
 
 
@@ -1570,7 +1570,7 @@ public class GeneratedScanner {
             // fall through
           case 179: break;
           case 5:
-            { return symbol(TokenKinds.IDENTIFIER, yytext());
+            { //return symbol(TokenKinds.IDENTIFIER, yytext());
             }
             // fall through
           case 180: break;
@@ -1630,7 +1630,7 @@ public class GeneratedScanner {
             // fall through
           case 191: break;
           case 17:
-            { return symbol(TokenKinds.INTEGER_LITERAL, yytext());
+            { //return symbol(TokenKinds.INTEGER_LITERAL, yytext());
             }
             // fall through
           case 192: break;
@@ -1705,7 +1705,7 @@ public class GeneratedScanner {
             // fall through
           case 206: break;
           case 32:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.STRING_LITERAL, string.toString());
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.STRING_LITERAL, string.toString());
             }
             // fall through
           case 207: break;
@@ -1886,7 +1886,7 @@ public class GeneratedScanner {
             // fall through
           case 242: break;
           case 68:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, yytext().charAt(0));
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, yytext().charAt(0));
             }
             // fall through
           case 243: break;
@@ -1946,49 +1946,49 @@ public class GeneratedScanner {
             // fall through
           case 254: break;
           case 80:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\"');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\"');
             }
             // fall through
           case 255: break;
           case 81:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\'');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\'');
             }
             // fall through
           case 256: break;
           case 82:
             { yybegin(YYINITIAL); 
 			                              int val = Integer.parseInt(yytext().substring(1,yylength()-1),8);
-			                            return symbol(TokenKinds.CHARACTER_LITERAL, (char)val);
+			                            //return symbol(TokenKinds.CHARACTER_LITERAL, (char)val);
             }
             // fall through
           case 257: break;
           case 83:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\\');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\\');
             }
             // fall through
           case 258: break;
           case 84:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\b');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\b');
             }
             // fall through
           case 259: break;
           case 85:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\f');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\f');
             }
             // fall through
           case 260: break;
           case 86:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\n');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\n');
             }
             // fall through
           case 261: break;
           case 87:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\r');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\r');
             }
             // fall through
           case 262: break;
           case 88:
-            { yybegin(YYINITIAL); return symbol(TokenKinds.CHARACTER_LITERAL, '\t');
+            { yybegin(YYINITIAL); //return symbol(TokenKinds.CHARACTER_LITERAL, '\t');
             }
             // fall through
           case 263: break;
