@@ -30,7 +30,6 @@ void testGetSet() {
 	assertThat(DuplicateCode.getLine(), is(6));
 	assertThat(DuplicateCode.getColumn(),is(3);
 	
-	
 }
 
 }
