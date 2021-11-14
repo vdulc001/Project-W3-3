@@ -1,12 +1,9 @@
 package edu.odu.cs.cs350;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
+import java.io.IOException;
 
 /**
  * 
@@ -16,8 +13,8 @@ import java.util.List;
  */
 public class SourceCodeFile {
 	
-	private File scf;
-	private ArrayList<Token> tokens;
+	private File file;
+	private LinkedList<Token> tokens;
 	
 	/**
 	 * Initializes source code file using its absolute path
@@ -25,8 +22,8 @@ public class SourceCodeFile {
 	 */
 	public SourceCodeFile(String path)
 	{
-		scf = new File(path);
-		tokens = new ArrayList<Token>();
+		file = new File(path);
+		tokens = new LinkedList<Token>();
 	}
 	
 	/**
@@ -35,7 +32,12 @@ public class SourceCodeFile {
 	 */
 	public File getFile()
 	{
-		return scf;
+		return file;
+	}
+	
+	public LinkedList<Token> getTokens()
+	{
+		return tokens;
 	}
 	
 	/**
@@ -44,9 +46,8 @@ public class SourceCodeFile {
 	 */
 	public String getPath()
 	{
-		return scf.getAbsolutePath();
+		return file.getAbsolutePath();
 	}
-
 	
 	/*public Boolean isCppFile()
 	{
@@ -62,13 +63,15 @@ public class SourceCodeFile {
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
 	 */
-	public int calculateTotalTokens() { 
+	public int calculateTotalTokens() 
+	{ 
 		return tokens.size();
 	}
 	
 	/**
-	 * Create a list of tokens from the scanner **we need to make this read in scf
+	 * Create a list of tokens from the scanner
 	 */
+	// TODO Make this read in scf
 	public void tokenize(final Reader input) {
 		tokens = new LinkedList<Token>();
 		GeneratedScanner scanner = new GeneratedScanner (input);
