@@ -11,8 +11,8 @@ public class Token {
 	private TokenKinds tokenType;
 	private int line;
 	private int column;
-	private int tokenStart;
-	private int tokenLength;
+	//private int tokenStart;
+	//private int tokenLength;
 	
 	
 	//create a token with no lexeme
@@ -70,20 +70,6 @@ public class Token {
 	 */
 	public int getColumn() {
 		return this.column;
-	}
-	
-	/**
-	 * @return the token start
-	 */
-	public int getStart() {
-		return this.tokenStart;
-	}
-	
-	/**
-	 * @return token length
-	 */
-	public int getLength() {
-		return this.tokenLength;
 	}
 	
 }

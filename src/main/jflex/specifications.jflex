@@ -150,6 +150,26 @@ IntegerLiteral = [0-9][0-9]* | [0-9][_0-9]*[0-9]
   "xor"							{ return symbol(TokenKinds.XOR); }
   "xor_eq"						{ return symbol(TokenKinds.XOR_EQ); }
   
+  /* preprocessor symbols */
+  "#define" 					{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#elif" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#else" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#endif" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#error" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#ifdef" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#ifndef" 					{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#if" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#import" 					{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#include" 					{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#line" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#pragma" 					{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#undef" 						{ return symbol(TokenKinds.PREPROCESSOR); }
+  "#using"						{ return symbol(TokenKinds.PREPROCESSOR); }
+  
+  /** C++ standard and built-in objects */
+  "cin"							{ return symbol(TokenKinds.CIN); }
+  "cout"						{ return symbol(TokenKinds.COUT); }
+  
  /* null literal */
   "null"                         { return symbol(TokenKinds.NULL_LITERAL); }
 
