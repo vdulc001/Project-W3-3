@@ -2,8 +2,13 @@ package edu.odu.cs.cs350;
 
 import java.io.File;
 import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
+import java.io.StringReader;
+import java.io.FileReader;
 import java.io.IOException;
+
 
 /**
  * 
@@ -69,13 +74,22 @@ public class SourceCodeFile {
 	}
 	
 	/**
+	 * Converts the string content of the file to Reader
+	 * @return Reader input
+	 */
+	public Reader getInput (String path) throws Exception{
+		String content = Files.readString(Paths.get(path));
+		Reader input = new StringReader(content);
+		return input;
+	}
+	
+	/**
 	 * Create a list of tokens from the scanner
 	 */
-	// TODO Make this read in scf
 	public void tokenize(final Reader input) {
 		tokens = new LinkedList<Token>();
 		GeneratedScanner scanner = new GeneratedScanner (input);
-		try {
+        try {
             Token token = scanner.yylex();
             while (token != null && token.getTokenType() != TokenKinds.EOF) {
                 tokens.add (token);
