@@ -68,10 +68,14 @@ public class SourceCodeFile {
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
 	 */
-	public int calculateTotalTokens() 
+	/*public int calculateTotalTokens() 
 	{ 
 		return tokens.size();
-	}
+	}*/
+	
+	public void printNumTokens(LinkedList<Token> toks){
+        System.out.println("This file has: " + toks.size() + " tokens.");
+    }
 	
 	/**
 	 * Converts the string content of the file to Reader
