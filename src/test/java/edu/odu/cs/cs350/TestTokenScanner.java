@@ -1,7 +1,6 @@
 package edu.odu.cs.cs350;
 
 import java.io.Reader;
-import java.io.StringReader;
 import java.util.LinkedList;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -30,9 +29,15 @@ public class TestTokenScanner {
         
         t = tokens.get(8);
         assertEquals (TokenKinds.INT, t.getTokenType());
-        //assertEquals ("int", t.getLexeme());
+        //assertEquals ("int", t.getLexeme()); //fix getLexeme();
         assertEquals (7, t.getLine());
         assertEquals (1, t.getColumn());
+        
+        t = tokens.get(1);
+        assertEquals (TokenKinds.LT, t.getTokenType());
+        //assertEquals ("<", t.getLexeme());
+        assertEquals (1, t.getLine());
+        assertEquals (10, t.getColumn());
        
 	}
 
