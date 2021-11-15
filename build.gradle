@@ -23,7 +23,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'src.main.java.edu.odu.cs.cs350.CommandLineProcessor'
+        attributes 'Main-Class': 'edu.odu.cs.cs350.CommandLineProcessor'
     }
 	baseName 'DupDetector'
 }
