@@ -3,10 +3,8 @@ package edu.odu.cs.cs350;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.File;
 import java.util.ArrayList;
 
-import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.Test;
 
 public class TestRefactoring {
@@ -48,6 +46,6 @@ public class TestRefactoring {
 
         Refactoring refactor = new Refactoring(numRefactors, list);
 
-        assertEquals(refactor.printRefactoredtoString(), "Files scanned: " + s1.toString() + "5\n" + s2.toString() + "5\n");
+        assertEquals(refactor.printRefactoredtoString(), "Files scanned: " + s1.getPath() + ", 5\n" + s2.getPath() + ", 5\n");
     }
 }

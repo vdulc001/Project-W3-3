@@ -19,7 +19,5 @@ class TestSourceCodeFile {
 		assertNotNull(s.toString());
 		
 	}
-	
-	
 
 }

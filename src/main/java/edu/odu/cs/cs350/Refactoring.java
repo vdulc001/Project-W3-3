@@ -38,7 +38,7 @@ public class Refactoring {
 
         for(int i = 0; i < fileList.size(); i++){
             //5 is just an arbitrary number as placeholder for num refactors actually found
-            output = output + fileList.get(i).toString() + "5\n";
+            output = output + fileList.get(i).getPath() + ", 5\n";
         }
 
         return output;
@@ -48,7 +48,7 @@ public class Refactoring {
         System.out.println("Files scanned: ");
         for(int i = 0; i < fileList.size(); i++){
             //5 is just an arbitrary number as placeholder for num refactors actually found
-            System.out.println(fileList.get(i).toString() + "5");
+            System.out.println(fileList.get(i).getPath() + ", 5");
         }
     }
 }
