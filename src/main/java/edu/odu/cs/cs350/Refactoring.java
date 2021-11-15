@@ -5,50 +5,58 @@ import java.util.ArrayList;
 public class Refactoring {
 
     private int numRefactors;
-    private static ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
+    private SourceCodeFile fileToCheck;
+    //List of token streams?
+    private ArrayList<Token> tokenList = new ArrayList<Token>();
+    
 
     public Refactoring(){
         numRefactors = 0;
     }
 
-    public Refactoring(int num, ArrayList<SourceCodeFile> list){
-        fileList = list;
+    /**
+     * 
+     * @param num - Number of refactors set by the CLP
+     * @param scf - Source code file being checked for refactoring opportunities
+     */
+    public void setNumRefactors(int num, SourceCodeFile scf){
         numRefactors = num;
+        fileToCheck = scf;
     }
 
-    public void setFileList(ArrayList<SourceCodeFile> list){
-        fileList = list;
+    /**
+     * Returns the number of tokens found as an opportunity for a refactor
+     * @return - number of tokens to be refactored
+     */
+    public int getNumTokens(){
+        return tokenList.size();
     }
 
-    public ArrayList<SourceCodeFile> getFileList(){
-        return fileList;
+    /**
+     * Returns the tokens found as an opportunity for a refactor
+     * @return - list of tokens to be refactored
+     */
+    public ArrayList<Token> getRefactoredOpportunities(){
+        return tokenList;
     }
 
-    public void setNumRefactors(int num){
-        numRefactors = num;
+    /**
+     * Find opportunities for refactoring in the source code file, fileToCheck
+     * TODO - Read every token in the tokenized SCF to check for refactoring opportunity
+     */
+    public void findRefactored(){
+        //fileToCheck.tokenize(input);
+        /**
+         * for every token (stream)
+         *      find opportunity for refactoring
+         *      add refactored tokens to tokenList
+         *      subtract 1 from numRefactors
+         */
     }
 
-    public int getNumRefactors(){
-        return numRefactors;
-    }
-
-    public String printRefactoredtoString(){
-        String output;
-        output = "Files scanned: ";
-
-        for(int i = 0; i < fileList.size(); i++){
-            //5 is just an arbitrary number as placeholder for num refactors actually found
-            output = output + fileList.get(i).getPath() + ", 5\n";
-        }
-
-        return output;
-    }
-
+    /**
+     * Output a list of the suggested refactoring for the source code file, fileToCheck
+     */
     public void printRefactored(){
-        System.out.println("Files scanned: ");
-        for(int i = 0; i < fileList.size(); i++){
-            //5 is just an arbitrary number as placeholder for num refactors actually found
-            System.out.println(fileList.get(i).getPath() + ", 5");
-        }
     }
 }
