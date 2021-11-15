@@ -11,8 +11,8 @@ public class Token {
 	private TokenKinds tokenType;
 	private int line;
 	private int column;
-	//possibly length?
-	//setTokenType?
+	private int tokenStart;
+	private int tokenLength;
 	
 	
 	//create a token with no lexeme
@@ -24,7 +24,7 @@ public class Token {
 	}
 	
 	//create a token
-	public Token(final String theLexeme, final TokenKinds theTokenType, int lineNum, int columnNum) {
+	public Token(final TokenKinds theTokenType, int lineNum, int columnNum, final String theLexeme) {
 		this.lexeme = theLexeme;
 		this.tokenType = theTokenType;
 		this.line = lineNum;
@@ -58,11 +58,6 @@ public class Token {
 		return this.lexeme;
 	}
 	
-	public void detectTokenType() {
-		
-	}
-	
-	
 	/**
 	 * @return the line number
 	 */
@@ -77,6 +72,19 @@ public class Token {
 		return this.column;
 	}
 	
+	/**
+	 * @return the token start
+	 */
+	public int getStart() {
+		return this.tokenStart;
+	}
+	
+	/**
+	 * @return token length
+	 */
+	public int getLength() {
+		return this.tokenLength;
+	}
 	
 }
 
