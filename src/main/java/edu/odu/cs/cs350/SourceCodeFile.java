@@ -86,13 +86,12 @@ public class SourceCodeFile {
 	/**
 	 * Create a list of tokens from the scanner
 	 */
-	public void tokenize(final Reader input) {
-		tokens = new LinkedList<Token>();
+	public void tokenize(final Reader input, LinkedList<Token> toks) {
 		GeneratedScanner scanner = new GeneratedScanner (input);
         try {
             Token token = scanner.yylex();
             while (token != null && token.getTokenType() != TokenKinds.EOF) {
-                tokens.add (token);
+                toks.add (token);
                 token = scanner.yylex();
             }
         } catch (IOException ex) {
