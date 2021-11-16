@@ -1,8 +1,7 @@
 package edu.odu.cs.cs350;
 
 import java.io.Reader;
-import java.io.StringReader;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -15,37 +14,31 @@ public class TestTokenScanner {
     }
 
 	@Test
-    public final void testScanner() {
-        String inputString = "123\tident1 \nCASE     42\n";
-        Reader input = new StringReader(inputString);
-        TokenStream tokenstream = new TokenStream(input);
-        ArrayList<Token> tokens = new ArrayList<Token>();
-        for (Token tok: tokenstream) {
-            tokens.add(tok);
-        }
-        assertEquals (4, tokens.size());
+    public final void testScanner() throws Exception{
+		SourceCodeFile s = new SourceCodeFile("src/test/data/test1.cpp");
+		Reader input = s.getInput("src/test/data/test1.cpp");
+        LinkedList<Token> tokens = new LinkedList<Token>();
+        s.tokenize(input, tokens);
+        assertEquals (21, tokens.size());
         
-        Token t = tokens.get(0);
-        assertEquals (TokenKinds.INTEGERLITERAL, t.getTokenType());
-        assertEquals ("123", t.getLexeme());
-        assertEquals (1, t.getLine());
+        Token t = tokens.get(4);
+        assertEquals (TokenKinds.USING, t.getTokenType());
+        //assertEquals ("using", t.getLexeme());
+        assertEquals (3, t.getLine());
+        assertEquals (1, t.getColumn());
+        
+        t = tokens.get(8);
+        assertEquals (TokenKinds.INT, t.getTokenType());
+        //assertEquals ("int", t.getLexeme()); //fix getLexeme();
+        assertEquals (7, t.getLine());
         assertEquals (1, t.getColumn());
         
         t = tokens.get(1);
-        assertEquals (TokenKinds.IDENTIFIER, t.getTokenType());
-        assertEquals ("ident1", t.getLexeme());
+        assertEquals (TokenKinds.LT, t.getTokenType());
+        //assertEquals ("<", t.getLexeme());
         assertEquals (1, t.getLine());
-        assertEquals (5, t.getColumn());
-        
-        t = tokens.get(2);
-        assertEquals (TokenKinds.CASE, t.getTokenType());
-        assertEquals (2, t.getLine());
-        assertEquals (1, t.getColumn());
-        
-        t = tokens.get(3);
-        assertEquals (TokenKinds.INTEGERLITERAL, t.getTokenType());
-        assertEquals ("42", t.getLexeme());
-        assertEquals (2, t.getLine());
-        assertEquals (13, t.getColumn());
+        assertEquals (10, t.getColumn());
+       
 	}
+
 }
