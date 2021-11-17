@@ -7,6 +7,7 @@ using namespace std;
 int main(){
     cout << "Hello World!";
 
+    //Next 4 lines of code are duplicates
     int a = 4;
     int b = 5;
     int c = 3;
@@ -18,7 +19,8 @@ int main(){
     if(a < b)
         x = a + b;
 
-    if(c < d){ y = c + d;}
+    if(c < d)
+        y = c + d;
 
     return 0;
 }
