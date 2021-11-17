@@ -29,6 +29,7 @@ public class SourceCodeFile {
 	{
 		file = new File(path);
 		tokens = new LinkedList<Token>();
+		tokenize();
 	}
 	
 	/**
@@ -68,14 +69,14 @@ public class SourceCodeFile {
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
 	 */
-	/*public int calculateTotalTokens() 
+	public int calculateTotalTokens() 
 	{ 
 		return tokens.size();
-	}*/
+	}
 	
-	public void printNumTokens(LinkedList<Token> toks){
+	/*public void printNumTokens(LinkedList<Token> toks){
         System.out.println("This file has: " + toks.size() + " tokens.");
-    }
+    }*/
 	
 	/**
 	 * Converts the string content of the file to Reader
@@ -90,12 +91,13 @@ public class SourceCodeFile {
 	/**
 	 * Create a list of tokens from the scanner
 	 */
-	public void tokenize(final Reader input, LinkedList<Token> toks) {
+	public void tokenize(/*final Reader input /*, LinkedList<Token> toks*/) {
+		final Reader input = new StringReader(getPath());
 		GeneratedScanner scanner = new GeneratedScanner (input);
         try {
             Token token = scanner.yylex();
             while (token != null && token.getTokenType() != TokenKinds.EOF) {
-                toks.add (token);
+                tokens.add (token);
                 token = scanner.yylex();
             }
         } catch (IOException ex) {

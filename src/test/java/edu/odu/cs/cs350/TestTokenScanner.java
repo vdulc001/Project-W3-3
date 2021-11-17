@@ -18,7 +18,7 @@ public class TestTokenScanner {
 		SourceCodeFile s = new SourceCodeFile("src/test/data/test1.cpp");
 		Reader input = s.getInput("src/test/data/test1.cpp");
         LinkedList<Token> tokens = new LinkedList<Token>();
-        s.tokenize(input, tokens);
+        s.tokenize(/*input, tokens*/);
         assertEquals (21, tokens.size());
         
         Token t = tokens.get(4);

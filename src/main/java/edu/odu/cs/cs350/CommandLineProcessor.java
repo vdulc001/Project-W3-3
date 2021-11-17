@@ -107,7 +107,7 @@ public class CommandLineProcessor {
 		System.out.println("Files Scanned: ");
 		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath));
 		for(SourceCodeFile scf : filesList)
-			//System.out.println(scf.getPath() + ", " + scf.calculateTotalTokens());
+			System.out.println(scf.getPath() + ", " + scf.calculateTotalTokens());
 	}
 
 }

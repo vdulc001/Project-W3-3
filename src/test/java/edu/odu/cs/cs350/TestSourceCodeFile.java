@@ -17,7 +17,7 @@ class TestSourceCodeFile {
 		//assertEquals(s.getPath(), "src/test/data/test1.cpp");
 		Reader input = s.getInput("src/test/data/test1.cpp");
 		LinkedList<Token> tokens = new LinkedList<Token>();
-	    s.tokenize(input, tokens);
+	    s.tokenize(/*input, tokens*/);
 	    assertFalse(tokens.isEmpty());
 	    assertEquals(tokens.size(), 21);
 	

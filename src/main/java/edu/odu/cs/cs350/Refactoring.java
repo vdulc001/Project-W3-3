@@ -87,7 +87,7 @@ public class Refactoring {
         LinkedList<Token> fullTokenList = new LinkedList<Token>();
         LinkedList<Token> temp = new LinkedList<Token>();
 
-        fileToCheck.tokenize(input,fullTokenList);
+        fileToCheck.tokenize(/*input,fullTokenList*/);
 
         int index = 0;
         for(Token tok : fullTokenList){
