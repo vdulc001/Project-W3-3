@@ -1,12 +1,14 @@
 package edu.odu.cs.cs350;
 
 import java.util.LinkedList;
+
+import javax.xml.transform.Source;
+
 import java.io.Reader;
 public class Refactoring {
 
-    private int numRefactors;
+    private int maxRefactors;
     private SourceCodeFile fileToCheck;
-    private LinkedList<Token> fullTokenList = new LinkedList<Token>();
     private LinkedList<Token> refactoredTokens = new LinkedList<Token>();
 
     /**
@@ -15,7 +17,7 @@ public class Refactoring {
      * @param scf - Source code file being checked for refactoring opportunities
      */
     public Refactoring(int nSuggestions, SourceCodeFile scf){
-        numRefactors = nSuggestions;
+        maxRefactors = nSuggestions;
         fileToCheck = scf;
     }
     
@@ -23,16 +25,40 @@ public class Refactoring {
      * Set the number of refactors found to a given int
      * @param num
      */
-    public void setNumRefactors(int num){
-        numRefactors = num;
+    public void setMaxNumRefactors(int num){
+        maxRefactors = num;
     }
 
     /**
-     * Returns the number of tokens found as an opportunity for a refactor
+     * Returns number of max refactors
+     * @return - max number of refactors
+     */
+    public int getMaxNumRefactors(){
+        return maxRefactors;
+    }
+
+    /**
+     * Returns the number of refactors found
      * @return - number of tokens to be refactored
      */
-    public int getNumTokens(){
+    public int getNumRefactors(){
         return refactoredTokens.size();
+    }
+
+    /**
+     * Sets the file to be checked
+     * @param sCodeFile
+     */
+    public void setFile(SourceCodeFile sCodeFile){
+        fileToCheck = sCodeFile;
+    }
+
+    /**
+     * Returns the file being checked by this refactoring
+     * @return - source code file
+     */
+    public SourceCodeFile getFile(){
+        return fileToCheck;
     }
 
     /**
@@ -47,7 +73,6 @@ public class Refactoring {
      * Find opportunities for refactoring in the source code file, fileToCheck
      * Place refactored tokens inside tokenList
      * TODO - Read every token in the tokenized SCF to check for refactoring opportunity
-     * @throws Exception
      */
     public void findRefactored() throws Exception{
         //fileToCheck.tokenize(input, tokenList);
@@ -57,21 +82,20 @@ public class Refactoring {
          *      add refactored tokens to tokenList
          *      subtract 1 from numRefactors
          */
-        Reader input = fileToCheck.getInput(fileToCheck.getPath());
-        fileToCheck.tokenize(input,fullTokenList);
-        LinkedList<Token> temp = new LinkedList<Token>();
-        boolean semicolonDetected = false;
 
+        Reader input = fileToCheck.getInput(fileToCheck.getPath());
+        LinkedList<Token> fullTokenList = new LinkedList<Token>();
+        LinkedList<Token> temp = new LinkedList<Token>();
+
+        fileToCheck.tokenize(input,fullTokenList);
+
+        int index = 0;
         for(Token tok : fullTokenList){
             if(tok.getTokenType() != TokenKinds.SEMICOLON){
                 temp.add(tok);
             }
             else{
-                semicolonDetected = true;
-                int semicolonLineNum = tok.getLine();
-            }
-
-            if(semicolonDetected){
+                compareTokenSequence(fullTokenList, temp, index);
             }
         }
 
@@ -82,7 +106,30 @@ public class Refactoring {
      * Start comparison from the line number the semicolon is detected
      * TODO compare the tokens of 2 lines of code given that a semicolon is present
      */
-    public void compareTokenSequence(LinkedList<Token> fullTokenList, LinkedList<Token> tokenSequence){
+    public void compareTokenSequence(LinkedList<Token> fullTokenList, LinkedList<Token> tokenSequence, int indexToStart){
+        boolean refactorFound = false;
+
+        for(int i = indexToStart; i < fullTokenList.size(); i++){
+
+            if(tokenSequence.getFirst() == fullTokenList.get(indexToStart)){
+                //Begins comparison between tokenSequence and a detected line of code from the scf
+                for(Token tok: tokenSequence){
+                    if(tok == fullTokenList.get(indexToStart)){
+                        refactoredTokens.add(tokenSequence.get(indexToStart));
+                    }
+                    else{
+                        break;
+                    }
+                }
+
+            }
+        }
+
+        if(refactorFound){
+            for(Token tok: tokenSequence){
+                refactoredTokens.add(tok);
+            }
+        }
 
     }
 
@@ -90,5 +137,6 @@ public class Refactoring {
      * Output a list of the suggested refactoring for the source code file, fileToCheck
      */
     public void printRefactored(){
+
     }
 }
