@@ -1,0 +1,22 @@
+name: BuildAfer - Build after Commit 
+
+on:
+	push:
+		branches:[main]
+jobs:
+  build:
+	
+	runs-on:ubuntu-latest
+  steps:
+	- uses: actions/checkout@v2 
+	- name: Set up JDK 11
+	- name: actions/setup-java@v2
+	  with: 
+	    java-version: '11'
+	    distrubution:'adopt'
+	 - name: Build with Gradle
+       run: chmod +x gradle
+     - name: Build with Gradle
+       run: ./gradlew build
+     - name: Deploy Docs
+    
