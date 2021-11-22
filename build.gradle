@@ -32,3 +32,16 @@ test {
      ignoreFailures = true
      useJUnitPlatform()
 }
+
+ task copyDocs (type: Copy) {            
+    from 'build/docs'
+    into './reports/tests/test/'
+}
+
+task copyReports (type: Copy) {
+    from 'build/reports'
+    into './docs/javadoc/'
+}
+task deployReports(dependsOn: ['copyDocs', 'copyReports']) {
+    description 'Generate reports website for this project'
+}
