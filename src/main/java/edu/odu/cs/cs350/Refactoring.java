@@ -5,18 +5,22 @@ import java.util.LinkedList;
 
 public class Refactoring {
 
+    private int numOccurrences;
     private int maxRefactors;
     private ArrayList<SourceCodeFile> sourceCodeFiles = new ArrayList<SourceCodeFile>();
     private LinkedList<Token> tokenSequence = new LinkedList<Token>();
+    private LinkedList<Token> startTokens = new LinkedList<Token>();
 
     /**
      * 
      * @param num - Number of refactors set by the CLP
      * @param scf - Source code file being checked for refactoring opportunities
      */
-    public Refactoring(int nSuggestions, ArrayList<SourceCodeFile> sourceCodeFiles){
+    public Refactoring(int nSuggestions, ArrayList<SourceCodeFile> sourceCodeFiles, LinkedList<Token> tokenSequence){
         maxRefactors = nSuggestions;
+        numOccurrences = 1;
         this.sourceCodeFiles = sourceCodeFiles;
+        this.tokenSequence = tokenSequence;
     }
     
     /**
@@ -36,12 +40,11 @@ public class Refactoring {
     }
 
     /**
-     * Returns the number of refactors found
+     * Returns the number of refactors of this token sequence found
      * @return - number of tokens to be refactored
      */
-    public int getNumRefactors(){
-        //return startTokens.size();
-        return 0;
+    public int getOccurrences(){
+        return numOccurrences;
     }
 
     /**
@@ -68,9 +71,30 @@ public class Refactoring {
     public void findRefactored() throws Exception{
 
         for(SourceCodeFile scf : sourceCodeFiles){
+            int indexToAdd = 0;
+
+            for(Token tok : scf.getTokens()){
+                if(tok == tokenSequence.get(0)){
+                    compareSequences(indexToAdd, scf);
+                    //indexToAdd = the index after semicolon
+                }
+            }
 
         }
 
+    }
+
+    public void compareSequences(int indexToAdd, SourceCodeFile scf){
+        int index = indexToAdd;
+        for(Token tok : tokenSequence){
+            if(tok != scf.getTokens().get(index)){
+                return;
+            }
+            index++;
+        }
+
+        //Only gets to this if a token sequence is found to be duplicate
+        startTokens.add(scf.getTokens().get(indexToAdd));
     }
 
 
