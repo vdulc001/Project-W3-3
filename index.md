@@ -2,5 +2,5 @@
 
 Vaelyn
 
-* [Tests](./reports/tests/test/)
+* [Tests](./tests/test/)
 * [JavaDoc](./docs/javadoc/)
