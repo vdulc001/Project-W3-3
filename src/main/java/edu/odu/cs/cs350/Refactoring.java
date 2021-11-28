@@ -1,13 +1,12 @@
 package edu.odu.cs.cs350;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
-import javax.xml.transform.Source;
-
-import java.io.Reader;
 public class Refactoring {
 
+    private int numOccurrences;
     private int maxRefactors;
     private ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
     private LinkedList<Token> refactoredTokens = new LinkedList<Token>();
@@ -67,8 +66,8 @@ public class Refactoring {
      * Output a list of the suggested refactoring from the source code files
      */
     public void printRefactored(){
-
     }
+
 
     /**
      * Output a list of the suggested refactoring from the source code files, string format
