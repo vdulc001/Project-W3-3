@@ -22,5 +22,3 @@ jobs:
       working-directory: .
       timeout-minutes: 3
       run: ./gradlew build tasks --all
-		- name: Run Reports
-			run: ./gradlew deployReports
