@@ -2,7 +2,7 @@ name: BuildAfer - Build after Commit
 
 on:
 	push:
-		branches:[main]
+		branches: [ main ]
 jobs:
   build: runs-on:ubuntu-latest
   steps:
@@ -12,8 +12,7 @@ jobs:
 	  with: 
 	    java-version: '11'
 	    distrubution:'adopt'
-	 - name: Build with Gradle
+		- name: Grant execute permission for gradlew
        run: chmod +x gradle
-     - name: Build with Gradle
-       run: ./gradlew build
-     - name: Deploy Docs
+   	- name: Build with Gradle
+       run: ./gradlew build tasks --all
