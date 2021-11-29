@@ -1,12 +1,23 @@
 package edu.odu.cs.cs350;
 
 import java.util.LinkedList;
-
 import javax.xml.transform.Source;
-
 import java.io.Reader;
+
 public class Refactoring {
 
+	public Refactoring () {}
+	
+	public int findOpportunityForImprovement () {return 0;}
+	
+	public String refactoringOutput(SourceCodeFile scf)
+	{
+		String output = "Opportunity 0, 0 tokens\n";
+		output += scf.getPath() + ": 0, 0\n";
+		output += "x y z";
+		return output;
+	}
+	
     private int maxRefactors;
     private SourceCodeFile fileToCheck;
     private LinkedList<Token> refactoredTokens = new LinkedList<Token>();
@@ -87,7 +98,7 @@ public class Refactoring {
         LinkedList<Token> fullTokenList = new LinkedList<Token>();
         LinkedList<Token> temp = new LinkedList<Token>();
 
-        fileToCheck.tokenize(/*input,fullTokenList*/);
+        //fileToCheck.tokenize(/*input,fullTokenList*///);
 
         int index = 0;
         for(Token tok : fullTokenList){
@@ -95,7 +106,7 @@ public class Refactoring {
                 temp.add(tok);
             }
             else{
-                compareTokenSequence(fullTokenList, temp, index);
+                //compareTokenSequence(fullTokenList, temp, index);
             }
         }
 
@@ -137,6 +148,6 @@ public class Refactoring {
      * Output a list of the suggested refactoring for the source code file, fileToCheck
      */
     public void printRefactored(){
-
+    	// see refactoringOutput() above!
     }
 }

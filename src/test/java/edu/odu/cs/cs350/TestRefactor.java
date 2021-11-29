@@ -54,5 +54,4 @@ public class TestRefactor {
 
         assertEquals(refactor.getRefactoredOpportunities(), duplicateCode);
     }
-    
 }
