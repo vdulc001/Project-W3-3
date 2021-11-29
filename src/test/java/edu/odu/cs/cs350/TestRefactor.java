@@ -3,8 +3,12 @@ package edu.odu.cs.cs350;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.xml.transform.Source;
 
@@ -14,44 +18,58 @@ public class TestRefactor {
 
     @Test
     void testMutators(){
-        SourceCodeFile scf1 = new SourceCodeFile("test1.cpp");
-        SourceCodeFile scf2 = new SourceCodeFile("test1.h");
-        Refactoring refactor = new Refactoring(0, scf1);
+        SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test1.cpp");
+        SourceCodeFile scf2 = new SourceCodeFile("src/test/data/test1.h");
+        Token tok1 = new Token(TokenKinds.INT, 10, 5);
+        Token tok2 = new Token(TokenKinds.IDENTIFIER, 10, 9);
+        Token tok3 = new Token(TokenKinds.OPERATOR, 10, 11);
+        Token tok4 = new Token(TokenKinds.INTEGER_LITERAL, 10, 13);
+        Token tok5 = new Token(TokenKinds.SEMICOLON, 10, 14);
+        LinkedList<Token> refactoredTokens = new LinkedList<Token>(Arrays.asList(tok1, tok2, tok3, tok4, tok5));
+        ArrayList<SourceCodeFile> listOfFiles = new ArrayList<SourceCodeFile>(Arrays.asList(scf1));
 
-        assertNotNull(refactor.getFile());
-        assertEquals(refactor.getFile(), scf1);
+        Refactoring refactor = new Refactoring(0, listOfFiles);
 
-        refactor.setFile(scf2);
-        assertNotNull(refactor.getFile());
-        assertEquals(refactor.getFile(), scf2);
+        refactor.setRefactoredTokens(refactoredTokens);
+        assertEquals(refactor.getRefactoredTokens(), refactoredTokens);
 
+        assertEquals(refactor.getNumRefactors(), 0);
+        assertEquals(refactor.getSourceCodeFiles(), listOfFiles);
 
-        assertEquals(refactor.getMaxNumRefactors(), 0);
+        refactor.addFiles(scf2);
+        listOfFiles.add(scf2);
+        assertEquals(refactor, listOfFiles);
 
-        refactor.setMaxNumRefactors(5);
-        assertEquals(refactor.getMaxNumRefactors(), 5);
+        refactor.setNumRefactors(5);
+        assertEquals(refactor.getNumRefactors(), 5);
+
     }
 
     @Test
-    void testDuplicateCodefound() throws Exception{
-        SourceCodeFile scf = new SourceCodeFile("src/test/data/test1.cpp");
-        Refactoring refactor = new Refactoring(0, scf);
+    void testSingleRefactoringFound(){
+        SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test2.cpp");
+        ArrayList<SourceCodeFile> listOfFiles = new ArrayList<SourceCodeFile>();
+        Refactoring refactor = new Refactoring(10, listOfFiles);
 
-        assertEquals(refactor.getNumRefactors(), 0);
+        Token tok1 = new Token(TokenKinds.INT, 10, 5);
+        Token tok2 = new Token(TokenKinds.IDENTIFIER, 10, 9);
+        Token tok3 = new Token(TokenKinds.OPERATOR, 10, 11);
+        Token tok4 = new Token(TokenKinds.INTEGER_LITERAL, 10, 13);
+        Token tok5 = new Token(TokenKinds.SEMICOLON, 10, 14);
+        LinkedList<Token> refactoredTokens = new LinkedList<Token>(Arrays.asList(tok1, tok2, tok3, tok4, tok5));
 
-        refactor.findRefactored();
-        assertNotEquals(refactor.getNumRefactors(), 0);
+        refactor.setRefactoredTokens(refactoredTokens);
 
-        LinkedList<Token> duplicateCode = new LinkedList<Token>();
-        Token tok1 = new Token(TokenKinds.INT, 11, 5);
-        Token tok2 = new Token(TokenKinds.IDENTIFIER, 11, 9);
-        Token tok3 = new Token(TokenKinds.OPERATOR, 11, 11);
-        Token tok4 = new Token(TokenKinds.INTEGER_LITERAL, 11, 13);
-        duplicateCode.add(tok1);
-        duplicateCode.add(tok2);
-        duplicateCode.add(tok3);
-        duplicateCode.add(tok4);
+        assertEquals(refactor.printRefactoredToString(),
+                        "Opportunity 24, 8 tokens\n" +
+                        scf1.getPath() + ":" + tok1.getLine() + ":" + tok1.getColumn() + "\na 4\n" +
+                        scf1.getPath() + ":" + tok2.getLine() + ":" + tok2.getColumn() + "\nb 5\n" +
+                        scf1.getPath() + ":" + tok3.getLine() + ":" + tok3.getColumn() + "\nc 3\n" +
+                        scf1.getPath() + ":" + tok4.getLine() + ":" + tok4.getColumn() + "\nd 8\n");
+    }
+    
+    @Test
+    void testMultipleRefactoringsFound(){
 
-        assertEquals(refactor.getRefactoredOpportunities(), duplicateCode);
     }
 }

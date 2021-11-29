@@ -7,7 +7,7 @@ using namespace std;
 int main(){
     cout << "Hello World!";
 
-    //Next 4 lines of code are duplicates
+    //Next 4 lines of code are duplicates, first refactoring
     int a = 4;
     int b = 5;
     int c = 3;
@@ -15,7 +15,7 @@ int main(){
 
     int x, y;
 
-    //Next 2 if statements are duplicates
+    //Next 2 if statements are duplicates, second refactoring
     if(a < b)
         x = a + b;
 
