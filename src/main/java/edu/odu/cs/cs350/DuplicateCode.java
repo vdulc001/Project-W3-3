@@ -1,6 +1,7 @@
 package edu.odu.cs.cs350;
 
 import edu.odu.cs.cs350.*;
+
 import java.io.File;
 
 
@@ -30,6 +31,10 @@ public void CreateDupCode(int L, int C, String filename) {
 	column = C;
 	filePath = "testPath";
 }
+
+SourceCodeFile
+
+
 
 
 //Changes the file name into path//
