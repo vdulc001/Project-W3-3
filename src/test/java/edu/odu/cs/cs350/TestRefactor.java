@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestRefactor {
 
-    @Test
+    /*@Test
     void testMutators(){
         SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test1.cpp");
         SourceCodeFile scf2 = new SourceCodeFile("src/test/data/test1.h");
@@ -71,5 +71,5 @@ public class TestRefactor {
     @Test
     void testMultipleRefactoringsFound(){
 
-    }
+    }*/
 }
