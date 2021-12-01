@@ -29,7 +29,7 @@ public class SourceCodeFile {
 	{
 		file = new File(path);
 		tokens = new LinkedList<Token>();
-		tokenize();
+		//tokenize();
 	}
 	
 	/**
