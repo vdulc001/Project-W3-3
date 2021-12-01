@@ -62,9 +62,11 @@ public class CommandLineProcessor {
 		
 		System.out.println();
 		
+		/*
 		Refactoring refactoring = new Refactoring();
 		for(int i = 0; i < nSuggestions; i++)
 			System.out.println(refactoring.refactoringOutput(filesList.get(i)) + "\n");
+			*/
 		
 		System.out.println("Printed " + nSuggestions + " of " + filesList.size() + " suggestions.");
 		
