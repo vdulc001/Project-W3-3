@@ -18,6 +18,7 @@ public class TestRefactor {
 
     @Test
     void testMutators(){
+        /*
         SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test1.cpp");
         SourceCodeFile scf2 = new SourceCodeFile("src/test/data/test1.h");
         Token tok1 = new Token(TokenKinds.INT, 10, 5);
@@ -42,9 +43,10 @@ public class TestRefactor {
 
         refactor.setNumRefactors(5);
         assertEquals(refactor.getNumRefactors(), 5);
-
+    */
     }
 
+    /*
     @Test
     void testSingleRefactoringFound(){
         SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test2.cpp");
@@ -72,4 +74,5 @@ public class TestRefactor {
     void testMultipleRefactoringsFound(){
 
     }
+    */
 }
