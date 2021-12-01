@@ -1,6 +1,15 @@
+
+import edu.odu.cs.zeil.report_accumulator.ReportStats 
+
 buildscript {
+    repositories {
+        ivy { // for report-accumulator
+            url 'https://www.cs.odu.edu/~zeil/ivyrepo'
+        }
+	}
     dependencies {
         classpath "org.jbake:jbake-gradle-plugin:5.0.0"
+        classpath 'edu.odu.cs.zeil:report_accumulator:1.2'
     }
 }
 
@@ -45,6 +54,11 @@ task reports (dependsOn: ['test', 'javadoc']){
     doLast{
         println '"test" and "javadoc" tasks successful'
     }
+}
+
+task collectStats (type: ReportStats, dependsOn: ['build','reports']) {
+    description "Collect statistics from various reports & analysis tools"
+    reportsURL = 'https://www.cs.odu.edu/~zeil/gitlab/' + project.name + '/reports'
 }
 
 apply plugin: 'org.jbake.site'
