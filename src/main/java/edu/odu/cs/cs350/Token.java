@@ -17,18 +17,18 @@ public class Token {
 	
 	//create a token with no lexeme
 	public Token(final TokenKinds theTokenType, final int lineNum, final int columnNum) {
-		this.lexeme = "";
-		this.tokenType = theTokenType;
-		this.line = lineNum;
-		this.column = columnNum;
+		lexeme = "";
+		tokenType = theTokenType;
+		line = lineNum;
+		column = columnNum;
 	}
 	
 	//create a token
 	public Token(final TokenKinds theTokenType, int lineNum, int columnNum, final String theLexeme) {
-		this.lexeme = theLexeme;
-		this.tokenType = theTokenType;
-		this.line = lineNum;
-		this.column = columnNum;
+		lexeme = theLexeme;
+		tokenType = theTokenType;
+		line = lineNum;
+		column = columnNum;
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class Token {
 	 * @return the type of token
 	 */
 	public final TokenKinds getTokenType() {
-		return this.tokenType;
+		return tokenType;
 	}
 	
 	/**
@@ -55,21 +55,21 @@ public class Token {
 	 * @return the lexeme
 	 */
 	public String getLexeme() {
-		return this.lexeme;
+		return lexeme;
 	}
 	
 	/**
 	 * @return the line number
 	 */
 	public int getLine() {
-		return this.line;
+		return line;
 	}
 	
 	/**
 	 * @return the column number
 	 */
 	public int getColumn() {
-		return this.column;
+		return column;
 	}
 	
 }

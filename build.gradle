@@ -1,3 +1,18 @@
+
+import edu.odu.cs.zeil.report_accumulator.ReportStats 
+
+buildscript {
+    repositories {
+        ivy { // for report-accumulator
+            url 'https://www.cs.odu.edu/~zeil/ivyrepo'
+        }
+	}
+    dependencies {
+        classpath "org.jbake:jbake-gradle-plugin:5.0.0"
+        classpath 'edu.odu.cs.zeil:report_accumulator:1.2'
+    }
+}
+
 plugins {
 	id 'java'
 	id "org.xbib.gradle.plugin.jflex" version "1.5.0"
@@ -16,8 +31,9 @@ repositories {
 }
 
 dependencies {
-	     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-	     testImplementation 'org.hamcrest:hamcrest-library:2.2'
+	    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+	    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+        testImplementation 'junit:junit:4.13.2' 
      	 //compile 'edu.odo.cs.cs350:sourceSuffixTrees:1.4+'
 }
 
@@ -33,17 +49,16 @@ test {
      useJUnitPlatform()
 }
 
- task copyDocs (type: Copy) {            
-    from 'build/docs'
-    into 'build/gh-pages'
+task reports (dependsOn: ['test', 'javadoc']){
+    description 'Ensures "test" and "javadoc" tasks are executed'
+    doLast{
+        println '"test" and "javadoc" tasks successful'
+    }
 }
 
-task copyReports (type: Copy) {
-    from 'build/reports'
-    into 'build/gh-pages'
+task collectStats (type: ReportStats, dependsOn: ['build','reports']) {
+    description "Collect statistics from various reports & analysis tools"
+    reportsURL = 'https://www.cs.odu.edu/~zeil/gitlab/' + project.name + '/reports'
 }
 
-task deployReports(dependsOn: ['copyDocs',
-                      'copyReports']) {
-    description 'Generate reports website for this project'
-}
+apply plugin: 'org.jbake.site'

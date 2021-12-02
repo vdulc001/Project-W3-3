@@ -1,8 +1,6 @@
 package edu.odu.cs.cs350;
 
-import java.io.Reader;
-import java.util.LinkedList;
-
+import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,30 +12,36 @@ public class TestTokenScanner {
     }
 
 	@Test
-    public final void testScanner() throws Exception{
+    public final void testScanner() {
+		ArrayList<Token> toks = new ArrayList<Token>();
 		SourceCodeFile s = new SourceCodeFile("src/test/data/test1.cpp");
-		Reader input = s.getInput("src/test/data/test1.cpp");
-        LinkedList<Token> tokens = new LinkedList<Token>();
-        s.tokenize(/*input, tokens*/);
-        assertEquals (21, tokens.size());
+		toks = s.getTokens();
         
-        Token t = tokens.get(4);
+        assertEquals (70, s.calculateTotalTokens());
+        
+        Token t = toks.get(0);
+        assertEquals (TokenKinds.PREPROCESSOR, t.getTokenType());
+        //assertEquals ("#include", t.getLexeme());
+        assertEquals (1, t.getLine());
+        assertEquals (1, t.getColumn());
+        
+        t = toks.get(4);
         assertEquals (TokenKinds.USING, t.getTokenType());
         //assertEquals ("using", t.getLexeme());
         assertEquals (3, t.getLine());
         assertEquals (1, t.getColumn());
         
-        t = tokens.get(8);
+        t = toks.get(8);
         assertEquals (TokenKinds.INT, t.getTokenType());
         //assertEquals ("int", t.getLexeme()); //fix getLexeme();
         assertEquals (7, t.getLine());
         assertEquals (1, t.getColumn());
         
-        t = tokens.get(1);
-        assertEquals (TokenKinds.LT, t.getTokenType());
-        //assertEquals ("<", t.getLexeme());
-        assertEquals (1, t.getLine());
-        assertEquals (10, t.getColumn());
+        t = toks.get(69);
+        assertEquals (TokenKinds.RBRACE, t.getTokenType());
+        //assertEquals ("}", t.getLexeme());
+        assertEquals (26, t.getLine());
+        assertEquals (1, t.getColumn()); 
        
 	}
 
