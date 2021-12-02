@@ -60,14 +60,25 @@ public class CommandLineProcessor {
 		findFilesInNestedDirectories();
 		printListOfSourceCodeFiles();
 		
-		System.out.println();
+		
+		for(Token temp : filesList.get(2).getTokens())
+		{
+			System.out.println("Token Type: " + temp.getTokenType());
+			System.out.println("Lexeme: " + temp.getLexeme());
+			System.out.println("Line Number: " + temp.getLine());
+			System.out.println("Column Number: " + temp.getColumn());
+			System.out.println("-----------------");
+		}
+		
+		
+		/*System.out.println();
 		
 		Refactoring refactoring = new Refactoring();
 		int i;
 		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
 			System.out.println(refactoring.refactoringOutput(filesList.get(i)) + "\n");
 		
-		System.out.println("Printed " + i + " of " + filesList.size() + " suggestions.");
+		System.out.println("Printed " + i + " of " + filesList.size() + " suggestions.");*/
 		
 	}
 	
