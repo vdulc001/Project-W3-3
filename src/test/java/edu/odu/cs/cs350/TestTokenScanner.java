@@ -21,25 +21,29 @@ public class TestTokenScanner {
         
         Token t = toks.get(0);
         assertEquals (TokenKinds.PREPROCESSOR, t.getTokenType());
-        //assertEquals ("#include", t.getLexeme());
         assertEquals (1, t.getLine());
         assertEquals (1, t.getColumn());
         
         t = toks.get(4);
         assertEquals (TokenKinds.USING, t.getTokenType());
-        //assertEquals ("using", t.getLexeme());
         assertEquals (3, t.getLine());
         assertEquals (1, t.getColumn());
         
         t = toks.get(8);
         assertEquals (TokenKinds.INT, t.getTokenType());
-        //assertEquals ("int", t.getLexeme()); //fix getLexeme();
         assertEquals (7, t.getLine());
         assertEquals (1, t.getColumn());
         
+        t = toks.get(18);
+        assertEquals ("a", t.getLexeme());
+        assertEquals (TokenKinds.IDENTIFIER, t.getTokenType());
+        
+        t = toks.get(20);
+        assertEquals ("4", t.getLexeme());
+        assertEquals (TokenKinds.INTEGER_LITERAL, t.getTokenType());
+        
         t = toks.get(69);
         assertEquals (TokenKinds.RBRACE, t.getTokenType());
-        //assertEquals ("}", t.getLexeme());
         assertEquals (26, t.getLine());
         assertEquals (1, t.getColumn()); 
        
