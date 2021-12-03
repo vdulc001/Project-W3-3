@@ -60,7 +60,7 @@ public class CommandLineProcessor {
 		findFilesInNestedDirectories();
 		printListOfSourceCodeFiles();
 		
-		System.out.println(filesList.size());
+		System.out.println();
 		
 		// for visible output comment out if needed
 		Refactoring refactoring = new Refactoring();
