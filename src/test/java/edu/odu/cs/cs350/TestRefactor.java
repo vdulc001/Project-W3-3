@@ -43,8 +43,8 @@ public class TestRefactor {
 
         refactor.setNumRefactors(5);
         assertEquals(refactor.getNumRefactors(), 5);
-    */
-    }
+
+    }*/
 
     /*
     @Test
@@ -73,10 +73,6 @@ public class TestRefactor {
     @Test
     void testMultipleRefactoringsFound(){
 
-<<<<<<< HEAD
     }*/
-=======
-    }
-    */
->>>>>>> refs/remotes/origin/main
+
 }

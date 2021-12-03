@@ -17,7 +17,7 @@ public class TestTokenScanner {
 		SourceCodeFile s = new SourceCodeFile("src/test/data/test1.cpp");
 		toks = s.getTokens();
         
-        assertEquals (70, s.calculateTotalTokens());
+        assertEquals (70, s.getTotalTokens());
         
         Token t = toks.get(0);
         assertEquals (TokenKinds.PREPROCESSOR, t.getTokenType());

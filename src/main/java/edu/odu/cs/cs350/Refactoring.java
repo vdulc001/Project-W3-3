@@ -1,51 +1,106 @@
 package edu.odu.cs.cs350;
 
-<<<<<<< HEAD
-/*import java.util.ArrayList;
-=======
->>>>>>> refs/remotes/origin/main
-import java.util.LinkedList;
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-import javax.xml.transform.Source;
-import java.io.Reader;*/
-=======
+import java.util.LinkedList;
+//import javax.xml.transform.Source;
+import java.io.Reader;
 import java.util.List;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.io.FilterReader;
+//import java.io.FilterReader;
 import java.io.IOException;
->>>>>>> refs/remotes/origin/main
 
-import javax.xml.transform.Source;
 
-import java.io.Reader;
+
 public class Refactoring {
 
-<<<<<<< HEAD
-	public Refactoring () {}
+	private ArrayList<Token> testSequence = new ArrayList<Token>();
+	private ArrayList<Token> testFileSequence = new ArrayList<Token>();
+	//private int numberOfMatches;
 	
-	public int findOpportunityForImprovement () {return 0;} // suggested refactorings are sorted high to low
-															// # of replacements * # of tokens in sequence
+	public Refactoring () { }
+	
+	public ArrayList<Token> getTestSequence() { return testSequence; }
+	public ArrayList<Token> getTestFileSequence() { return testFileSequence; }
+	
+	public int findOpportunityForImprovement () {return testSequence.size() * 1;}
+	
+	public void createTestSequence(SourceCodeFile firstFile) // gets first (and only) sequence for comparison
+	{
+		for(int i = 0; i < firstFile.getTotalTokens(); i++)
+		{
+			if(firstFile.getTokens().get(i).getTokenType() == TokenKinds.SEMICOLON)
+			{
+				testSequence.add(firstFile.getTokens().get(i));
+				break;
+			}
+			else
+				testSequence.add(firstFile.getTokens().get(i));
+		}
+	}
+	
+	public void findDupSequences(SourceCodeFile testFile)
+	{
+		int i = 0;
+		int cnt = 0;
+		
+		while(i < testFile.getTotalTokens())
+		{
+			int j;
+			for(j = i; j < testFile.getTotalTokens(); j++)
+			{
+				if(testFile.getTokens().get(j).getTokenType() == TokenKinds.SEMICOLON)
+				{
+					testFileSequence.add(testFile.getTokens().get(j));
+					break;
+				}
+				else
+					testFileSequence.add(testFile.getTokens().get(j));
+			}
+			
+			if(cnt == 0)
+			{
+				System.out.println("Opportunity " + findOpportunityForImprovement() + ", " + testSequence.size() + " tokens");
+				cnt++;
+			}
+			
+			if(compareSequences(testFileSequence))
+				System.out.println(refactoringOutput(testFile));
+			testFileSequence.clear();
+			i = j+1;
+		}
+	}
+	
+	public Boolean compareSequences(ArrayList<Token> temp)
+	{
+		if(testSequence.size() != temp.size())
+			return false;
+		for(int i = 0; i < testSequence.size(); i++)
+		{
+			if(testSequence.get(i).getTokenType() != temp.get(i).getTokenType())
+				return false;
+		}
+		return true;
+	}
 	
 	public String refactoringOutput(SourceCodeFile scf)
 	{
-		String output = "Opportunity 0, 0 tokens\n";	// # tokens saved, # tokens in sequence
-		output += scf.getPath() + ": 0, 0\n";			// line & column number most likely accessed through token object
-		output += "x y z";								// lexemes also accessed through token objects, identifiers & numeric literals should be printed
+		String output = "";
+		output += scf.getPath() + ": " + testFileSequence.get(0).getLine() + ", " + testFileSequence.get(0).getColumn() + "\n";
+		for(Token temp : testFileSequence)
+		{
+			if(temp.getLexeme() != "")
+				output += temp.getLexeme() + " ";
+		}
 		return output;
 	}
 	
-	public void findDupSequences()
-	{
-		// create a sequence
-		// compare to rest of code, finding matching sequences (tokenType)
-		// for each match, print path of file, line #, and column # where it's found
-		// for each match, print the lexemes of the tokens that can be replaced
-		// repeat with new sequences until end of file
-	}
-=======
+	
+	/**********************************************************************************************/
+	
+	
     private int maxRefactors;
     private SourceCodeFile fileToCheck;
     private LinkedList < Token > refactoredTokens = new LinkedList < Token > ();
@@ -114,7 +169,7 @@ public class Refactoring {
      * TODO - Read every token in the tokenized SCF to check for refactoring opportunity
      */
     public void findRefactored() throws Exception {
-        //fileToCheck.tokenize(input, tokenList);
+        fileToCheck.tokenize();
         /**
          * for every token (stream)
          *      find opportunity for refactoring
@@ -222,6 +277,7 @@ public class Refactoring {
         }
         return false;
     }
+    
     /**
      * Output a list of the suggested refactoring for the source code file, fileToCheck
      *
@@ -231,5 +287,4 @@ public class Refactoring {
         }
     }
     */
->>>>>>> refs/remotes/origin/main
 }
