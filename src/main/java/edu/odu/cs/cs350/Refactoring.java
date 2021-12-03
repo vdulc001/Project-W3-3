@@ -2,20 +2,14 @@ package edu.odu.cs.cs350;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import edu.odu.cs.cs350.sharedphrases.SharedPhrases;
+
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-
-
-
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 
 public class Refactoring {
 
@@ -26,7 +20,6 @@ public class Refactoring {
     int tokenCount = 0;
 
     public Refactoring(){
-
     }
     
     /**
@@ -87,6 +80,7 @@ public class Refactoring {
     }
 
     public void findRefactored() throws Exception{
+        /*
         for(SourceCodeFile scf: filesToCheck){
             scf.tokenize();
             int index = 0;
@@ -106,6 +100,11 @@ public class Refactoring {
                 }
             }
         }
+        */
+
+        SharedPhrases phrase = new SharedPhrases();
+        
+
     }
 
     public void addToken(Token tok){
