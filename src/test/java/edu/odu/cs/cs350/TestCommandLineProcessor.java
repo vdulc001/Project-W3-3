@@ -18,138 +18,29 @@ import static org.junit.jupiter.api.Assertions.*;
  * 
  */
 public class TestCommandLineProcessor {
-	
-    public TestCommandLineProcessor() {    
-		findFilesInNestedDirectories();
-		printListOfSourceCodeFiles();
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
 
-    /**
-     * Test of setnSuggestions method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testSetnSuggestions() {
-        System.out.println("setnSuggestions");
-        int num = 0;
-        CommandLineProcessor instance = null;
-        instance.setnSuggestions(num);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        CommandLineProcessor clp = new CommandLineProcessor(0, null);
 
-    /**
-     * Test of getnSuggestions method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testGetnSuggestions() {
-        System.out.println("getnSuggestions");
-        CommandLineProcessor instance = null;
-        int expResult = 0;
-        int result = instance.getnSuggestions();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        @Test
+        public void testSetSuggestions() {
+            assertEquals(0, clp.getnSuggestions());
+            clp.setnSuggestions(8);
+            assertEquals(8, clp.getnSuggestions());
+        }
+        
+        @SuppressWarnings("static-access")
+        @Test
+        public void readSourceCodeFiles() {
+            String args[] = {"src/test/data/test1.cpp", "src/test/data/test1.cpp"};
+            clp.readInSourceCodeFiles(args);
+            
+            assertEquals(2, clp.getFileList().size());
+        }
+        
+        @SuppressWarnings("static-access")
+        @Test
+        public void findFilesInNestedDirectories() {
+            clp.findFilesInNestedDirectories();
+            assertEquals(2, clp.getFileList());
+        }
     }
-
-    /**
-     * Test of getFileList method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testGetFileList() {
-        System.out.println("getFileList");
-        CommandLineProcessor instance = null;
-        ArrayList<SourceCodeFile> expResult = null;
-        ArrayList<SourceCodeFile> result = instance.getFileList();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of findCppFiles method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testFindCppFiles() {
-        System.out.println("findCppFiles");
-        CommandLineProcessor instance = null;
-        instance.findCppFiles();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of main method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        CommandLineProcessor.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of readInSourceCodeFiles method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testReadInSourceCodeFiles() {
-        System.out.println("readInSourceCodeFiles");
-        String[] args = null;
-        CommandLineProcessor.readInSourceCodeFiles(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of findFilesInNestedDirectories method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testFindFilesInNestedDirectories() {
-        System.out.println("findFilesInNestedDirectories");
-        CommandLineProcessor.findFilesInNestedDirectories();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of searchForDirectories method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testSearchForDirectories() {
-        System.out.println("searchForDirectories");
-        File[] files = null;
-        int index = 0;
-        ArrayList<String> pathsToDirectories = null;
-        CommandLineProcessor.searchForDirectories(files, index, pathsToDirectories);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of printListOfSourceCodeFiles method, of class CommandLineProcessor.
-     */
-    @Test
-    public void testPrintListOfSourceCodeFiles() {
-        System.out.println("printListOfSourceCodeFiles");
-        CommandLineProcessor.printListOfSourceCodeFiles();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-}
