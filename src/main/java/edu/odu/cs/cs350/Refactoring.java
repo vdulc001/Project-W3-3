@@ -5,10 +5,9 @@ import java.util.List;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.io.FilterReader;
 import java.io.IOException;
 
-import javax.xml.transform.Source;
+
 
 import java.io.Reader;
 public class Refactoring {
@@ -189,6 +188,7 @@ public class Refactoring {
         }
         return false;
     }
+    
     /**
      * Output a list of the suggested refactoring for the source code file, fileToCheck
      *
@@ -198,4 +198,15 @@ public class Refactoring {
         }
     }
     */
+    
+    // for visible output comment out if needed
+    public Refactoring() {};
+    public int getOpportunityImprovement(SourceCodeFile scf) {return scf.calculateTotalTokens() * 1;};
+    public String refactoringOutput(SourceCodeFile scf)
+    {
+    	String output = "Opportunity: " + getOpportunityImprovement(scf) + ", " + scf.calculateTotalTokens() + " tokens\n";
+    	output += scf.getPath() + ":" + scf.getTokens().get(0).getLine() + ":" + scf.getTokens().get(0).getLine() + "\n";
+    	output += "a b c\n";
+    	return output;
+    }
 }

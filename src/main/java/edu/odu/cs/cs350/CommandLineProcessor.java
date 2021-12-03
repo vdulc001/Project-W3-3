@@ -60,15 +60,18 @@ public class CommandLineProcessor {
 		findFilesInNestedDirectories();
 		printListOfSourceCodeFiles();
 		
-		System.out.println();
+		System.out.println(filesList.size());
 		
-		/*
+		// for visible output comment out if needed
 		Refactoring refactoring = new Refactoring();
-		for(int i = 0; i < nSuggestions; i++)
-			System.out.println(refactoring.refactoringOutput(filesList.get(i)) + "\n");
-			*/
+		int i;
+		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
+		{
+			//if(filesList.get(i).getFile().length() != 0) // make sure files are not empty
+				System.out.println(refactoring.refactoringOutput(filesList.get(i)));
+		}
 		
-		System.out.println("Printed " + nSuggestions + " of " + filesList.size() + " suggestions.");
+		System.out.println("Printed " + i + " of " + filesList.size() + " suggestions.");
 		
 	}
 	
