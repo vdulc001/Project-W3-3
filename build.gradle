@@ -16,6 +16,7 @@ buildscript {
 plugins {
 	id 'java'
 	id "org.xbib.gradle.plugin.jflex" version "1.5.0"
+    id "org.xbib.gradle.plugin.git" version "2.0.0"
 }
 
 java {
@@ -53,6 +54,68 @@ task reports (dependsOn: ['test', 'javadoc']){
     description 'Ensures "test" and "javadoc" tasks are executed'
     doLast{
         println '"test" and "javadoc" tasks successful'
+    }
+}
+
+task clonePages() { 
+    doLast {
+        mkdir 'build/gh-pages'
+        def thisRepo = rootProject.projectDir.toString() + '/..'
+        def pagesDir = "$buildDir/gh-pages"
+        project.delete {
+            delete pagesDir
+        }
+        def grgit = git.clone {
+            dir = pagesDir
+            uri = 'file:' + thisRepo
+            bare = false
+            refToCheckout = 'gh-pages'
+        }
+        grgit.checkout {
+            branch = 'gh-pages'
+        }
+        grgit.close()
+    }
+}
+
+task copyWebsite (dependsOn: ['reports', 'clonePages']) {
+    doLast {
+        ant.copy (todir: 'build/gh-pages') {
+            fileset(dir: 'build/reports')
+        }
+        ant.copy (todir: 'build/gh-pages') {
+            fileset(dir: 'build/docs')
+        }
+        ant.copy (todir: 'build/gh-pages') {
+            fileset(dir: 'src/main/html')
+        }
+    }
+}
+
+task updateGHPages (dependsOn: ['copyWebsite']) {
+    group = "Reporting"
+    description  'Copies reports to the gh-pages branch in preparation for a future push to GitHub'
+    doLast {
+        def pagesDir = "$buildDir/gh-pages"
+        def grgit = git.open {
+            dir = pagesDir
+        }
+        grgit.add (update: false, patterns: ['javadoc', 'tests', 'index.md'])
+        grgit.add (update: true, patterns: ['javadoc', 'tests', 'index.md'])
+        grgit.commit {
+            message = "Updating web pages"
+        }
+        grgit.push {}
+        grgit.close()
+    }
+}
+
+task deployReports (dependsOn: 'updateGHPages') {
+    doLast {
+        exec {
+            workingDir ='.'
+            commandLine = ['git', 'push', 'origin', 'gh-pages']
+        }
     }
 }
 
