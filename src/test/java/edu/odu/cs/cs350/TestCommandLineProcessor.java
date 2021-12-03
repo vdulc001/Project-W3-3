@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Seth's
+ * @author Sheldon
  * 
  */
 public class TestCommandLineProcessor {
