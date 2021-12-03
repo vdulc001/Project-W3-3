@@ -62,37 +62,9 @@ public class CommandLineProcessor {
 		
 		System.out.println();
 		
-		SourceCodeFile scf = new SourceCodeFile("/home/cs_vdulc001/FallSemester2021/Project-W3-3/src/test/data/test1.cpp");
-		SourceCodeFile scf2 = new SourceCodeFile("/home/cs_vdulc001/FallSemester2021/Project-W3-3/src/test/data/test2.cpp");
 		Refactoring r = new Refactoring();
-		r.createTestSequence(scf);
-		r.findDupSequences(scf2);
-		
-		//System.out.println(r.refactoringOutput(scf2));
-		
-		//Refactoring refactoring = new Refactoring(nSuggestions, scf);
-		//refactoring.findRefactored();
-		
-		/*for(Token temp : filesList.get(0).getTokens())
-		{
-			System.out.println("Token Type: " + temp.getTokenType());
-			System.out.println("Lexeme: " + temp.getLexeme());
-			System.out.println("Line Number: " + temp.getLine());
-			System.out.println("Column Number: " + temp.getColumn());
-			System.out.println("-----------------");
-		}*/
-		
-		
-		/*System.out.println();
-		
-		/*
-		Refactoring refactoring = new Refactoring();
-		int i;
-		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
-			System.out.println(refactoring.refactoringOutput(filesList.get(i)) + "\n");
-		
-		System.out.println("Printed " + i + " of " + filesList.size() + " suggestions.");*/
-		
+		r.createTestSequence(filesList.get(0));
+		printRefactorings(r);
 	}
 	
 	public static void readInSourceCodeFiles(String[] args)
@@ -141,6 +113,17 @@ public class CommandLineProcessor {
 		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath));
 		for(SourceCodeFile scf : filesList)
 			System.out.println(scf.getPath() + ", " + scf.getTotalTokens());
+	}
+	
+	public static void printRefactorings(Refactoring r)
+	{
+		int i;
+		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
+		{
+			r.findDupSequences(filesList.get(i));
+			System.out.println();
+		}
+		System.out.println("Printed " + i + " of " + filesList.size() + " suggestions."); // how to get total # of suggestions
 	}
 
 }
