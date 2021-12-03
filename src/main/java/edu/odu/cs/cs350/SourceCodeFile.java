@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.io.StringReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,17 +20,22 @@ import java.io.IOException;
 public class SourceCodeFile {
 	
 	private File file;
-	private LinkedList<Token> tokens;
+	private ArrayList<Token> tokens;
 	
 	/**
 	 * Initializes source code file using its absolute path
 	 * @param path
 	 */
-	public SourceCodeFile(String path)
+	public SourceCodeFile(final String path)
 	{
 		file = new File(path);
-		tokens = new LinkedList<Token>();
-		//tokenize();
+		tokens = new ArrayList<Token>();
+		try {
+            tokens = tokenize();
+            }
+        catch (Exception ex) {
+            // Not necessarily a problem, depending on the input source
+        }
 	}
 	
 	/**
@@ -41,7 +47,7 @@ public class SourceCodeFile {
 		return file;
 	}
 	
-	public LinkedList<Token> getTokens()
+	public ArrayList<Token> getTokens()
 	{
 		return tokens;
 	}
@@ -91,17 +97,13 @@ public class SourceCodeFile {
 	/**
 	 * Create a list of tokens from the scanner
 	 */
-	public void tokenize(/*final Reader input /*, LinkedList<Token> toks*/) {
-		final Reader input = new StringReader(getPath());
-		GeneratedScanner scanner = new GeneratedScanner (input);
-        try {
-            Token token = scanner.yylex();
-            while (token != null && token.getTokenType() != TokenKinds.EOF) {
-                tokens.add (token);
-                token = scanner.yylex();
-            }
-        } catch (IOException ex) {
-            // Not necessarily a problem, depending on the input source
+	public ArrayList<Token> tokenize() throws Exception{
+		String content = Files.readString(Paths.get(getPath()));
+		Reader input = new StringReader(content);
+		TokenStream tokenstream = new TokenStream(input);
+        for (Token tok: tokenstream) {
+            tokens.add(tok);
         }
+        return tokens;
 	}
 }

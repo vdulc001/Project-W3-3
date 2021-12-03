@@ -3,9 +3,12 @@ package edu.odu.cs.cs350;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 
-import javax.xml.transform.Source;
+
 
 
 import java.io.BufferedReader;
@@ -22,6 +25,10 @@ public class Refactoring {
     private LinkedList <String> refactoredTokens = new LinkedList <String> ();
     int tokenCount = 0;
 
+    public Refactoring(){
+
+    }
+    
     /**
      * 
      * @param num - Number of refactors set by the CLP
@@ -79,7 +86,7 @@ public class Refactoring {
 
     }
 
-    public void findRefactored(){
+    public void findRefactored() throws Exception{
         for(SourceCodeFile scf: filesToCheck){
             scf.tokenize();
             int index = 0;
@@ -158,6 +165,7 @@ public class Refactoring {
         }
         return false;
     }
+    
     /**
      * Output a list of the suggested refactoring for the source code file, fileToCheck
      *
