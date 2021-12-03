@@ -18,20 +18,26 @@ import org.junit.jupiter.api.Test;
 
 public class TestRefactor {
 
-    /*
+    SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test1.cpp");
+    SourceCodeFile scf2 = new SourceCodeFile("src/test/data/test1.h");
+    SourceCodeFile scf3 = new SourceCodeFile("src/test/data/test2.cpp");
+    ArrayList<SourceCodeFile> listOfFiles = new ArrayList<SourceCodeFile>();
+
     @Test
     void testMutators(){
-        SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test1.cpp");
-        SourceCodeFile scf2 = new SourceCodeFile("src/test/data/test1.h");
         Token tok1 = new Token(TokenKinds.INT, 10, 5);
         Token tok2 = new Token(TokenKinds.IDENTIFIER, 10, 9);
         Token tok3 = new Token(TokenKinds.OPERATOR, 10, 11);
         Token tok4 = new Token(TokenKinds.INTEGER_LITERAL, 10, 13);
         Token tok5 = new Token(TokenKinds.SEMICOLON, 10, 14);
-        LinkedList<Token> refactoredTokens = new LinkedList<Token>(Arrays.asList(tok1, tok2, tok3, tok4, tok5));
-        ArrayList<SourceCodeFile> listOfFiles = new ArrayList<SourceCodeFile>(Arrays.asList(scf1));
+        LinkedList<Token> tokenSequence = new LinkedList<Token>(Arrays.asList(tok1, tok2, tok3, tok4, tok5));
+        LinkedList<String> refactoredTokens = new LinkedList<String>();
+        listOfFiles.add(scf3);
 
-        Refactoring refactor = new Refactoring(0, listOfFiles);
+        Refactoring refactor = new Refactoring(0, listOfFiles, tokenSequence);
+
+
+        assertEquals(refactor.getTokenSequence(), tokenSequence);
 
         refactor.setRefactoredTokens(refactoredTokens);
         assertEquals(refactor.getRefactoredTokens(), refactoredTokens);
@@ -39,9 +45,10 @@ public class TestRefactor {
         assertEquals(refactor.getNumRefactors(), 0);
         assertEquals(refactor.getSourceCodeFiles(), listOfFiles);
 
+
         refactor.addFiles(scf2);
         listOfFiles.add(scf2);
-        assertEquals(refactor, listOfFiles);
+        assertEquals(refactor.getSourceCodeFiles(), listOfFiles);
 
         refactor.setNumRefactors(5);
         assertEquals(refactor.getNumRefactors(), 5);
@@ -49,18 +56,16 @@ public class TestRefactor {
 
     @Test
     void testSingleRefactoringFound(){
-        SourceCodeFile scf1 = new SourceCodeFile("src/test/data/test2.cpp");
-        ArrayList<SourceCodeFile> listOfFiles = new ArrayList<SourceCodeFile>();
-        Refactoring refactor = new Refactoring(10, listOfFiles);
-
+        listOfFiles.add(scf3);
         Token tok1 = new Token(TokenKinds.INT, 10, 5);
         Token tok2 = new Token(TokenKinds.IDENTIFIER, 10, 9);
         Token tok3 = new Token(TokenKinds.OPERATOR, 10, 11);
         Token tok4 = new Token(TokenKinds.INTEGER_LITERAL, 10, 13);
         Token tok5 = new Token(TokenKinds.SEMICOLON, 10, 14);
-        LinkedList<Token> refactoredTokens = new LinkedList<Token>(Arrays.asList(tok1, tok2, tok3, tok4, tok5));
+        LinkedList<Token> tokenSequence = new LinkedList<Token>(Arrays.asList(tok1, tok2, tok3, tok4, tok5));
+        Refactoring refactor = new Refactoring(10, listOfFiles, tokenSequence);
 
-        refactor.setRefactoredTokens(refactoredTokens);
+        assertEquals(refactor.getTokenSequence(), tokenSequence);
 
         assertEquals(refactor.printRefactoredToString(),
                         "Opportunity 24, 8 tokens\n" +
@@ -74,8 +79,8 @@ public class TestRefactor {
     void testMultipleRefactoringsFound(){
 
     }
-    */
 
+    /*
     SourceCodeFile scf = new SourceCodeFile ("/storage/emulated/0");
     Refactoring rf = new Refactoring (8, scf);
 
@@ -95,4 +100,6 @@ public class TestRefactor {
         assertEquals (true, duplicates.isEmpty ());
     }
       
+    */
 }
+
