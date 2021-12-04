@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import edu.odu.cs.cs350.sharedphrases.*;
 
 
 /**
@@ -54,7 +55,7 @@ public class CommandLineProcessor {
 	 */
     public void findCppFiles() {}
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws IllegalTokenKindException{
 		
 		nSuggestions = Integer.parseInt(args[0]);
 		readInSourceCodeFiles(args);
@@ -62,7 +63,13 @@ public class CommandLineProcessor {
 		printListOfSourceCodeFiles();
 
 		Refactoring refactor = new Refactoring(nSuggestions, filesList);
-		refactor.printRefactored();
+
+		try{
+			refactor.printRefactored();
+		}
+		catch(IllegalTokenKindException e){
+			
+		}
 
 
 
