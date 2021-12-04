@@ -116,6 +116,8 @@ public class Refactoring {
 
         tokenCount++;
     }
+    
+    public int getOpportunityForImprovement () {return 0;}
 
     // utility to populate a list with duplicates and print to screen
     public void Dup_finder(List < String > list, List < String > duplicates, File directory) {

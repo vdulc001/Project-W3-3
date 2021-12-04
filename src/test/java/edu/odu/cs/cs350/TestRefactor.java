@@ -79,6 +79,14 @@ public class TestRefactor {
     void testMultipleRefactoringsFound(){
 
     }
+    
+    @Test
+    void testOpportunityForImprovement()
+    {
+    	Refactoring r = new Refactoring();
+    	// TODO find dups, ensure OI = total tokens saved * total tokens in test sequence
+    	assertEquals(r.getOpportunityForImprovement(), 0);
+    }
 
     /*
     SourceCodeFile scf = new SourceCodeFile ("/storage/emulated/0");
