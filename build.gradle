@@ -61,6 +61,16 @@ javadoc {
     failOnError false
 }
 
+//PMD Reports Page//
+/*import edu.odu.cs.zeil.report_accumulator.ReportStats     
+
+
+task collectStats (type: ReportStats, dependsOn: ['build','reports']) { 
+    description "Collect statistics from various reports & analysis tools"
+    reportsURL = 'https://www.cs.odu.edu/~zeil/gitlab/' + project.name + '/reports'
+}*/
+
+//JBake Website Task//
 task copyJDocs (type: Copy) {
     from 'build/docs'
     into 'build/tmp/website/assets'
