@@ -6,7 +6,7 @@ package edu.odu.cs.cs350;
  * @author cs_jrosa005
  *
  */
-public class Token {
+public class Token{
 	private String lexeme;
 	private TokenKinds tokenType;
 	private int line;

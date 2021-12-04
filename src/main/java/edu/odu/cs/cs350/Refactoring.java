@@ -1,11 +1,12 @@
 package edu.odu.cs.cs350;
 
-import java.util.LinkedList;
 import java.util.List;
-
-import edu.odu.cs.cs350.sharedphrases.SharedPhrases;
-
 import java.util.ArrayList;
+
+import edu.odu.cs.cs350.sharedphrases.IllegalTokenKindException;
+import edu.odu.cs.cs350.sharedphrases.SharedPhrases;
+import edu.odu.cs.cs350.sharedphrases.TokenEncoding;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -15,8 +16,6 @@ public class Refactoring {
 
     private int maxRefactors;
     private ArrayList<SourceCodeFile> filesToCheck = new ArrayList<SourceCodeFile>();
-    private LinkedList<Token> tokenSequence = new LinkedList<Token>();
-    private LinkedList <String> refactoredTokens = new LinkedList <String> ();
     int tokenCount = 0;
 
     public Refactoring(){
@@ -27,29 +26,10 @@ public class Refactoring {
      * @param num - Number of refactors set by the CLP
      * @param scf - Source code file being checked for refactoring opportunities
      */
-    public Refactoring(int nSuggestions, ArrayList<SourceCodeFile> fileList, LinkedList<Token> tokenSequence) {
+    public Refactoring(int nSuggestions, ArrayList<SourceCodeFile> fileList) {
         maxRefactors = nSuggestions;
         filesToCheck = fileList;
-        this.tokenSequence = tokenSequence;
     }
-
-    public void setTokenSequence(LinkedList<Token> tokenSequence){
-        this.tokenSequence = tokenSequence;
-    }
-
-    public LinkedList<Token> getTokenSequence(){
-        return tokenSequence;
-    }
-
-    
-    public void setRefactoredTokens(LinkedList<String> tokens){
-        refactoredTokens = tokens;
-    }
-
-    public LinkedList<String> getRefactoredTokens(){
-        return refactoredTokens;
-    }
-    
 
     public void setNumRefactors(int nSuggestions){
         maxRefactors = nSuggestions;
@@ -67,53 +47,12 @@ public class Refactoring {
         return filesToCheck;
     }
 
-    public String printRefactoredToString(){
-        String s = "";
-
-        return s;
-    }
-
-    public void printRefactored(){
+    public void printRefactored() throws IllegalTokenKindException{
         int opportunity = 0;
         System.out.println("Opportunity " + opportunity + ", " + tokenCount + " tokens");
 
-    }
+        SharedPhrases phrases = new SharedPhrases();
 
-    public void findRefactored() throws Exception{
-        /*
-        for(SourceCodeFile scf: filesToCheck){
-            scf.tokenize();
-            int index = 0;
-            for(Token tok: scf.getTokens()){
-                if( (tok.getTokenType() == TokenKinds.INT
-                || tok.getTokenType() == TokenKinds.DOUBLE
-                || tok.getTokenType() == TokenKinds.STRING
-                || tok.getTokenType() == TokenKinds.BOOL
-                || tok.getTokenType() == TokenKinds.IDENTIFIER
-                || tok.getTokenType() == TokenKinds.INTEGER_LITERAL
-                || tok.getTokenType() == TokenKinds.OPERATOR) 
-                && tok == tokenSequence.get(index)){
-                    addToken(tok);
-                }
-                else{
-                    break;
-                }
-            }
-        }
-        */
-
-        SharedPhrases phrase = new SharedPhrases();
-        
-
-    }
-
-    public void addToken(Token tok){
-        if(tok.getTokenType() == TokenKinds.IDENTIFIER
-        || tok.getTokenType() == TokenKinds.INTEGER_LITERAL){
-            refactoredTokens.add(tok.getLexeme());
-        }
-
-        tokenCount++;
     }
 
     // utility to populate a list with duplicates and print to screen
