@@ -6,7 +6,8 @@
   <div class="menuBlock">
     <span class="menuBlockHeader">Project Info</span>
 	<ul>
-      <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>javadoc.html">API (Javadoc)</a></li>
+      <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>javadoc/index.html">API (Javadoc)</a></li>
+      <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>junit.html">UnitTest</a></li>
       <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>dependencies.html">Dependencies</a></li>
 	</ul>
   </div>
