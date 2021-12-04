@@ -126,14 +126,14 @@ task clonePages() {
     }
 }
 
-task copyReports (type: dependsOn: ['bake', 'clonePages']) {  
+task copywReports (dependsOn: ['bake', 'clonePages']) {  
     doLast {
         ant.copy (todir: 'build/gh-pages') {
             fileset(dir: 'build/jbake')
         }
     }
 }
-task updateGHPages (dependsOn: 'copyReports') {                   
+task updateGHPages (dependsOn: 'copywReports') {                   
     group = "Reporting"
     description  'Copies reports to the gh-pages branch in preparation for a future push to GitHub'
     doLast {
