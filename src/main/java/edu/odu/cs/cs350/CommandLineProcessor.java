@@ -64,7 +64,17 @@ public class CommandLineProcessor {
 		
 		Refactoring r = new Refactoring();
 		r.createTestSequence(filesList.get(0));
-		printRefactorings(r);
+		
+		r.findDupSequences(filesList.get(0));
+		r.refactoringOutput(filesList.get(0));
+		
+		r.getSuggestions().clear();
+		System.out.println();
+		
+		r.findDupSequences(filesList.get(1));
+		r.refactoringOutput(filesList.get(1));
+		
+		
 	}
 	
 	public static void readInSourceCodeFiles(String[] args)
@@ -115,7 +125,7 @@ public class CommandLineProcessor {
 			System.out.println(scf.getPath() + ", " + scf.getTotalTokens());
 	}
 	
-	public static void printRefactorings(Refactoring r)
+	/*public static void printRefactorings(Refactoring r)
 	{
 		int i;
 		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
@@ -124,6 +134,5 @@ public class CommandLineProcessor {
 			System.out.println();
 		}
 		System.out.println("Printed " + i + " of " + filesList.size() + " suggestions."); // how to get total # of suggestions
-	}
-
+	}*/
 }
