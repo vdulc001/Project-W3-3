@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import edu.odu.cs.cs350.sharedphrases.IllegalTokenKindException;
 
 
 /**
@@ -55,7 +54,7 @@ public class CommandLineProcessor {
 	 */
     public void findCppFiles() {}
 
-	public static void main(String[] args) throws IllegalTokenKindException{
+	public static void main(String[] args){
 		
 		nSuggestions = Integer.parseInt(args[0]);
 		readInSourceCodeFiles(args);
@@ -92,7 +91,7 @@ public class CommandLineProcessor {
 			{
 				if(scf.getFile().isDirectory())
 					directoriesList.add(scf);
-				else
+				else if(scf.getPath().endsWith(".cpp") || scf.getPath().endsWith(".h"))
 					filesList.add(scf);
 			}
 		}
@@ -105,7 +104,8 @@ public class CommandLineProcessor {
 		{
 			searchForDirectories(dir.getFile().listFiles(), 0, pathsToDirectories);
 			for(String path : pathsToDirectories)
-				filesList.add(new SourceCodeFile(path));
+				if(path.endsWith(".cpp") || path.endsWith(".h"))
+					filesList.add(new SourceCodeFile(path));
 		}
 	}
 	
