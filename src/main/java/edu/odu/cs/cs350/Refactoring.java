@@ -3,14 +3,14 @@ package edu.odu.cs.cs350;
 import java.util.List;
 import java.util.ArrayList;
 
-import edu.odu.cs.cs350.sharedphrases.IllegalTokenKindException;
-import edu.odu.cs.cs350.sharedphrases.SharedPhrases;
-import edu.odu.cs.cs350.sharedphrases.TokenEncoding;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+
+import edu.odu.cs.cs350.sharedphrases.IllegalTokenKindException;
+import edu.odu.cs.cs350.sharedphrases.SharedPhrases;
+import edu.odu.cs.cs350.sharedphrases.TokenEncoding;
 
 public class Refactoring {
 
@@ -47,12 +47,11 @@ public class Refactoring {
         return filesToCheck;
     }
 
-    public void printRefactored() throws IllegalTokenKindException{
+    public void printRefactored(){
         int opportunity = 0;
         System.out.println("Opportunity " + opportunity + ", " + tokenCount + " tokens");
 
         SharedPhrases phrases = new SharedPhrases();
-
     }
 
     // utility to populate a list with duplicates and print to screen
