@@ -18,7 +18,7 @@ class TestSourceCodeFile {
 		toks = s.getTokens();
         
 		assertFalse (toks.isEmpty());
-        assertEquals (70, s.calculateTotalTokens());
+        assertEquals (70, s.getTotalTokens());
 		assertTrue(s.getFile().exists());
 		//assertEquals(s.getPath(), "src/test/data/test1.cpp");
 	}

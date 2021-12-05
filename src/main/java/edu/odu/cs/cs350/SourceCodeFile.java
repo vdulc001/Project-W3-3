@@ -4,11 +4,9 @@ import java.io.File;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.LinkedList;
 import java.util.ArrayList;
 import java.io.StringReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 
 
 /**
@@ -75,7 +73,7 @@ public class SourceCodeFile {
 	 * Calculates total number of tokens in a source code file
 	 * @return total number of tokens
 	 */
-	public int calculateTotalTokens() 
+	public int getTotalTokens() 
 	{ 
 		return tokens.size();
 	}

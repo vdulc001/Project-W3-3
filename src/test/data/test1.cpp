@@ -1,8 +1,18 @@
-#include <iostream>
+//#include <iostream>
 
+<<<<<<< HEAD
+=======
+//using namespace std;
+
+>>>>>>> refs/remotes/origin/vdulcPhase5
 //Test cpp file
 
+<<<<<<< HEAD
 int main(){
+=======
+//int main(){
+    //cout << "Hello World!";
+>>>>>>> refs/remotes/origin/vdulcPhase5
 
     //Next 4 lines of code are duplicates, first refactoring
     int a = 4;
@@ -19,5 +29,5 @@ int main(){
     if(c < d)
         y = c + d;
 
-    return 0;
-}
+    //return 0;
+//}

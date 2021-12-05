@@ -17,12 +17,8 @@ public class CommandLineProcessor {
     private static int nSuggestions;
     private static ArrayList<SourceCodeFile> filesList = new ArrayList<SourceCodeFile>();
 	private static ArrayList<SourceCodeFile> directoriesList = (ArrayList)filesList.clone();
+	private static ArrayList<Token> testSequence = new ArrayList<Token>();
 
-	/**
-	 * Construct a CLP object with number of refactoring suggestions and list of source code files
-	 * @param num - number of refactoring suggestions
-	 * @param list - list of source code files
-	 */
 	public CommandLineProcessor(int num, ArrayList<SourceCodeFile> list){
 		nSuggestions = num;
 		filesList = list;
@@ -32,25 +28,14 @@ public class CommandLineProcessor {
 		nSuggestions = num;
 	}
 
-	/**
-	 * @return number of refactoring suggestions the user desires
-	 */
 	public int getnSuggestions(){
 		return nSuggestions;
 	}
 
-	/**
-	 * @return the list of C++ files found by the program;
-	 * 			includes files inputted by the user in the CLI
-	 * 			and files found in subdirectories by the program
-	 */
 	public ArrayList<SourceCodeFile> getFileList(){
 		return filesList;
 	}
 
-    /**
-	 * TODO Finds C++ files in every directory and subdirectory
-	 */
     public void findCppFiles() {}
 
 	public static void main(String[] args) {
@@ -120,7 +105,33 @@ public class CommandLineProcessor {
 		System.out.println("Files Scanned: ");
 		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath));
 		for(SourceCodeFile scf : filesList)
-			System.out.println(scf.getPath() + ", " + scf.calculateTotalTokens());
+			System.out.println(scf.getPath() + ", " + scf.getTotalTokens());
 	}
-
+	
+	public static void createTestSequence(SourceCodeFile file)
+	{
+		for(int i = 0; i < file.getTotalTokens(); i++)
+		{
+			if(file.getTokens().get(i).getTokenType() == TokenKinds.SEMICOLON)
+			{
+				testSequence.add(file.getTokens().get(i));
+				break;
+			}
+			else
+				testSequence.add(file.getTokens().get(i));
+		}
+	}
+	
+	public static void refactor(Refactoring r) 
+	{
+		int i;
+		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
+		{
+			r.findDupSequences(testSequence, filesList.get(i));
+			r.refactoringOutput(testSequence, filesList.get(i));
+			r.getSuggestions().clear();
+			System.out.println();
+		}
+		System.out.println("Printed " + i + " of " + nSuggestions + " suggestions");
+	}
 }
