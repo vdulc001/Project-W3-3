@@ -2,7 +2,7 @@
     
     <div id="footer">
       <div class="container">
-        <p class="muted credit">&copy; 2021 Project-W3-3</p>
+        <p class="muted credit">&copy; 2021 Project-W3-3 </p>
       </div>
     </div>
     
