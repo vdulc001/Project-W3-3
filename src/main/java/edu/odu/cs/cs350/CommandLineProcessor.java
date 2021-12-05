@@ -47,16 +47,9 @@ public class CommandLineProcessor {
 		
 		System.out.println();
 		
-		// for visible output comment out if needed
-		Refactoring refactoring = new Refactoring();
-		int i;
-		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
-		{
-			//if(filesList.get(i).getFile().length() != 0) // make sure files are not empty
-				//System.out.println(refactoring.refactoringOutput(filesList.get(i)));
-		}
-		
-		System.out.println("Printed " + i + " of " + filesList.size() + " suggestions.");
+		Refactoring r = new Refactoring();
+		createTestSequence(filesList.get(0));
+		refactor(r);
 		
 	}
 	

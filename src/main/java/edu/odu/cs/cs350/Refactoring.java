@@ -1,9 +1,9 @@
 package edu.odu.cs.cs350;
 
+
 import java.util.ArrayList;
 
 public class Refactoring {
-
 
 	private ArrayList<TokenSequence> suggestions;
 	
