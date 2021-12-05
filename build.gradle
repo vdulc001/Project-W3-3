@@ -18,6 +18,7 @@ plugins {
 	id "org.jbake.site" version "5.5.0"
 	id "org.xbib.gradle.plugin.jflex" version "1.5.0"
     id "org.xbib.gradle.plugin.git" version "2.0.0"
+    id "com.github.spotbugs" version "4.6.0"
 }
 
 
@@ -60,6 +61,18 @@ task reports (dependsOn: ['javadoc', 'check']) {
 javadoc {
     failOnError false
 }
+//Static Analysis//
+spotbugsMain {
+    ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'medium'
+    reports {
+       xml.enabled = false
+       html.enabled = true
+    }
+}
+
+spotbugsTest.enabled = false
 
 //PMD Reports Page//
 /*import edu.odu.cs.zeil.report_accumulator.ReportStats     
