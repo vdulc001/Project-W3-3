@@ -46,35 +46,34 @@ public class TestRefactor {
         listOfFiles.add(scf3);
         Refactoring refactor = new Refactoring(10, listOfFiles);
 
+        Token tok1 = new Token(TokenKinds.INT, 8, 5);
+        Token tok2 = new Token(TokenKinds.INT, 9, 5);
+        Token tok3 = new Token(TokenKinds.INT, 10, 5);
+        Token tok4 = new Token(TokenKinds.INT, 11, 5);
 
-        /*
         assertEquals(refactor.printRefactoredToString(),
                         "Opportunity 24, 8 tokens\n" +
                         scf1.getPath() + ":" + tok1.getLine() + ":" + tok1.getColumn() + "\na 4\n" +
                         scf1.getPath() + ":" + tok2.getLine() + ":" + tok2.getColumn() + "\nb 5\n" +
                         scf1.getPath() + ":" + tok3.getLine() + ":" + tok3.getColumn() + "\nc 3\n" +
                         scf1.getPath() + ":" + tok4.getLine() + ":" + tok4.getColumn() + "\nd 8\n");
-                        */
     }
     
-    /*
-    @Test
-    void testMultipleRefactoringsFound(){
-
-    }
-
     
     SourceCodeFile scf = new SourceCodeFile ("/storage/emulated/0");
-    Refactoring rf = new Refactoring (8, scf);
 
+    /*
     @Test public void findRefactored (){
         rf.findRefactored ();
         LinkedList < Token > rop = rf.getRefactoredOpportunities ();
         assertEquals (false, rop.isEmpty ());
     }
+    */
     
-        @Test public void testDupFinder ()
+    @Test public void testDupFinder ()
     {
+        listOfFiles.add(scf);
+        Refactoring rf = new Refactoring (8, listOfFiles);
         List < String > list = new ArrayList < String > ();
         List < String > duplicates = new ArrayList < String > ();
         File directory = new File ("/");
@@ -82,6 +81,5 @@ public class TestRefactor {
     
         assertEquals (true, duplicates.isEmpty ());
     }
-    */
 }
 

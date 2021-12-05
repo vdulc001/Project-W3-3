@@ -1,6 +1,9 @@
 package edu.odu.cs.cs350;
 
 import java.util.List;
+
+import javax.xml.transform.Source;
+
 import java.util.ArrayList;
 
 import java.io.File;
@@ -47,11 +50,34 @@ public class Refactoring {
         return filesToCheck;
     }
 
-    public void printRefactored(){
+    public void printRefactored() throws IllegalTokenKindException{
         int opportunity = 0;
-        System.out.println("Opportunity " + opportunity + ", " + tokenCount + " tokens");
+        System.out.println("\nOpportunity " + opportunity + ", " + tokenCount + " tokens");
 
         SharedPhrases phrases = new SharedPhrases();
+
+        for(SourceCodeFile scf: filesToCheck){
+            try{
+                phrases.addSentence(TokenEncoding.encode(scf.getTokens()), scf.getPath()); 
+            }
+            catch(IllegalTokenKindException e){
+                System.out.println("Error Refactoring: " + e.getMessage());
+            }
+        }
+
+        for (CharSequence p: phrases.allPhrases()) {
+            for (String source: phrases.sourcesOf((String)p)) {
+                System.out.print (source + ": ");
+                System.out.print (p);
+                System.out.println();
+            }
+        }
+    }
+
+    public String printRefactoredToString(){
+        String s = "";
+
+        return s;
     }
 
     // utility to populate a list with duplicates and print to screen

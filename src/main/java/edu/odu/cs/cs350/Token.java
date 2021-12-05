@@ -1,12 +1,13 @@
 package edu.odu.cs.cs350;
 
+import edu.odu.cs.cs350.sharedphrases.UnicodeConstants;
 
 /**
  * 
  * @author cs_jrosa005
  *
  */
-public class Token{
+public class Token implements edu.odu.cs.cs350.sharedphrases.Token {
 	private String lexeme;
 	private TokenKinds tokenType;
 	private int line;
@@ -70,6 +71,13 @@ public class Token{
 	 */
 	public int getColumn() {
 		return column;
+	}
+
+	/**
+	 * @return token kind as an int value
+	 */
+	public int getTokenKind() {
+		return tokenType.ordinal();
 	}
 	
 }
