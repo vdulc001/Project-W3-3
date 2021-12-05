@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import edu.odu.cs.cs350.sharedphrases.*;
 
 import edu.odu.cs.cs350.sharedphrases.IllegalTokenKindException;
 
@@ -63,11 +64,19 @@ public class CommandLineProcessor {
 		printListOfSourceCodeFiles();
 
 		Refactoring refactor = new Refactoring(nSuggestions, filesList);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
 		try{
 			refactor.printRefactored();
 		}
 		catch(IllegalTokenKindException e){
+<<<<<<< HEAD
 			System.out.println("Error CLP: " + e.getMessage());
+=======
+			
+>>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
 		}
 
 

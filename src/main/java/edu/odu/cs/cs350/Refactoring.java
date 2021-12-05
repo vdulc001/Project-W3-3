@@ -1,24 +1,31 @@
 package edu.odu.cs.cs350;
 
 import java.util.List;
+<<<<<<< HEAD
 
 import javax.xml.transform.Source;
 
 import java.util.ArrayList;
+=======
+>>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
 
+import javax.print.PrintException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import edu.odu.cs.cs350.sharedphrases.IllegalTokenKindException;
-import edu.odu.cs.cs350.sharedphrases.SharedPhrases;
-import edu.odu.cs.cs350.sharedphrases.TokenEncoding;
+import edu.odu.cs.cs350.sharedphrases.*;
+import edu.odu.cs.cs350.sharedphrases.Token;
 
 public class Refactoring {
 
     private int maxRefactors;
     private ArrayList<SourceCodeFile> filesToCheck = new ArrayList<SourceCodeFile>();
+    private List<? extends edu.odu.cs.cs350.sharedphrases.Token> encodedTokens;
     int tokenCount = 0;
 
     public Refactoring(){
@@ -50,13 +57,18 @@ public class Refactoring {
         return filesToCheck;
     }
 
+<<<<<<< HEAD
     public void printRefactored() throws IllegalTokenKindException{
+=======
+    public void printRefactored() throws NoClassDefFoundError, IllegalTokenKindException{
+>>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
         int opportunity = 0;
         System.out.println("\nOpportunity " + opportunity + ", " + tokenCount + " tokens");
 
         SharedPhrases phrases = new SharedPhrases();
 
         for(SourceCodeFile scf: filesToCheck){
+<<<<<<< HEAD
             try{
                 phrases.addSentence(TokenEncoding.encode(scf.getTokens()), scf.getPath()); 
             }
@@ -78,6 +90,27 @@ public class Refactoring {
         String s = "";
 
         return s;
+=======
+            encodeTokens(scf, phrases);
+        }
+
+        for (CharSequence p: phrases.allPhrases()) {
+            System.out.print (p + ": ");
+            for (String source: phrases.sourcesOf(p.toString())) {
+                System.out.print (source);
+            }
+            System.out.println();
+        }
+         
+    }
+
+    public void encodeTokens(SourceCodeFile scf, SharedPhrases phrases) throws IllegalTokenKindException{
+        for(edu.odu.cs.cs350.Token tok: scf.getTokens()){
+            encodedTokens.add(tok.getTokenType());
+        }
+
+        phrases.addSentence(TokenEncoding.encode(encodedTokens), "fds");
+>>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
     }
 
     // utility to populate a list with duplicates and print to screen
@@ -88,7 +121,7 @@ public class Refactoring {
             } 
             else {
                 String filename = child.getName();
-                if (filename.endsWith(".cpp") | filename.endsWith(".h"))
+                if (filename.endsWith(".cpp") || filename.endsWith(".h"))
 
                     // similar files will return same hashcode in runtime
                     if (isDuplicate(list, child.getAbsolutePath())) {
