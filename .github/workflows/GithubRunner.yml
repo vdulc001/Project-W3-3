@@ -24,4 +24,9 @@ jobs:
     - name: BuildWebsite
       working-directory: .
       run: ./gradlew bake
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.7
+      with:
+         branch: gh-pages # The branch the action should deploy to.
+         folder: build/jbake # The folder the action should deploy.
 
