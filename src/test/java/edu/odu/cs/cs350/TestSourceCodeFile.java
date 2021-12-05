@@ -1,7 +1,5 @@
 package edu.odu.cs.cs350;
 
-import java.io.Reader;
-import java.util.LinkedList;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +18,7 @@ class TestSourceCodeFile {
 		assertFalse (toks.isEmpty());
         assertEquals (70, s.getTotalTokens());
 		assertTrue(s.getFile().exists());
-		assertEquals(s.getPath(), "src/test/data/test1.cpp");
+		assertTrue(s.getPath().contains("src/test/data/test1.cpp"));
 	}
 
 }

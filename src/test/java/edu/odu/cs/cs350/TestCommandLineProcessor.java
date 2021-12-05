@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class TestCommandLineProcessor {
 
-        CommandLineProcessor clp = new CommandLineProcessor(0, null);
+        CommandLineProcessor clp = new CommandLineProcessor();
 
         @Test
         public void testSetSuggestions() {
@@ -21,16 +21,17 @@ public class TestCommandLineProcessor {
         @SuppressWarnings("static-access")
         @Test
         public void readSourceCodeFiles() {
-            String args[] = {"src/test/data/test1.cpp", "src/test/data/test1.cpp"};
+        	String args[] = {"2", "src/test/data/test1.cpp", "src/test/data/test2.cpp"};
             clp.readInSourceCodeFiles(args);
-
             assertEquals(2, clp.getFileList().size());
         }
 
         @SuppressWarnings("static-access")
         @Test
         public void findFilesInNestedDirectories() {
+        	String args[] = {"2", "src/test/data/testDir"};
+        	clp.readInSourceCodeFiles(args);
             clp.findFilesInNestedDirectories();
-            assertEquals(2, clp.getFileList());
+            assertEquals(2, clp.getFileList().size());
         }
     }

@@ -23,7 +23,6 @@ public class TestRefactor {
     ArrayList<SourceCodeFile> listOfFiles = new ArrayList<SourceCodeFile>();
 	private static ArrayList<Token> testSequence = new ArrayList<Token>();
 
-    /*
     @Test
     void testMutators(){
         Token tok1 = new Token(TokenKinds.INT, 10, 5);
@@ -36,7 +35,6 @@ public class TestRefactor {
         listOfFiles.add(scf3);
 
         //Refactoring refactor = new Refactoring(0, listOfFiles, tokenSequence);
-
 
         //assertEquals(refactor.getTokenSequence(), tokenSequence);
 
@@ -54,7 +52,6 @@ public class TestRefactor {
         //refactor.setNumRefactors(5);
         //assertEquals(refactor.getNumRefactors(), 5);
     }
-    */
 
     @Test
     void testSingleRefactoringFound(){
@@ -105,9 +102,14 @@ public class TestRefactor {
     @Test
     void testOpportunityForImprovement()
     {
+    	SourceCodeFile scf = new SourceCodeFile("src/test/data/test3.cpp");
+    	CommandLineProcessor clp = new CommandLineProcessor();
+    	CommandLineProcessor.createTestSequence(scf);
+    	
     	Refactoring r = new Refactoring();
-    	// TODO find dups, ensure OI = total tokens saved * total tokens in test sequence
-    	//assertEquals(r.getOpportunityForImprovement(), 0);
+    	r.findDupSequences(clp.getTestSequence(), scf);
+    	
+    	assertEquals(r.getOpportunityForImprovement(clp.getTestSequence()), 20);
     }
 
     SourceCodeFile scf = new SourceCodeFile ("/storage/emulated/0");

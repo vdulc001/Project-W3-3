@@ -19,9 +19,12 @@ public class CommandLineProcessor {
 	private static ArrayList<SourceCodeFile> directoriesList = (ArrayList)filesList.clone();
 	private static ArrayList<Token> testSequence = new ArrayList<Token>();
 
-	public CommandLineProcessor(int num, ArrayList<SourceCodeFile> list){
-		nSuggestions = num;
-		filesList = list;
+	public CommandLineProcessor(/*int num, ArrayList<SourceCodeFile> list*/){
+		nSuggestions = 0;
+		filesList = new ArrayList<SourceCodeFile>();
+		directoriesList = new ArrayList<SourceCodeFile>();
+		testSequence = new ArrayList<Token>();
+		
 	}
 	
 	public void setnSuggestions(int num){
@@ -34,6 +37,10 @@ public class CommandLineProcessor {
 
 	public ArrayList<SourceCodeFile> getFileList(){
 		return filesList;
+	}
+	
+	public ArrayList<Token> getTestSequence(){
+		return testSequence;
 	}
 
     public void findCppFiles() {}
