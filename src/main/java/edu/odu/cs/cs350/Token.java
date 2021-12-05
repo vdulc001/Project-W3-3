@@ -11,11 +11,13 @@ public class Token {
 	private TokenKinds tokenType;
 	private int line;
 	private int column;
-	//private int tokenStart;
-	//private int tokenLength;
 	
-	
-	//create a token with no lexeme
+	/**
+	 * Creates a token without a lexeme
+	 * @param theTokenType
+	 * @param lineNum
+	 * @param columnNum
+	 */
 	public Token(final TokenKinds theTokenType, final int lineNum, final int columnNum) {
 		lexeme = "";
 		tokenType = theTokenType;
@@ -23,7 +25,13 @@ public class Token {
 		column = columnNum;
 	}
 	
-	//create a token
+	/**
+	 * Creates a token with a lexeme
+	 * @param theTokenType
+	 * @param lineNum
+	 * @param columnNum
+	 * @param theLexeme
+	 */
 	public Token(final TokenKinds theTokenType, int lineNum, int columnNum, final String theLexeme) {
 		lexeme = theLexeme;
 		tokenType = theTokenType;
@@ -32,7 +40,35 @@ public class Token {
 	}
 	
 	/**
-	 * representation of the token for debugging
+	 * @return type of the token
+	 */
+	public final TokenKinds getTokenType() {
+		return tokenType;
+	}
+	
+	/**
+	 * @return lexeme, character string associated with the token
+	 */
+	public String getLexeme() {
+		return lexeme;
+	}
+	
+	/**
+	 * @return line number on which token starts
+	 */
+	public int getLine() {
+		return line;
+	}
+	
+	/**
+	 * @return column number on which token starts
+	 */
+	public int getColumn() {
+		return column;
+	}
+	
+	/**
+	 * Prints token by tokenType and lexeme
 	 */
 	@Override
 	public final String toString() {
@@ -41,35 +77,6 @@ public class Token {
 		} else {
 			return getTokenType().toString();
 		}
-	}
-	
-	/**
-	 * @return the type of token
-	 */
-	public final TokenKinds getTokenType() {
-		return tokenType;
-	}
-	
-	/**
-	 * what is the lexeme (character string) associated with the token?
-	 * @return the lexeme
-	 */
-	public String getLexeme() {
-		return lexeme;
-	}
-	
-	/**
-	 * @return the line number
-	 */
-	public int getLine() {
-		return line;
-	}
-	
-	/**
-	 * @return the column number
-	 */
-	public int getColumn() {
-		return column;
 	}
 	
 }

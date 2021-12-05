@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class TestSourceCodeFile {
 
 	@Test
-	void testSourceCodeFile() throws Exception{
+	void testSourceCodeFile() throws Exception {
 		//assertTrue(s.isCppFile());
 		ArrayList<Token> toks = new ArrayList<Token>();
 		SourceCodeFile s = new SourceCodeFile("src/test/data/test1.cpp");
@@ -20,7 +20,7 @@ class TestSourceCodeFile {
 		assertFalse (toks.isEmpty());
         assertEquals (70, s.getTotalTokens());
 		assertTrue(s.getFile().exists());
-		//assertEquals(s.getPath(), "src/test/data/test1.cpp");
+		assertEquals(s.getPath(), "src/test/data/test1.cpp");
 	}
 
 }

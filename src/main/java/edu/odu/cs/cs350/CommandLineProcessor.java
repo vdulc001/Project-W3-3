@@ -40,19 +40,21 @@ public class CommandLineProcessor {
 
 	public static void main(String[] args) {
 		
-		nSuggestions = Integer.parseInt(args[0]);
+		nSuggestions = Integer.parseInt(args[0]); // set number of suggestions to be printed
 		readInSourceCodeFiles(args);
 		findFilesInNestedDirectories();
 		printListOfSourceCodeFiles();
 		
-		System.out.println();
-		
 		Refactoring r = new Refactoring();
-		createTestSequence(filesList.get(0));
-		refactor(r);
+		createTestSequence(filesList.get(0)); // create a sequence of tokens for comparisons
+		refactor(r);						  // find and print suggestions from each file
 		
 	}
 	
+	/**
+	 * Reads in list of source code files from the command line
+	 * @param args
+	 */
 	public static void readInSourceCodeFiles(String[] args)
 	{
 		for(String path : args)
@@ -68,6 +70,9 @@ public class CommandLineProcessor {
 		}
 	}
 	
+	/**
+	 * Finds files in nested directories and add them to filesList
+	 */
 	public static void findFilesInNestedDirectories()
 	{
 		ArrayList<String> pathsToDirectories = new ArrayList<String>();
@@ -79,6 +84,12 @@ public class CommandLineProcessor {
 		}
 	}
 	
+	/**
+	 * Searches for directories within filesList and adds them to directoriesList, used by findFilesInNestedDirectories()
+	 * @param files
+	 * @param index
+	 * @param pathsToDirectories
+	 */
 	public static void searchForDirectories(File[] files, int index, ArrayList<String> pathsToDirectories)
 	{
 		if(index == files.length)
@@ -92,15 +103,23 @@ public class CommandLineProcessor {
 		searchForDirectories(files,++index, pathsToDirectories);
 	}
 	
-
+	/**
+	 * Prints path and total number of tokens for all source code files in filesList
+	 */
 	public static void printListOfSourceCodeFiles()
 	{
+		System.out.println();
 		System.out.println("Files Scanned: ");
-		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath));
+		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath)); // put in alphabetical orer
 		for(SourceCodeFile scf : filesList)
 			System.out.println(scf.getPath() + ", " + scf.getTotalTokens());
+		System.out.println();
 	}
 	
+	/**
+	 * Creates sequence of tokens for comparisons
+	 * @param file
+	 */
 	public static void createTestSequence(SourceCodeFile file)
 	{
 		for(int i = 0; i < file.getTotalTokens(); i++)
@@ -115,6 +134,9 @@ public class CommandLineProcessor {
 		}
 	}
 	
+	/**
+	 * Finds duplicate sequences within a file and prints out the suggestions (lexemes) for replacement
+	 */
 	public static void refactor(Refactoring r) 
 	{
 		int i;

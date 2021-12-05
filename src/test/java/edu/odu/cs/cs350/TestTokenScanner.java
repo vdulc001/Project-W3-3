@@ -48,5 +48,4 @@ public class TestTokenScanner {
         assertEquals (1, t.getColumn()); 
        
 	}
-
 }

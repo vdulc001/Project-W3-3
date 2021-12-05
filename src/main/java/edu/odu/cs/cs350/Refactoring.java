@@ -1,17 +1,29 @@
 package edu.odu.cs.cs350;
 
-
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author cs_vdulc001
+ * @author cs_cdiaz014
+ * @author sheldon
+ *
+ */
 public class Refactoring {
 
 	private ArrayList<TokenSequence> suggestions;
 	
+	/**
+	 * Creates refactoring object holding new list of suggestions
+	 */
 	public Refactoring () 
 	{
 		suggestions = new ArrayList<TokenSequence>();
 	}
 	
+	/**
+	 * Creates refactoring object holding existing list of suggestions
+	 */
 	public Refactoring (ArrayList<TokenSequence> suggestions)
 	{
 		for(int i = 0; i < suggestions.size(); i++)
@@ -20,8 +32,18 @@ public class Refactoring {
 	
 	public ArrayList<TokenSequence> getSuggestions() { return suggestions; }
 	
+	/**
+	 * Calculates the total tokens saved from all suggestions
+	 * @param testSequence
+	 * @return opportunity for improvement
+	 */
 	public int getOpportunityForImprovement (ArrayList<Token> testSequence) {return testSequence.size() * suggestions.size();}
 	
+	/**
+	 * Finds duplicate sequences and adds them to the list of suggested replacements
+	 * @param testSequence
+	 * @param testFile
+	 */
 	public void findDupSequences(ArrayList<Token> testSequence, SourceCodeFile testFile)
 	{
 		ArrayList<Token> currentSequence = new ArrayList<Token>();
@@ -49,6 +71,12 @@ public class Refactoring {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param testSequence
+	 * @param currentSequence
+	 * @return true if testSequence == currentSequence
+	 */
 	public Boolean compareSequences(ArrayList<Token> testSequence, ArrayList<Token> currentSequence)
 	{
 		if(testSequence.size() != currentSequence.size())
@@ -61,6 +89,11 @@ public class Refactoring {
 		return true;
 	}
 	
+	/**
+	 * Prints the suggested refactorings for a source file
+	 * @param testSequence
+	 * @param testFile
+	 */
 	public void refactoringOutput(ArrayList<Token> testSequence, SourceCodeFile testFile)
 	{
 		System.out.println("Opportunity: " + getOpportunityForImprovement(testSequence) + ", " + testSequence.size() + " tokens");

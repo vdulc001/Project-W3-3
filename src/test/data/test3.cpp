@@ -1,11 +1,11 @@
-#include <iostream>
+//#include <iostream>
 
-using namespace std;
+//using namespace std;
 
 //Test cpp file
 
-int main(){
-    cout << "Hello World!";
+//int main(){
+    //cout << "Hello World!";
 
     //Next 4 lines of code are duplicates, first refactoring
     int a = 4;
@@ -22,5 +22,5 @@ int main(){
     if(c < d)
         y = c + d;
 
-    return 0;
-}
+    //return 0;
+//}
