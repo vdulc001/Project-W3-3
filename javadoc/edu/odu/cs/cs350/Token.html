@@ -154,14 +154,18 @@ extends java.lang.Object</pre>
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.odu.cs.cs350.TokenKinds,int,int)">Token</a></span>&#8203;(<a href="TokenKinds.html" title="enum in edu.odu.cs.cs350">TokenKinds</a>&nbsp;theTokenType,
      int&nbsp;lineNum,
      int&nbsp;columnNum)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a token without a lexeme</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.odu.cs.cs350.TokenKinds,int,int,java.lang.String)">Token</a></span>&#8203;(<a href="TokenKinds.html" title="enum in edu.odu.cs.cs350">TokenKinds</a>&nbsp;theTokenType,
      int&nbsp;lineNum,
      int&nbsp;columnNum,
      java.lang.String&nbsp;theLexeme)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a token with a lexeme</div>
+</td>
 </tr>
 </table>
 </li>
@@ -189,9 +193,7 @@ extends java.lang.Object</pre>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLexeme()">getLexeme</a></span>()</code></th>
-<td class="colLast">
-<div class="block">what is the lexeme (character string) associated with the token?</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
@@ -207,7 +209,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
-<div class="block">representation of the token for debugging</div>
+<div class="block">Prints token by tokenType and lexeme</div>
 </td>
 </tr>
 </table>
@@ -243,6 +245,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;Token&#8203;(<a href="TokenKinds.html" title="enum in edu.odu.cs.cs350">TokenKinds</a>&nbsp;theTokenType,
              int&nbsp;lineNum,
              int&nbsp;columnNum)</pre>
+<div class="block">Creates a token without a lexeme</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>theTokenType</code> - </dd>
+<dd><code>lineNum</code> - </dd>
+<dd><code>columnNum</code> - </dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(edu.odu.cs.cs350.TokenKinds,int,int,java.lang.String)">
@@ -255,6 +264,14 @@ extends java.lang.Object</pre>
              int&nbsp;lineNum,
              int&nbsp;columnNum,
              java.lang.String&nbsp;theLexeme)</pre>
+<div class="block">Creates a token with a lexeme</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>theTokenType</code> - </dd>
+<dd><code>lineNum</code> - </dd>
+<dd><code>columnNum</code> - </dd>
+<dd><code>theLexeme</code> - </dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -267,20 +284,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="toString()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>toString</h4>
-<pre class="methodSignature">public final&nbsp;java.lang.String&nbsp;toString()</pre>
-<div class="block">representation of the token for debugging</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
-</dl>
-</li>
-</ul>
 <a id="getTokenType()">
 <!--   -->
 </a>
@@ -290,7 +293,7 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public final&nbsp;<a href="TokenKinds.html" title="enum in edu.odu.cs.cs350">TokenKinds</a>&nbsp;getTokenType()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the type of token</dd>
+<dd>type of the token</dd>
 </dl>
 </li>
 </ul>
@@ -301,10 +304,9 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getLexeme</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getLexeme()</pre>
-<div class="block">what is the lexeme (character string) associated with the token?</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the lexeme</dd>
+<dd>lexeme, character string associated with the token</dd>
 </dl>
 </li>
 </ul>
@@ -317,20 +319,34 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;int&nbsp;getLine()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the line number</dd>
+<dd>line number on which token starts</dd>
 </dl>
 </li>
 </ul>
 <a id="getColumn()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getColumn</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getColumn()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the column number</dd>
+<dd>column number on which token starts</dd>
+</dl>
+</li>
+</ul>
+<a id="toString()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre class="methodSignature">public final&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">Prints token by tokenType and lexeme</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>

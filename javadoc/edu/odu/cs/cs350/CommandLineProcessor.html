@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":9,"i5":9,"i6":9,"i7":9,"i8":10};
+var data = {"i0":9,"i1":10,"i2":9,"i3":10,"i4":10,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -153,9 +153,7 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,java.util.ArrayList)">CommandLineProcessor</a></span>&#8203;(int&nbsp;num,
                     java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;&nbsp;list)</code></th>
-<td class="colLast">
-<div class="block">Construct a CLP object with number of refactoring suggestions and list of source code files</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -176,50 +174,70 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findCppFiles()">findCppFiles</a></span>()</code></th>
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#createTestSequence(edu.odu.cs.cs350.SourceCodeFile)">createTestSequence</a></span>&#8203;(<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;file)</code></th>
 <td class="colLast">
-<div class="block">TODO Finds C++ files in every directory and subdirectory</div>
+<div class="block">Creates sequence of tokens for comparisons</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findFilesInNestedDirectories()">findFilesInNestedDirectories</a></span>()</code></th>
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findCppFiles()">findCppFiles</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findFilesInNestedDirectories()">findFilesInNestedDirectories</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Finds files in nested directories and add them to filesList</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFileList()">getFileList</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getnSuggestions()">getnSuggestions</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#main(java.lang.String%5B%5D)">main</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printListOfSourceCodeFiles()">printListOfSourceCodeFiles</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readInSourceCodeFiles(java.lang.String%5B%5D)">readInSourceCodeFiles</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printListOfSourceCodeFiles()">printListOfSourceCodeFiles</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Prints path and total number of tokens for all source code files in filesList</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readInSourceCodeFiles(java.lang.String%5B%5D)">readInSourceCodeFiles</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
+<td class="colLast">
+<div class="block">Reads in list of source code files from the command line</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#refactor(edu.odu.cs.cs350.Refactoring)">refactor</a></span>&#8203;(<a href="Refactoring.html" title="class in edu.odu.cs.cs350">Refactoring</a>&nbsp;r)</code></th>
+<td class="colLast">
+<div class="block">Finds duplicate sequences within a file and prints out the suggestions (lexemes) for replacement</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#searchForDirectories(java.io.File%5B%5D,int,java.util.ArrayList)">searchForDirectories</a></span>&#8203;(java.io.File[]&nbsp;files,
                     int&nbsp;index,
                     java.util.ArrayList&lt;java.lang.String&gt;&nbsp;pathsToDirectories)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Searches for directories within filesList and adds them to directoriesList, used by findFilesInNestedDirectories()</div>
+</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setnSuggestions(int)">setnSuggestions</a></span>&#8203;(int&nbsp;num)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -256,12 +274,6 @@ extends java.lang.Object</pre>
 <h4>CommandLineProcessor</h4>
 <pre>public&nbsp;CommandLineProcessor&#8203;(int&nbsp;num,
                             java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;&nbsp;list)</pre>
-<div class="block">Construct a CLP object with number of refactoring suggestions and list of source code files</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>num</code> - - number of refactoring suggestions</dd>
-<dd><code>list</code> - - list of source code files</dd>
-</dl>
 </li>
 </ul>
 </li>
@@ -290,10 +302,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getnSuggestions</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getnSuggestions()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>number of refactoring suggestions the user desires</dd>
-</dl>
 </li>
 </ul>
 <a id="getFileList()">
@@ -303,12 +311,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getFileList</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;&nbsp;getFileList()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the list of C++ files found by the program;
-                        includes files inputted by the user in the CLI
-                        and files found in subdirectories by the program</dd>
-</dl>
 </li>
 </ul>
 <a id="findCppFiles()">
@@ -318,7 +320,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>findCppFiles</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;findCppFiles()</pre>
-<div class="block">TODO Finds C++ files in every directory and subdirectory</div>
 </li>
 </ul>
 <a id="main(java.lang.String[])">
@@ -337,6 +338,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>readInSourceCodeFiles</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;readInSourceCodeFiles&#8203;(java.lang.String[]&nbsp;args)</pre>
+<div class="block">Reads in list of source code files from the command line</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>args</code> - </dd>
+</dl>
 </li>
 </ul>
 <a id="findFilesInNestedDirectories()">
@@ -346,6 +352,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>findFilesInNestedDirectories</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;findFilesInNestedDirectories()</pre>
+<div class="block">Finds files in nested directories and add them to filesList</div>
 </li>
 </ul>
 <a id="searchForDirectories(java.io.File[],int,java.util.ArrayList)">
@@ -357,15 +364,47 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public static&nbsp;void&nbsp;searchForDirectories&#8203;(java.io.File[]&nbsp;files,
                                         int&nbsp;index,
                                         java.util.ArrayList&lt;java.lang.String&gt;&nbsp;pathsToDirectories)</pre>
+<div class="block">Searches for directories within filesList and adds them to directoriesList, used by findFilesInNestedDirectories()</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>files</code> - </dd>
+<dd><code>index</code> - </dd>
+<dd><code>pathsToDirectories</code> - </dd>
+</dl>
 </li>
 </ul>
 <a id="printListOfSourceCodeFiles()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>printListOfSourceCodeFiles</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;printListOfSourceCodeFiles()</pre>
+<div class="block">Prints path and total number of tokens for all source code files in filesList</div>
+</li>
+</ul>
+<a id="createTestSequence(edu.odu.cs.cs350.SourceCodeFile)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createTestSequence</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;createTestSequence&#8203;(<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;file)</pre>
+<div class="block">Creates sequence of tokens for comparisons</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - </dd>
+</dl>
+</li>
+</ul>
+<a id="refactor(edu.odu.cs.cs350.Refactoring)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>refactor</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;refactor&#8203;(<a href="Refactoring.html" title="class in edu.odu.cs.cs350">Refactoring</a>&nbsp;r)</pre>
+<div class="block">Finds duplicate sequences within a file and prints out the suggestions (lexemes) for replacement</div>
 </li>
 </ul>
 </li>

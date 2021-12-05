@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -152,13 +152,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Refactoring</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates refactoring object holding new list of suggestions</div>
+</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,java.util.ArrayList,java.util.LinkedList)">Refactoring</a></span>&#8203;(int&nbsp;nSuggestions,
-           java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;&nbsp;fileList,
-           java.util.LinkedList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokenSequence)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.ArrayList)">Refactoring</a></span>&#8203;(java.util.ArrayList&lt;<a href="TokenSequence.html" title="class in edu.odu.cs.cs350">TokenSequence</a>&gt;&nbsp;suggestions)</code></th>
+<td class="colLast">
+<div class="block">Creates refactoring object holding existing list of suggestions</div>
+</td>
 </tr>
 </table>
 </li>
@@ -179,77 +181,38 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addFiles(edu.odu.cs.cs350.SourceCodeFile)">addFiles</a></span>&#8203;(<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;scf)</code></th>
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#compareSequences(java.util.ArrayList,java.util.ArrayList)">compareSequences</a></span>&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence,
+                java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;currentSequence)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addToken(edu.odu.cs.cs350.Token)">addToken</a></span>&#8203;(<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&nbsp;tok)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findDupSequences(java.util.ArrayList,edu.odu.cs.cs350.SourceCodeFile)">findDupSequences</a></span>&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence,
+                <a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;testFile)</code></th>
+<td class="colLast">
+<div class="block">Finds duplicate sequences and adds them to the list of suggested replacements</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#Dup_finder(java.util.List,java.util.List,java.io.File)">Dup_finder</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;list,
-          java.util.List&lt;java.lang.String&gt;&nbsp;duplicates,
-          java.io.File&nbsp;directory)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOpportunityForImprovement(java.util.ArrayList)">getOpportunityForImprovement</a></span>&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence)</code></th>
+<td class="colLast">
+<div class="block">Calculates the total tokens saved from all suggestions</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findRefactored()">findRefactored</a></span>()</code></th>
+<td class="colFirst"><code>java.util.ArrayList&lt;<a href="TokenSequence.html" title="class in edu.odu.cs.cs350">TokenSequence</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSuggestions()">getSuggestions</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumRefactors()">getNumRefactors</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.util.LinkedList&lt;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRefactoredTokens()">getRefactoredTokens</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSourceCodeFiles()">getSourceCodeFiles</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>java.util.LinkedList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTokenSequence()">getTokenSequence</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isDuplicate(java.util.List,java.lang.String)">isDuplicate</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;list,
-           java.lang.String&nbsp;check)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printRefactored()">printRefactored</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i10" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printRefactoredToString()">printRefactoredToString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i11" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setNumRefactors(int)">setNumRefactors</a></span>&#8203;(int&nbsp;nSuggestions)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i12" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setRefactoredTokens(java.util.LinkedList)">setRefactoredTokens</a></span>&#8203;(java.util.LinkedList&lt;java.lang.String&gt;&nbsp;tokens)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i13" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTokenSequence(java.util.LinkedList)">setTokenSequence</a></span>&#8203;(java.util.LinkedList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokenSequence)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#refactoringOutput(java.util.ArrayList,edu.odu.cs.cs350.SourceCodeFile)">refactoringOutput</a></span>&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence,
+                 <a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;testFile)</code></th>
+<td class="colLast">
+<div class="block">Prints the suggested refactorings for a source file</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -282,22 +245,17 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Refactoring</h4>
 <pre>public&nbsp;Refactoring()</pre>
+<div class="block">Creates refactoring object holding new list of suggestions</div>
 </li>
 </ul>
-<a id="&lt;init&gt;(int,java.util.ArrayList,java.util.LinkedList)">
+<a id="&lt;init&gt;(java.util.ArrayList)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Refactoring</h4>
-<pre>public&nbsp;Refactoring&#8203;(int&nbsp;nSuggestions,
-                   java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;&nbsp;fileList,
-                   java.util.LinkedList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokenSequence)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>num</code> - - Number of refactors set by the CLP</dd>
-<dd><code>scf</code> - - Source code file being checked for refactoring opportunities</dd>
-</dl>
+<pre>public&nbsp;Refactoring&#8203;(java.util.ArrayList&lt;<a href="TokenSequence.html" title="class in edu.odu.cs.cs350">TokenSequence</a>&gt;&nbsp;suggestions)</pre>
+<div class="block">Creates refactoring object holding existing list of suggestions</div>
 </li>
 </ul>
 </li>
@@ -310,138 +268,78 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="setTokenSequence(java.util.LinkedList)">
+<a id="getSuggestions()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setTokenSequence</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setTokenSequence&#8203;(java.util.LinkedList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokenSequence)</pre>
+<h4>getSuggestions</h4>
+<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="TokenSequence.html" title="class in edu.odu.cs.cs350">TokenSequence</a>&gt;&nbsp;getSuggestions()</pre>
 </li>
 </ul>
-<a id="getTokenSequence()">
+<a id="getOpportunityForImprovement(java.util.ArrayList)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getTokenSequence</h4>
-<pre class="methodSignature">public&nbsp;java.util.LinkedList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;getTokenSequence()</pre>
-</li>
-</ul>
-<a id="setRefactoredTokens(java.util.LinkedList)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setRefactoredTokens</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setRefactoredTokens&#8203;(java.util.LinkedList&lt;java.lang.String&gt;&nbsp;tokens)</pre>
-</li>
-</ul>
-<a id="getRefactoredTokens()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getRefactoredTokens</h4>
-<pre class="methodSignature">public&nbsp;java.util.LinkedList&lt;java.lang.String&gt;&nbsp;getRefactoredTokens()</pre>
-</li>
-</ul>
-<a id="setNumRefactors(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setNumRefactors</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setNumRefactors&#8203;(int&nbsp;nSuggestions)</pre>
-</li>
-</ul>
-<a id="getNumRefactors()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getNumRefactors</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;getNumRefactors()</pre>
-</li>
-</ul>
-<a id="addFiles(edu.odu.cs.cs350.SourceCodeFile)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>addFiles</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addFiles&#8203;(<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;scf)</pre>
-</li>
-</ul>
-<a id="getSourceCodeFiles()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getSourceCodeFiles</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&gt;&nbsp;getSourceCodeFiles()</pre>
-</li>
-</ul>
-<a id="printRefactoredToString()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>printRefactoredToString</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;printRefactoredToString()</pre>
-</li>
-</ul>
-<a id="printRefactored()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>printRefactored</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;printRefactored()</pre>
-</li>
-</ul>
-<a id="findRefactored()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>findRefactored</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;findRefactored()
-                    throws java.lang.Exception</pre>
+<h4>getOpportunityForImprovement</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getOpportunityForImprovement&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence)</pre>
+<div class="block">Calculates the total tokens saved from all suggestions</div>
 <dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>testSequence</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>opportunity for improvement</dd>
 </dl>
 </li>
 </ul>
-<a id="addToken(edu.odu.cs.cs350.Token)">
+<a id="findDupSequences(java.util.ArrayList,edu.odu.cs.cs350.SourceCodeFile)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>addToken</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addToken&#8203;(<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&nbsp;tok)</pre>
+<h4>findDupSequences</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;findDupSequences&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence,
+                             <a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;testFile)</pre>
+<div class="block">Finds duplicate sequences and adds them to the list of suggested replacements</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>testSequence</code> - </dd>
+<dd><code>testFile</code> - </dd>
+</dl>
 </li>
 </ul>
-<a id="Dup_finder(java.util.List,java.util.List,java.io.File)">
+<a id="compareSequences(java.util.ArrayList,java.util.ArrayList)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>Dup_finder</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;Dup_finder&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;list,
-                       java.util.List&lt;java.lang.String&gt;&nbsp;duplicates,
-                       java.io.File&nbsp;directory)</pre>
+<h4>compareSequences</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Boolean&nbsp;compareSequences&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence,
+                                          java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;currentSequence)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>testSequence</code> - </dd>
+<dd><code>currentSequence</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if testSequence == currentSequence</dd>
+</dl>
 </li>
 </ul>
-<a id="isDuplicate(java.util.List,java.lang.String)">
+<a id="refactoringOutput(java.util.ArrayList,edu.odu.cs.cs350.SourceCodeFile)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>isDuplicate</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;isDuplicate&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;list,
-                           java.lang.String&nbsp;check)</pre>
+<h4>refactoringOutput</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;refactoringOutput&#8203;(java.util.ArrayList&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;testSequence,
+                              <a href="SourceCodeFile.html" title="class in edu.odu.cs.cs350">SourceCodeFile</a>&nbsp;testFile)</pre>
+<div class="block">Prints the suggested refactorings for a source file</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>testSequence</code> - </dd>
+<dd><code>testFile</code> - </dd>
+</dl>
 </li>
 </ul>
 </li>
