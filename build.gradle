@@ -86,7 +86,7 @@ task copyJbakeTemplates (type: Copy) {
     into 'build/tmp/website'
 }
 task buildHomePage (dependsOn: copyJbakeTemplates) {
-	 inputs.files ( 'build/tmp/website/content/home0.md', '../README.md')
+	 inputs.files ( 'build/tmp/website/content/home0.md', './README.md')
 	 outputs.file ( 'build/tmp/website/content/home.md' )
 	 doLast  {
 	     outputs.files.singleFile.withOutputStream { out ->
