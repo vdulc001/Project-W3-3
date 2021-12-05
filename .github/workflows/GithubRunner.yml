@@ -22,5 +22,5 @@ jobs:
       working-directory: .
       timeout-minutes: 3
       run: ./gradlew build tasks --all
-   - name: CloneWebpages
+    - name: CloneWebpages
       run: ./gradlew clonePages
