@@ -2,54 +2,30 @@ package edu.odu.cs.cs350;
 
 
 import java.util.ArrayList;
-//import java.util.LinkedList;
-//import javax.xml.transform.Source;
-//import java.io.Reader;
-//import java.util.List;
-//import java.io.File;
-//import java.io.FileReader;
-//import java.io.BufferedReader;
-//import java.io.FilterReader;
-//import java.io.IOException;
-
-
 
 public class Refactoring {
 
-	private ArrayList<Token> testSequence;
 	private ArrayList<TokenSequence> suggestions;
 	
 	public Refactoring () 
 	{
-		testSequence = new ArrayList<Token>();
 		suggestions = new ArrayList<TokenSequence>();
 	}
 	
-	public ArrayList<Token> getTestSequence() { return testSequence; }
-	public ArrayList<TokenSequence> getSuggestions() { return suggestions; }
-	
-	public int getOpportunityForImprovement () {return testSequence.size() * suggestions.size();}
-	
-	public void createTestSequence(SourceCodeFile firstFile)
+	public Refactoring (ArrayList<TokenSequence> suggestions)
 	{
-		for(int i = 0; i < firstFile.getTotalTokens(); i++)
-		{
-			if(firstFile.getTokens().get(i).getTokenType() == TokenKinds.SEMICOLON)
-			{
-				testSequence.add(firstFile.getTokens().get(i));
-				break;
-			}
-			else
-				testSequence.add(firstFile.getTokens().get(i));
-		}
+		for(int i = 0; i < suggestions.size(); i++)
+			this.suggestions.add(suggestions.get(i));
 	}
 	
-	public void findDupSequences(SourceCodeFile testFile)
+	public ArrayList<TokenSequence> getSuggestions() { return suggestions; }
+	
+	public int getOpportunityForImprovement (ArrayList<Token> testSequence) {return testSequence.size() * suggestions.size();}
+	
+	public void findDupSequences(ArrayList<Token> testSequence, SourceCodeFile testFile)
 	{
-		ArrayList<Token> testFileSequence = new ArrayList<Token>();
-		
+		ArrayList<Token> currentSequence = new ArrayList<Token>();
 		int i = 0;
-		//int cnt = 0;
 		
 		while(i < testFile.getTotalTokens())
 		{
@@ -58,57 +34,40 @@ public class Refactoring {
 			{
 				if(testFile.getTokens().get(j).getTokenType() == TokenKinds.SEMICOLON)
 				{
-					testFileSequence.add(testFile.getTokens().get(j));
+					currentSequence.add(testFile.getTokens().get(j));
 					break;
 				}
 				else
-					testFileSequence.add(testFile.getTokens().get(j));
+					currentSequence.add(testFile.getTokens().get(j));
 			}
 			
-			/*if(cnt == 0)
-			{
-				System.out.println("Opportunity " + getOpportunityForImprovement() + ", " + testSequence.size() + " tokens");
-				cnt++;
-			}*/
+			if(compareSequences(testSequence, currentSequence))
+				suggestions.add(new TokenSequence(currentSequence));
 			
-			if(compareSequences(testFileSequence))
-				suggestions.add(new TokenSequence(testFileSequence));
-			
-			//System.out.println(testFileSequence);
-			
-			testFileSequence.clear();
+			currentSequence.clear();
 			i = j+1;
 		}
 	}
 	
-	public Boolean compareSequences(ArrayList<Token> temp)
+	public Boolean compareSequences(ArrayList<Token> testSequence, ArrayList<Token> currentSequence)
 	{
-		if(testSequence.size() != temp.size())
+		if(testSequence.size() != currentSequence.size())
 			return false;
 		for(int i = 0; i < testSequence.size(); i++)
 		{
-			if(testSequence.get(i).getTokenType() != temp.get(i).getTokenType())
+			if(testSequence.get(i).getTokenType() != currentSequence.get(i).getTokenType())
 				return false;
 		}
 		return true;
 	}
 	
-	public void /*String*/ refactoringOutput(SourceCodeFile scf)
+	public void refactoringOutput(ArrayList<Token> testSequence, SourceCodeFile testFile)
 	{
-		System.out.println("Opportunity: " + getOpportunityForImprovement() + ", " + testSequence.size() + " tokens");
+		System.out.println("Opportunity: " + getOpportunityForImprovement(testSequence) + ", " + testSequence.size() + " tokens");
 		for(TokenSequence temp : suggestions)
 		{
-			System.out.println(scf.getPath() + ":" + temp.getTokenList().get(0).getLine() + ":" + temp.getTokenList().get(0).getColumn());
+			System.out.println(testFile.getPath() + ":" + temp.getTokenList().get(0).getLine() + ":" + temp.getTokenList().get(0).getColumn());
 			System.out.println(temp.toString());
 		}
-		
-		/*String output = "";
-		output += scf.getPath() + ": " + testFileSequence.get(0).getLine() + ", " + testFileSequence.get(0).getColumn() + "\n";
-		for(Token temp : testFileSequence)
-		{
-			if(temp.getLexeme() != "")
-				output += temp.getLexeme() + " ";
-		}
-		return output;*/
 	}
 }

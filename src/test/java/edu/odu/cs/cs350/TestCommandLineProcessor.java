@@ -81,7 +81,7 @@ public class TestCommandLineProcessor {
         fail("The test case is a prototype.");
     }
 
-    /**
+    /*
      * Test of findCppFiles method, of class CommandLineProcessor.
      */
     @Test
