@@ -116,10 +116,12 @@ public class CommandLineProcessor {
 	 */
 	public static void printListOfSourceCodeFiles()
 	{
+		System.out.println();
 		System.out.println("Files Scanned: ");
 		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath));
 		for(SourceCodeFile scf : filesList)
 			System.out.println(scf.getPath() + ", " + scf.getTotalTokens());
+		System.out.println();
 	}
 	
 	/**
