@@ -103,4 +103,23 @@ public class Refactoring {
 			System.out.println(temp.toString());
 		}
 	}
+
+    /**
+	 * Prints the suggested refactorings for a source file
+	 * @param testSequence
+	 * @param testFile
+     * @return outputString
+	 */
+	public String refactoringOutputToString(ArrayList<Token> testSequence, SourceCodeFile testFile)
+	{
+        String outputString = "";
+        outputString += "Opportunity: " + getOpportunityForImprovement(testSequence) + ", " + testSequence.size() + " tokens";
+		for(TokenSequence temp : suggestions)
+		{
+            outputString += "\n" + testFile.getPath() + ":" + temp.getTokenList().get(0).getLine() + ":" + temp.getTokenList().get(0).getColumn();
+            outputString += "\n " + temp.toString() + "\n";
+		}
+
+        return outputString;
+	}
 }

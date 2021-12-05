@@ -21,7 +21,9 @@ public class TestRefactor {
     SourceCodeFile scf2 = new SourceCodeFile("src/test/data/test1.h");
     SourceCodeFile scf3 = new SourceCodeFile("src/test/data/test2.cpp");
     ArrayList<SourceCodeFile> listOfFiles = new ArrayList<SourceCodeFile>();
+	private static ArrayList<Token> testSequence = new ArrayList<Token>();
 
+    /*
     @Test
     void testMutators(){
         Token tok1 = new Token(TokenKinds.INT, 10, 5);
@@ -52,6 +54,7 @@ public class TestRefactor {
         //refactor.setNumRefactors(5);
         //assertEquals(refactor.getNumRefactors(), 5);
     }
+    */
 
     @Test
     void testSingleRefactoringFound(){
@@ -75,8 +78,28 @@ public class TestRefactor {
     }
     
     @Test
-    void testMultipleRefactoringsFound(){
+    void testOutput(){
+        Refactoring refactor = new Refactoring();
 
+        Token tok1 = new Token(TokenKinds.INT, 10, 5);
+        Token tok2 = new Token(TokenKinds.IDENTIFIER, 10, 9);
+        Token tok3 = new Token(TokenKinds.OPERATOR, 10, 11);
+        Token tok4 = new Token(TokenKinds.INTEGER_LITERAL, 10, 13);
+
+        Token tok6 = new Token(TokenKinds.SEMICOLON, 10, 14);
+        Token tok7 = new Token(TokenKinds.SEMICOLON, 10, 14);
+
+        assertEquals(refactor.refactoringOutputToString(testSequence, scf3),
+                        "Opportunity 24, 8 tokens\n" +
+                        scf3.getPath() + ":" + tok1.getLine() + ":" + tok1.getColumn() + "\na 4\n" +
+                        scf3.getPath() + ":" + tok2.getLine() + ":" + tok2.getColumn() + "\nb 5\n" +
+                        scf3.getPath() + ":" + tok3.getLine() + ":" + tok3.getColumn() + "\nc 3\n" +
+                        scf3.getPath() + ":" + tok4.getLine() + ":" + tok4.getColumn() + "\nd 8\n");
+
+        assertEquals(refactor.refactoringOutputToString(testSequence, scf1),
+                        "Opportunity 12, 6 tokens\n" +
+                        scf1.getPath() + ":" + tok6.getLine() + ":" + tok6.getColumn() + "\nx a b\n" +
+                        scf1.getPath() + ":" + tok7.getLine() + ":" + tok7.getColumn() + "\ny c d\n");
     }
     
     @Test
