@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import edu.odu.cs.cs350.sharedphrases.*;
+
 import javax.xml.transform.Source;
 
 import org.junit.jupiter.api.Test;

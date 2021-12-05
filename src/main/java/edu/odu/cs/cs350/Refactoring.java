@@ -16,7 +16,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import edu.odu.cs.cs350.sharedphrases.*;
-import edu.odu.cs.cs350.sharedphrases.Token;
 
 public class Refactoring {
 
@@ -61,20 +60,26 @@ public class Refactoring {
         SharedPhrases phrases = new SharedPhrases();
 
         for(SourceCodeFile scf: filesToCheck){
+            
             try{
-                phrases.addSentence(TokenEncoding.encode(scf.getTokens()), scf.getPath()); 
+                String encodedString = TokenEncoding.encode(scf.getTokens());
+                phrases.addSentence(encodedString, scf.getPath()); 
             }
             catch(IllegalTokenKindException e){
                 System.out.println("Error Refactoring: " + e.getMessage());
             }
         }
 
+        int i = 0;
         for (CharSequence p: phrases.allPhrases()) {
+            if(i == 5){break;}
             for (String source: phrases.sourcesOf((String)p)) {
                 System.out.print (source + ": ");
                 System.out.print (p);
                 System.out.println();
             }
+
+            i++;
         }
     }
 
