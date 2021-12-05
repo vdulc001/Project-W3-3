@@ -74,9 +74,8 @@ public class Refactoring {
         for (CharSequence p: phrases.allPhrases()) {
             if(i == 5){break;}
             for (String source: phrases.sourcesOf((String)p)) {
-                System.out.print (source + ": ");
-                System.out.print (p);
-                System.out.println();
+                System.out.println(source + ": ");
+                System.out.println(p);
             }
 
             i++;
@@ -85,6 +84,32 @@ public class Refactoring {
 
     public String printRefactoredToString(){
         String s = "";
+
+        int opportunity = 0;
+        System.out.println("\nOpportunity " + opportunity + ", " + tokenCount + " tokens");
+
+        SharedPhrases phrases = new SharedPhrases();
+
+        for(SourceCodeFile scf: filesToCheck){
+            
+            try{
+                String encodedString = TokenEncoding.encode(scf.getTokens());
+                phrases.addSentence(encodedString, scf.getPath()); 
+            }
+            catch(IllegalTokenKindException e){
+                System.out.println("Error Refactoring: " + e.getMessage());
+            }
+        }
+
+        int i = 0;
+        for (CharSequence p: phrases.allPhrases()) {
+            if(i == 5){break;}
+            for (String source: phrases.sourcesOf((String)p)) {
+                s = s + source + ": " + p + "\n";
+            }
+
+            i++;
+        }
 
         return s;
     }
