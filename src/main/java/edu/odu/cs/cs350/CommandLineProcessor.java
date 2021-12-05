@@ -64,7 +64,7 @@ public class CommandLineProcessor {
 			{
 				if(scf.getFile().isDirectory())
 					directoriesList.add(scf);
-				else
+				else if(scf.getPath().endsWith(".cpp") || scf.getPath().endsWith(".h"))
 					filesList.add(scf);
 			}
 		}
@@ -80,7 +80,8 @@ public class CommandLineProcessor {
 		{
 			searchForDirectories(dir.getFile().listFiles(), 0, pathsToDirectories);
 			for(String path : pathsToDirectories)
-				filesList.add(new SourceCodeFile(path));
+				if(path.endsWith(".cpp") || path.endsWith(".h"))
+					filesList.add(new SourceCodeFile(path));
 		}
 	}
 	
@@ -108,12 +109,10 @@ public class CommandLineProcessor {
 	 */
 	public static void printListOfSourceCodeFiles()
 	{
-		System.out.println();
 		System.out.println("Files Scanned: ");
-		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath)); // put in alphabetical orer
+		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath));
 		for(SourceCodeFile scf : filesList)
 			System.out.println(scf.getPath() + ", " + scf.getTotalTokens());
-		System.out.println();
 	}
 	
 	/**
@@ -149,4 +148,5 @@ public class CommandLineProcessor {
 		}
 		System.out.println("Printed " + i + " of " + nSuggestions + " suggestions");
 	}
+
 }
