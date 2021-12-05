@@ -71,10 +71,11 @@ public class Refactoring {
     }
 
     public void encodeTokens(SourceCodeFile scf, SharedPhrases phrases) throws IllegalTokenKindException{
+        for(edu.odu.cs.cs350.Token tok: scf.getTokens()){
+            encodedTokens.add(tok.getTokenType());
+        }
 
-        List<? extends edu.odu.cs.cs350.sharedphrases.Token> tokenList = scf.getTokens();
-
-        phrases.addSentence(TokenEncoding.encode(tokenList), "fds");
+        phrases.addSentence(TokenEncoding.encode(encodedTokens), "fds");
     }
 
     // utility to populate a list with duplicates and print to screen
