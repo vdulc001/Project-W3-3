@@ -22,7 +22,3 @@ jobs:
       working-directory: .
       timeout-minutes: 3
       run: ./gradlew build tasks --all
-    - name: Bake Website
-      run: ./gradlew bake
-    - name: deploy Website
-      run: ./gradlew deployWebsite
