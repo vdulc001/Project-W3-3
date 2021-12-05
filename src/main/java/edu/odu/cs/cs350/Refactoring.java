@@ -1,13 +1,10 @@
 package edu.odu.cs.cs350;
 
 import java.util.List;
-<<<<<<< HEAD
 
 import javax.xml.transform.Source;
 
 import java.util.ArrayList;
-=======
->>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
 
 import javax.print.PrintException;
 
