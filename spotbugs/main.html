@@ -1,0 +1,498 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>SpotBugs Report</title>
+      <style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+				color: red;
+				font-weight: bold;
+		}
+		.priority-2 {
+				color: orange;
+				font-weight: bold;
+		}
+		.priority-3 {
+				color: green;
+				font-weight: bold;
+		}
+		.priority-4 {
+				color: blue;
+				font-weight: bold;
+		}
+		</style>
+      <script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+   </head>
+   <body>
+      <h1>
+         <a href="https://spotbugs.github.io/">SpotBugs</a> Report</h1>
+      <h2>Project Information</h2>
+      <p>Project: 
+		Project-W3-3 (spotbugsMain)</p>
+      <p>SpotBugs version: 4.1.1</p>
+      <p>Code analyzed:</p>
+      <ul>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/SourceCodeFile.class</li>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/TokenStream.class</li>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/Token.class</li>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/TokenSequence.class</li>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/GeneratedScanner.class</li>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/CommandLineProcessor.class</li>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/Refactoring.class</li>
+         <li>/home/runner/work/Project-W3-3/Project-W3-3/build/classes/java/main/edu/odu/cs/cs350/TokenKinds.class</li>
+      </ul>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Metrics</h2>
+      <p>1030 lines of code analyzed,
+	in 8 classes, 
+	in 1 packages.</p>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Metric</th>
+            <th align="right">Total</th>
+            <th align="right">Density*</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>High Priority Warnings</td>
+            <td align="right">5</td>
+            <td align="right">4.85</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>Medium Priority Warnings</td>
+            <td align="right">12</td>
+            <td align="right">11.65</td>
+         </tr>
+         <tr class="$totalClass">
+            <td>
+               <b>Total Warnings</b>
+            </td>
+            <td align="right">
+               <b>17</b>
+            </td>
+            <td align="right">
+               <b>16.50</b>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+      </p>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Contents</h2>
+      <ul>
+         <li>
+            <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+         </li>
+         <li>
+            <a href="#Details">Details</a>
+         </li>
+      </ul>
+      <h1>Summary</h1>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Warning Type</th>
+            <th align="right">Number</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+            </td>
+            <td align="right">1</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+            </td>
+            <td align="right">4</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </td>
+            <td align="right">12</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <b>Total</b>
+            </td>
+            <td align="right">
+               <b>17</b>
+            </td>
+         </tr>
+      </table>
+      <h1>Warnings</h1>
+      <p>Click on a warning row to see full context information.</p>
+      <h2>
+         <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e271');">
+            <td>
+               <span class="priority-2">ES</span>
+            </td>
+            <td>Comparison of String objects using == or != in edu.odu.cs.cs350.TokenSequence.toString()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e271" style="display: none;">
+                  <a href="#ES_COMPARING_STRINGS_WITH_EQ">Bug type ES_COMPARING_STRINGS_WITH_EQ (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.TokenSequence<br/>In method edu.odu.cs.cs350.TokenSequence.toString()<br/>Actual type String<br/>String constant ""<br/>Return value of edu.odu.cs.cs350.Token.getLexeme() of type String<br/>At TokenSequence.java:[line 35]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_PERFORMANCE">Performance Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e219');">
+            <td>
+               <span class="priority-2">UrF</span>
+            </td>
+            <td>Unread field: edu.odu.cs.cs350.GeneratedScanner.string</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e219" style="display: none;">
+                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>Field edu.odu.cs.cs350.GeneratedScanner.string<br/>At GeneratedScanner.java:[line 1124]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e232');">
+            <td>
+               <span class="priority-2">UrF</span>
+            </td>
+            <td>Unread field: edu.odu.cs.cs350.GeneratedScanner.yychar</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e232" style="display: none;">
+                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>Field edu.odu.cs.cs350.GeneratedScanner.yychar<br/>At GeneratedScanner.java:[line 1271]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e245');">
+            <td>
+               <span class="priority-2">UrF</span>
+            </td>
+            <td>Unread field: edu.odu.cs.cs350.GeneratedScanner.zzAtBOL</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e245" style="display: none;">
+                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>Field edu.odu.cs.cs350.GeneratedScanner.zzAtBOL<br/>At GeneratedScanner.java:[line 1116]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e258');">
+            <td>
+               <span class="priority-2">UrF</span>
+            </td>
+            <td>Unread field: edu.odu.cs.cs350.GeneratedScanner.zzEOFDone</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e258" style="display: none;">
+                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>Field edu.odu.cs.cs350.GeneratedScanner.zzEOFDone<br/>At GeneratedScanner.java:[line 1250]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_STYLE">Dodgy code Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e110');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to offset in edu.odu.cs.cs350.GeneratedScanner.zzUnpackAction()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e110" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>In method edu.odu.cs.cs350.GeneratedScanner.zzUnpackAction()<br/>Local variable named offset<br/>At GeneratedScanner.java:[line 360]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e128');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to offset in edu.odu.cs.cs350.GeneratedScanner.zzUnpackAttribute()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e128" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>In method edu.odu.cs.cs350.GeneratedScanner.zzUnpackAttribute()<br/>Local variable named offset<br/>At GeneratedScanner.java:[line 1048]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e146');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to offset in edu.odu.cs.cs350.GeneratedScanner.zzUnpackRowMap()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e146" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>In method edu.odu.cs.cs350.GeneratedScanner.zzUnpackRowMap()<br/>Local variable named offset<br/>At GeneratedScanner.java:[line 458]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e164');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to offset in edu.odu.cs.cs350.GeneratedScanner.zzUnpackTrans()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e164" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>In method edu.odu.cs.cs350.GeneratedScanner.zzUnpackTrans()<br/>Local variable named offset<br/>At GeneratedScanner.java:[line 996]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e183');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to offset in edu.odu.cs.cs350.GeneratedScanner.zzUnpackcmap_blocks()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e183" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>In method edu.odu.cs.cs350.GeneratedScanner.zzUnpackcmap_blocks()<br/>Local variable named offset<br/>At GeneratedScanner.java:[line 303]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e201');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to offset in edu.odu.cs.cs350.GeneratedScanner.zzUnpackcmap_top()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e201" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.GeneratedScanner<br/>In method edu.odu.cs.cs350.GeneratedScanner.zzUnpackcmap_top()<br/>Local variable named offset<br/>At GeneratedScanner.java:[line 62]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e14');">
+            <td>
+               <span class="priority-2">NP</span>
+            </td>
+            <td>Possible null pointer dereference in edu.odu.cs.cs350.CommandLineProcessor.findFilesInNestedDirectories() due to return value of called method</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e14" style="display: none;">
+                  <a href="#NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE">Bug type NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.CommandLineProcessor<br/>In method edu.odu.cs.cs350.CommandLineProcessor.findFilesInNestedDirectories()<br/>Local variable stored in JVM register ?<br/>Method invoked at CommandLineProcessor.java:[line 88]<br/>Known null at CommandLineProcessor.java:[line 88]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e30');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field edu.odu.cs.cs350.CommandLineProcessor.directoriesList from instance method new edu.odu.cs.cs350.CommandLineProcessor()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e30" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.CommandLineProcessor<br/>In method new edu.odu.cs.cs350.CommandLineProcessor()<br/>Field edu.odu.cs.cs350.CommandLineProcessor.directoriesList<br/>At CommandLineProcessor.java:[line 25]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e46');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field edu.odu.cs.cs350.CommandLineProcessor.filesList from instance method new edu.odu.cs.cs350.CommandLineProcessor()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e46" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.CommandLineProcessor<br/>In method new edu.odu.cs.cs350.CommandLineProcessor()<br/>Field edu.odu.cs.cs350.CommandLineProcessor.filesList<br/>At CommandLineProcessor.java:[line 24]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e62');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field edu.odu.cs.cs350.CommandLineProcessor.nSuggestions from instance method new edu.odu.cs.cs350.CommandLineProcessor()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e62" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.CommandLineProcessor<br/>In method new edu.odu.cs.cs350.CommandLineProcessor()<br/>Field edu.odu.cs.cs350.CommandLineProcessor.nSuggestions<br/>At CommandLineProcessor.java:[line 23]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e78');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field edu.odu.cs.cs350.CommandLineProcessor.testSequence from instance method new edu.odu.cs.cs350.CommandLineProcessor()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e78" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.CommandLineProcessor<br/>In method new edu.odu.cs.cs350.CommandLineProcessor()<br/>Field edu.odu.cs.cs350.CommandLineProcessor.testSequence<br/>At CommandLineProcessor.java:[line 26]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e94');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field edu.odu.cs.cs350.CommandLineProcessor.nSuggestions from instance method edu.odu.cs.cs350.CommandLineProcessor.setnSuggestions(int)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e94" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class edu.odu.cs.cs350.CommandLineProcessor<br/>In method edu.odu.cs.cs350.CommandLineProcessor.setnSuggestions(int)<br/>Field edu.odu.cs.cs350.CommandLineProcessor.nSuggestions<br/>At CommandLineProcessor.java:[line 31]</p>
+            </td>
+         </tr>
+      </table>
+      <h1>
+         <a name="Details">Details</a>
+      </h1>
+      <h2>
+         <a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+      </h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    <h2>
+         <a name="ES_COMPARING_STRINGS_WITH_EQ">ES_COMPARING_STRINGS_WITH_EQ: Comparison of String objects using == or !=</a>
+      </h2>
+
+  <p>This code compares <code>java.lang.String</code> objects for reference
+equality using the == or != operators.
+Unless both strings are either constants in a source file, or have been
+interned using the <code>String.intern()</code> method, the same string
+value may be represented by two different String objects. Consider
+using the <code>equals(Object)</code> method instead.</p>
+
+    <h2>
+         <a name="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE">NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE: Possible null pointer dereference due to return value of called method</a>
+      </h2>
+      
+<p> The return value from a method is dereferenced without a null check,
+and the return value of that method is one that should generally be checked
+for null.  This may lead to a <code>NullPointerException</code> when the code is executed.
+</p>
+      
+   <h2>
+         <a name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD: Write to static field from instance method</a>
+      </h2>
+
+  <p> This instance method writes to a static field. This is tricky to get
+correct if multiple instances are being manipulated,
+and generally bad practice.
+</p>
+
+    <h2>
+         <a name="URF_UNREAD_FIELD">URF_UNREAD_FIELD: Unread field</a>
+      </h2>
+
+  <p> This field is never read.&nbsp; Consider removing it from the class.</p>
+
+    </body>
+</html>
