@@ -57,18 +57,13 @@ public class Refactoring {
         return filesToCheck;
     }
 
-<<<<<<< HEAD
     public void printRefactored() throws IllegalTokenKindException{
-=======
-    public void printRefactored() throws NoClassDefFoundError, IllegalTokenKindException{
->>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
         int opportunity = 0;
         System.out.println("\nOpportunity " + opportunity + ", " + tokenCount + " tokens");
 
         SharedPhrases phrases = new SharedPhrases();
 
         for(SourceCodeFile scf: filesToCheck){
-<<<<<<< HEAD
             try{
                 phrases.addSentence(TokenEncoding.encode(scf.getTokens()), scf.getPath()); 
             }
@@ -90,27 +85,6 @@ public class Refactoring {
         String s = "";
 
         return s;
-=======
-            encodeTokens(scf, phrases);
-        }
-
-        for (CharSequence p: phrases.allPhrases()) {
-            System.out.print (p + ": ");
-            for (String source: phrases.sourcesOf(p.toString())) {
-                System.out.print (source);
-            }
-            System.out.println();
-        }
-         
-    }
-
-    public void encodeTokens(SourceCodeFile scf, SharedPhrases phrases) throws IllegalTokenKindException{
-        for(edu.odu.cs.cs350.Token tok: scf.getTokens()){
-            encodedTokens.add(tok.getTokenType());
-        }
-
-        phrases.addSentence(TokenEncoding.encode(encodedTokens), "fds");
->>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
     }
 
     // utility to populate a list with duplicates and print to screen

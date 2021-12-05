@@ -64,19 +64,11 @@ public class CommandLineProcessor {
 		printListOfSourceCodeFiles();
 
 		Refactoring refactor = new Refactoring(nSuggestions, filesList);
-<<<<<<< HEAD
-=======
-
->>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
 		try{
 			refactor.printRefactored();
 		}
 		catch(IllegalTokenKindException e){
-<<<<<<< HEAD
 			System.out.println("Error CLP: " + e.getMessage());
-=======
-			
->>>>>>> 95725ca60dcc93bf8e6c6c9241ea38bc0f91ba64
 		}
 
 
