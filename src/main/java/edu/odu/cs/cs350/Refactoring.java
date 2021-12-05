@@ -54,28 +54,27 @@ public class Refactoring {
         int opportunity = 0;
         System.out.println("Opportunity " + opportunity + ", " + tokenCount + " tokens");
 
-        try{
-            SharedPhrases phrases = new SharedPhrases();
-        }
-        catch(NoClassDefFoundError e){
-            SharedPhrases phrases = new SharedPhrases();
-        }
+        SharedPhrases phrases = new SharedPhrases();
 
         for(SourceCodeFile scf: filesToCheck){
-            encodeTokens(scf);
-
-            try{
-                String s = TokenEncoding.encode(encodedTokens);
-            }
-            catch(IllegalTokenKindException e){
-            }
+            encodeTokens(scf, phrases);
         }
+
+        for (CharSequence p: phrases.allPhrases()) {
+            System.out.print (p + ": ");
+            for (String source: phrases.sourcesOf(p.toString())) {
+                System.out.print (source);
+            }
+            System.out.println();
+        }
+         
     }
 
-    public void encodeTokens(SourceCodeFile scf){
-        List<edu.odu.cs.cs350.Token> tokenList = scf.getTokens();
+    public void encodeTokens(SourceCodeFile scf, SharedPhrases phrases) throws IllegalTokenKindException{
 
-        encodedTokens = (List<? extends edu.odu.cs.cs350.sharedphrases.Token>) tokenList;
+        List<? extends edu.odu.cs.cs350.sharedphrases.Token> tokenList = scf.getTokens();
+
+        phrases.addSentence(TokenEncoding.encode(tokenList), "fds");
     }
 
     // utility to populate a list with duplicates and print to screen
