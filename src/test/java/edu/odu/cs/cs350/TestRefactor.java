@@ -1,18 +1,11 @@
 package edu.odu.cs.cs350;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
+import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Arrays;
-
-import javax.xml.transform.Source;
-
 import org.junit.jupiter.api.Test;
 
 public class TestRefactor {
@@ -30,27 +23,20 @@ public class TestRefactor {
         Token tok3 = new Token(TokenKinds.OPERATOR, 10, 11);
         Token tok4 = new Token(TokenKinds.INTEGER_LITERAL, 10, 13);
         Token tok5 = new Token(TokenKinds.SEMICOLON, 10, 14);
-        LinkedList<Token> tokenSequence = new LinkedList<Token>(Arrays.asList(tok1, tok2, tok3, tok4, tok5));
-        LinkedList<String> refactoredTokens = new LinkedList<String>();
-        listOfFiles.add(scf3);
-
-        //Refactoring refactor = new Refactoring(0, listOfFiles, tokenSequence);
-
-        //assertEquals(refactor.getTokenSequence(), tokenSequence);
-
-        //refactor.setRefactoredTokens(refactoredTokens);
-        //assertEquals(refactor.getRefactoredTokens(), refactoredTokens);
-
-        //assertEquals(refactor.getNumRefactors(), 0);
-        //assertEquals(refactor.getSourceCodeFiles(), listOfFiles);
-
-
-        //refactor.addFiles(scf2);
-        listOfFiles.add(scf2);
-        //assertEquals(refactor.getSourceCodeFiles(), listOfFiles);
-
-        //refactor.setNumRefactors(5);
-        //assertEquals(refactor.getNumRefactors(), 5);
+        
+        ArrayList<Token> tokenList1 = new ArrayList<Token>(Arrays.asList(tok1, tok2));
+        ArrayList<Token> tokenList2 = new ArrayList<Token>(Arrays.asList(tok3, tok4, tok5));
+        ArrayList<TokenSequence> ts1 = new ArrayList<TokenSequence>();
+        ts1.add(new TokenSequence(tokenList1));
+        ts1.add(new TokenSequence(tokenList2));
+        
+        Refactoring refactor = new Refactoring();
+        assertTrue(refactor.getSuggestions().isEmpty());
+        assertEquals(refactor.getSuggestions().size(), 0);
+        refactor.setSuggestions(ts1);
+        assertFalse(refactor.getSuggestions().isEmpty());
+        assertEquals(refactor.getSuggestions().size(), 2);
+        
     }
 
     @Test
@@ -86,7 +72,7 @@ public class TestRefactor {
         Token tok6 = new Token(TokenKinds.SEMICOLON, 10, 14);
         Token tok7 = new Token(TokenKinds.SEMICOLON, 10, 14);
 
-        assertEquals(refactor.refactoringOutputToString(testSequence, scf3),
+        /*assertEquals(refactor.refactoringOutputToString(testSequence, scf3),
                         "Opportunity 24, 8 tokens\n" +
                         scf3.getPath() + ":" + tok1.getLine() + ":" + tok1.getColumn() + "\na 4\n" +
                         scf3.getPath() + ":" + tok2.getLine() + ":" + tok2.getColumn() + "\nb 5\n" +
@@ -96,7 +82,7 @@ public class TestRefactor {
         assertEquals(refactor.refactoringOutputToString(testSequence, scf1),
                         "Opportunity 12, 6 tokens\n" +
                         scf1.getPath() + ":" + tok6.getLine() + ":" + tok6.getColumn() + "\nx a b\n" +
-                        scf1.getPath() + ":" + tok7.getLine() + ":" + tok7.getColumn() + "\ny c d\n");
+                        scf1.getPath() + ":" + tok7.getLine() + ":" + tok7.getColumn() + "\ny c d\n");*/
     }
     
     @Test

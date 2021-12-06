@@ -21,16 +21,14 @@ public class Refactoring {
 		suggestions = new ArrayList<TokenSequence>();
 	}
 	
-	/**
-	 * Creates refactoring object holding existing list of suggestions
-	 */
-	public Refactoring (ArrayList<TokenSequence> suggestions)
-	{
-		for(int i = 0; i < suggestions.size(); i++)
-			this.suggestions.add(suggestions.get(i));
-	}
-	
 	public ArrayList<TokenSequence> getSuggestions() { return suggestions; }
+	
+	public void setSuggestions(ArrayList<TokenSequence> sgtns)
+	{
+		suggestions.clear();
+		for(int i = 0; i < sgtns.size(); i++)
+			suggestions.add(sgtns.get(i));
+	}
 	
 	/**
 	 * Calculates the total tokens saved from all suggestions
