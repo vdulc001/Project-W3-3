@@ -11,28 +11,69 @@ public class Token {
 	private TokenKinds tokenType;
 	private int line;
 	private int column;
+<<<<<<< HEAD
 	private int tokenStart;
 	private int tokenLength;
+=======
+>>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 	
-	
-	//create a token with no lexeme
+	/**
+	 * Creates a token without a lexeme
+	 * @param theTokenType
+	 * @param lineNum
+	 * @param columnNum
+	 */
 	public Token(final TokenKinds theTokenType, final int lineNum, final int columnNum) {
-		this.lexeme = "";
-		this.tokenType = theTokenType;
-		this.line = lineNum;
-		this.column = columnNum;
-	}
-	
-	//create a token
-	public Token(final TokenKinds theTokenType, int lineNum, int columnNum, final String theLexeme) {
-		this.lexeme = theLexeme;
-		this.tokenType = theTokenType;
-		this.line = lineNum;
-		this.column = columnNum;
+		lexeme = "";
+		tokenType = theTokenType;
+		line = lineNum;
+		column = columnNum;
 	}
 	
 	/**
-	 * representation of the token for debugging
+	 * Creates a token with a lexeme
+	 * @param theTokenType
+	 * @param lineNum
+	 * @param columnNum
+	 * @param theLexeme
+	 */
+	public Token(final TokenKinds theTokenType, int lineNum, int columnNum, final String theLexeme) {
+		lexeme = theLexeme;
+		tokenType = theTokenType;
+		line = lineNum;
+		column = columnNum;
+	}
+	
+	/**
+	 * @return type of the token
+	 */
+	public final TokenKinds getTokenType() {
+		return tokenType;
+	}
+	
+	/**
+	 * @return lexeme, character string associated with the token
+	 */
+	public String getLexeme() {
+		return lexeme;
+	}
+	
+	/**
+	 * @return line number on which token starts
+	 */
+	public int getLine() {
+		return line;
+	}
+	
+	/**
+	 * @return column number on which token starts
+	 */
+	public int getColumn() {
+		return column;
+	}
+	
+	/**
+	 * Prints token by tokenType and lexeme
 	 */
 	@Override
 	public final String toString() {
@@ -43,6 +84,7 @@ public class Token {
 		}
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * @return the type of token
 	 */
@@ -86,5 +128,7 @@ public class Token {
 		return this.tokenLength;
 	}
 	
+=======
+>>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 }
 

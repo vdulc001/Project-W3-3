@@ -17,51 +17,51 @@ public class CommandLineProcessor {
     private static int nSuggestions;
     private static ArrayList<SourceCodeFile> filesList = new ArrayList<SourceCodeFile>();
 	private static ArrayList<SourceCodeFile> directoriesList = (ArrayList)filesList.clone();
+	private static ArrayList<Token> testSequence = new ArrayList<Token>();
 
-	/**
-	 * Construct a CLP object with number of refactoring suggestions and list of source code files
-	 * @param num - number of refactoring suggestions
-	 * @param list - list of source code files
-	 */
-	public CommandLineProcessor(int num, ArrayList<SourceCodeFile> list){
-		nSuggestions = num;
-		filesList = list;
+	public CommandLineProcessor(/*int num, ArrayList<SourceCodeFile> list*/){
+		nSuggestions = 0;
+		filesList = new ArrayList<SourceCodeFile>();
+		directoriesList = new ArrayList<SourceCodeFile>();
+		testSequence = new ArrayList<Token>();
+		
 	}
 	
 	public void setnSuggestions(int num){
 		nSuggestions = num;
 	}
 
-	/**
-	 * @return number of refactoring suggestions the user desires
-	 */
 	public int getnSuggestions(){
 		return nSuggestions;
 	}
 
-	/**
-	 * @return the list of C++ files found by the program;
-	 * 			includes files inputted by the user in the CLI
-	 * 			and files found in subdirectories by the program
-	 */
 	public ArrayList<SourceCodeFile> getFileList(){
 		return filesList;
 	}
+	
+	public ArrayList<Token> getTestSequence(){
+		return testSequence;
+	}
 
-    /**
-	 * TODO Finds C++ files in every directory and subdirectory
-	 */
     public void findCppFiles() {}
 
 	public static void main(String[] args) {
 		
-		nSuggestions = Integer.parseInt(args[0]);
+		nSuggestions = Integer.parseInt(args[0]); // set number of suggestions to be printed
 		readInSourceCodeFiles(args);
 		findFilesInNestedDirectories();
 		printListOfSourceCodeFiles();
 		
+		Refactoring r = new Refactoring();
+		createTestSequence(filesList.get(0)); // create a sequence of tokens for comparisons
+		refactor(r);						  // find and print suggestions from each file
+		
 	}
 	
+	/**
+	 * Reads in list of source code files from the command line
+	 * @param args
+	 */
 	public static void readInSourceCodeFiles(String[] args)
 	{
 		for(String path : args)
@@ -71,12 +71,15 @@ public class CommandLineProcessor {
 			{
 				if(scf.getFile().isDirectory())
 					directoriesList.add(scf);
-				else
+				else if(scf.getPath().endsWith(".cpp") || scf.getPath().endsWith(".h"))
 					filesList.add(scf);
 			}
 		}
 	}
 	
+	/**
+	 * Finds files in nested directories and add them to filesList
+	 */
 	public static void findFilesInNestedDirectories()
 	{
 		ArrayList<String> pathsToDirectories = new ArrayList<String>();
@@ -84,10 +87,17 @@ public class CommandLineProcessor {
 		{
 			searchForDirectories(dir.getFile().listFiles(), 0, pathsToDirectories);
 			for(String path : pathsToDirectories)
-				filesList.add(new SourceCodeFile(path));
+				if(path.endsWith(".cpp") || path.endsWith(".h"))
+					filesList.add(new SourceCodeFile(path));
 		}
 	}
 	
+	/**
+	 * Searches for directories within filesList and adds them to directoriesList, used by findFilesInNestedDirectories()
+	 * @param files
+	 * @param index
+	 * @param pathsToDirectories
+	 */
 	public static void searchForDirectories(File[] files, int index, ArrayList<String> pathsToDirectories)
 	{
 		if(index == files.length)
@@ -101,11 +111,53 @@ public class CommandLineProcessor {
 		searchForDirectories(files,++index, pathsToDirectories);
 	}
 	
+<<<<<<< HEAD
+=======
+	/**
+	 * Prints path and total number of tokens for all source code files in filesList
+	 */
+>>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 	public static void printListOfSourceCodeFiles()
 	{
+		System.out.println();
 		System.out.println("Files Scanned: ");
 		Collections.sort(filesList, Comparator.comparing(SourceCodeFile::getPath));
 		for(SourceCodeFile scf : filesList)
-			System.out.println(scf.getPath() + ", " + scf.calculateTotalTokens());
+			System.out.println(scf.getPath() + ", " + scf.getTotalTokens());
+		System.out.println();
+	}
+	
+	/**
+	 * Creates sequence of tokens for comparisons
+	 * @param file
+	 */
+	public static void createTestSequence(SourceCodeFile file)
+	{
+		for(int i = 0; i < file.getTotalTokens(); i++)
+		{
+			if(file.getTokens().get(i).getTokenType() == TokenKinds.SEMICOLON)
+			{
+				testSequence.add(file.getTokens().get(i));
+				break;
+			}
+			else
+				testSequence.add(file.getTokens().get(i));
+		}
+	}
+	
+	/**
+	 * Finds duplicate sequences within a file and prints out the suggestions (lexemes) for replacement
+	 */
+	public static void refactor(Refactoring r) 
+	{
+		int i;
+		for(i = 0; i < nSuggestions && i < filesList.size(); i++)
+		{
+			r.findDupSequences(testSequence, filesList.get(i));
+			r.refactoringOutput(testSequence, filesList.get(i));
+			r.getSuggestions().clear();
+			System.out.println();
+		}
+		System.out.println("Printed " + i + " of " + nSuggestions + " suggestions");
 	}
 }
