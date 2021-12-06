@@ -7,7 +7,7 @@
     <span class="menuBlockHeader">Project Info</span>
 	<ul>
       <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>javadoc/index.html">API (Javadoc)</a></li>
-      <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>junit.html">UnitTest (Junit)</a></li>
+      <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>tests/test/index.html>UnitTest (Junit)</a></li>
       <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>dependencies.html">Dependencies</a></li>
       <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>spotbugs/main.html">SpotCheck (Static Analysis)</a></li>
       
