@@ -2,6 +2,7 @@ package edu.odu.cs.cs350;
 
 import edu.odu.cs.cs350.*;
 
+
 import java.io.File;
 
 
@@ -23,6 +24,10 @@ public void SetCurrentfile()
 	SourceCodeFile.getFile();
 }
 
+public DetectSimilarTokens() {
+  SharedPhrases phrases = new SharedPhrases();
+  SourceCodeFile.
+}
 
 
 
