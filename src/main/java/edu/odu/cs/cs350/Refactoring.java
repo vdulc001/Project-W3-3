@@ -11,10 +11,6 @@ import java.util.ArrayList;
  */
 public class Refactoring {
 
-<<<<<<< HEAD
-    private int numRefactors;
-    private static ArrayList<SourceCodeFile> fileList = new ArrayList<SourceCodeFile>();
-=======
 	private ArrayList<TokenSequence> suggestions;
 	
 	/**
@@ -25,16 +21,14 @@ public class Refactoring {
 		suggestions = new ArrayList<TokenSequence>();
 	}
 	
-	/**
-	 * Creates refactoring object holding existing list of suggestions
-	 */
-	public Refactoring (ArrayList<TokenSequence> suggestions)
-	{
-		for(int i = 0; i < suggestions.size(); i++)
-			this.suggestions.add(suggestions.get(i));
-	}
-	
 	public ArrayList<TokenSequence> getSuggestions() { return suggestions; }
+	
+	public void setSuggestions(ArrayList<TokenSequence> sgtns)
+	{
+		suggestions.clear();
+		for(int i = 0; i < sgtns.size(); i++)
+			suggestions.add(sgtns.get(i));
+	}
 	
 	/**
 	 * Calculates the total tokens saved from all suggestions
@@ -107,13 +101,7 @@ public class Refactoring {
 			System.out.println(temp.toString());
 		}
 	}
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 
-<<<<<<< HEAD
-    public Refactoring(){
-        numRefactors = 0;
-    }
-=======
     /**
 	 * Prints the suggested refactorings for a source file
 	 * @param testSequence
@@ -129,51 +117,7 @@ public class Refactoring {
             outputString += "\n" + testFile.getPath() + ":" + temp.getTokenList().get(0).getLine() + ":" + temp.getTokenList().get(0).getColumn();
             outputString += "\n " + temp.toString() + "\n";
 		}
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 
-<<<<<<< HEAD
-    public Refactoring(int num, ArrayList<SourceCodeFile> list){
-        fileList = list;
-        numRefactors = num;
-    }
-
-    public void setFileList(ArrayList<SourceCodeFile> list){
-        fileList = list;
-    }
-
-    public ArrayList<SourceCodeFile> getFileList(){
-        return fileList;
-    }
-
-    public void setNumRefactors(int num){
-        numRefactors = num;
-    }
-
-    public int getNumRefactors(){
-        return numRefactors;
-    }
-
-    public String printRefactoredtoString(){
-        String output;
-        output = "Files scanned: ";
-
-        for(int i = 0; i < fileList.size(); i++){
-            //5 is just an arbitrary number as placeholder for num refactors actually found
-            output = output + fileList.get(i).toString() + "5\n";
-        }
-
-        return output;
-    }
-
-    public void printRefactored(){
-        System.out.println("Files scanned: ");
-        for(int i = 0; i < fileList.size(); i++){
-            //5 is just an arbitrary number as placeholder for num refactors actually found
-            System.out.println(fileList.get(i).toString() + "5");
-        }
-    }
-=======
         return outputString;
 	}
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 }

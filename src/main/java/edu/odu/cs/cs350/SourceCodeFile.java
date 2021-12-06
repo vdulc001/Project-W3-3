@@ -2,16 +2,12 @@ package edu.odu.cs.cs350;
 
 import java.io.File;
 import java.io.Reader;
-<<<<<<< HEAD
-import java.util.LinkedList;
-import java.io.IOException;
-=======
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.StringReader;
 
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
+
 
 /**
  * 
@@ -31,9 +27,6 @@ public class SourceCodeFile {
 	public SourceCodeFile(final String path)
 	{
 		file = new File(path);
-<<<<<<< HEAD
-		tokens = new LinkedList<Token>();
-=======
 		tokens = new ArrayList<Token>();
 		try {
             tokens = tokenize();
@@ -41,7 +34,6 @@ public class SourceCodeFile {
         catch (Exception ex) {
             // Not necessarily a problem, depending on the input source
         }
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 	}
 	
 	/**
@@ -86,30 +78,29 @@ public class SourceCodeFile {
 		return tokens.size();
 	}
 	
+	/*public void printNumTokens(LinkedList<Token> toks){
+        System.out.println("This file has: " + toks.size() + " tokens.");
+    }*/
+	
+	/**
+	 * Converts the string content of the file to Reader
+	 * @return Reader input
+	 */
+	public Reader getInput (String path) throws Exception{
+		String content = Files.readString(Paths.get(path));
+		Reader input = new StringReader(content);
+		return input;
+	}
+	
 	/**
 	 * Create a list of tokens from the scanner
 	 */
-<<<<<<< HEAD
-	// TODO Make this read in scf
-	public void tokenize(final Reader input) {
-		tokens = new LinkedList<Token>();
-		GeneratedScanner scanner = new GeneratedScanner (input);
-		try {
-            Token token = scanner.yylex();
-            while (token != null && token.getTokenType() != TokenKinds.EOF) {
-                tokens.add (token);
-                token = scanner.yylex();
-            }
-        } catch (IOException ex) {
-            // Not necessarily a problem, depending on the input source
-=======
 	public ArrayList<Token> tokenize() throws Exception{
 		String content = Files.readString(Paths.get(getPath()));
 		Reader input = new StringReader(content);
 		TokenStream tokenstream = new TokenStream(input);
         for (Token tok: tokenstream) {
             tokens.add(tok);
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
         }
         return tokens;
 	}

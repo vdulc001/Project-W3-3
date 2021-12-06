@@ -111,12 +111,9 @@ public class CommandLineProcessor {
 		searchForDirectories(files,++index, pathsToDirectories);
 	}
 	
-<<<<<<< HEAD
-=======
 	/**
 	 * Prints path and total number of tokens for all source code files in filesList
 	 */
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 	public static void printListOfSourceCodeFiles()
 	{
 		System.out.println();
@@ -160,4 +157,5 @@ public class CommandLineProcessor {
 		}
 		System.out.println("Printed " + i + " of " + nSuggestions + " suggestions");
 	}
+
 }

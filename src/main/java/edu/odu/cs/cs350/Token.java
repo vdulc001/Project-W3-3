@@ -11,11 +11,6 @@ public class Token {
 	private TokenKinds tokenType;
 	private int line;
 	private int column;
-<<<<<<< HEAD
-	private int tokenStart;
-	private int tokenLength;
-=======
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 	
 	/**
 	 * Creates a token without a lexeme
@@ -84,51 +79,5 @@ public class Token {
 		}
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * @return the type of token
-	 */
-	public final TokenKinds getTokenType() {
-		return this.tokenType;
-	}
-	
-	/**
-	 * what is the lexeme (character string) associated with the token?
-	 * @return the lexeme
-	 */
-	public String getLexeme() {
-		return this.lexeme;
-	}
-	
-	/**
-	 * @return the line number
-	 */
-	public int getLine() {
-		return this.line;
-	}
-	
-	/**
-	 * @return the column number
-	 */
-	public int getColumn() {
-		return this.column;
-	}
-	
-	/**
-	 * @return the token start
-	 */
-	public int getStart() {
-		return this.tokenStart;
-	}
-	
-	/**
-	 * @return token length
-	 */
-	public int getLength() {
-		return this.tokenLength;
-	}
-	
-=======
->>>>>>> branch 'main' of git@github.com:vdulc001/Project-W3-3.git
 }
 
