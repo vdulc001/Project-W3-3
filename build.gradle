@@ -1,6 +1,4 @@
 
-import edu.odu.cs.zeil.report_accumulator.ReportStats 
-
 buildscript {
     repositories {
         ivy { // for report-accumulator
@@ -15,10 +13,12 @@ buildscript {
 
 plugins {
 	id 'java'
+	id 'pmd'
 	id "org.jbake.site" version "5.5.0"
 	id "org.xbib.gradle.plugin.jflex" version "1.5.0"
     id "org.xbib.gradle.plugin.git" version "2.0.0"
     id "com.github.spotbugs" version "4.6.0"
+    id 'edu.odu.cs.report_accumulator' version '1.4'
 }
 
 
@@ -75,13 +75,21 @@ spotbugsMain {
 spotbugsTest.enabled = false
 
 //PMD Reports Page//
-/*import edu.odu.cs.zeil.report_accumulator.ReportStats     
 
+pmd {
+ignoreFailures = true
+    consoleOutput = false
+}
+pmdTest.enabled = false
+  
+  
+reportStats {
+    reportsURL = 'https://project/reports/url/'
+    htmlSourceDir = file('src/main/html')  // default value
+    reportsDir = file('build/reports') // default value
+    buildID = "12345"                  // defaults to current date, but can be any run identifier
+}   
 
-task collectStats (type: ReportStats, dependsOn: ['build','reports']) { 
-    description "Collect statistics from various reports & analysis tools"
-    reportsURL = 'https://www.cs.odu.edu/~zeil/gitlab/' + project.name + '/reports'
-}*/
 
 //JBake Website Task//
 task copyJDocs (type: Copy) {
